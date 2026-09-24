@@ -132,9 +132,9 @@ metadata/_custom_type_script = "uid://cct0slx0ktj60"
 
 [node name="Main" type="Node2D" unique_id=384787734]
 script = ExtResource("1_hfill")
-seconds_per_tile_easy = 1.55
-seconds_per_tile_hard = 0.95
-reaction_bonus = 0.7
+seconds_per_tile_easy = 1.15
+seconds_per_tile_hard = 0.65
+reaction_bonus = 0.45
 tile_crash = ExtResource("2_gpxnh")
 tile_click = ExtResource("3_6xw7n")
 wrong_place = ExtResource("4_gpxnh")
