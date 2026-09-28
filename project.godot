@@ -26,6 +26,8 @@ Globals="*uid://by5cofprr0ipt"
 window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="uid://m8s5co63k7ex"
+mouse_cursor/custom_image_hotspot=Vector2(10, 20)
 
 [file_customization]
 

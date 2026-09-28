@@ -79,6 +79,8 @@ metadata/_custom_type_script = "uid://cxpxg24xypn71"
 [node name="WinLoseScreen" parent="." unique_id=449922744 instance=ExtResource("8_vy41y")]
 unique_name_in_owner = true
 visible = false
+win_anims_pool = Array[PackedScene]([])
+lose_anims_pool = Array[PackedScene]([])
 
 [node name="Background" type="ColorRect" parent="." unique_id=1445678169]
 z_index = -4096

@@ -61,7 +61,7 @@ func start_microgame() -> void:
 	if is_starting:
 		return
 	is_starting = true
-	mouse_paw.make_invisible()
+	#mouse_paw.make_invisible()
 	_switch_to_next_microgame()
 	save_data_manager.save_data.clear()
 

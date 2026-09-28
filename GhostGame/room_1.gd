@@ -1,10 +1,10 @@
-extends Node2D
+extends MicroGame
 
 var ghostChoice: int = randi_range(0, 3)
 signal ghostLoseByeBye
 var soundPlayed: bool = false
 
-@onready var jumpScareAnimationPlayer: AnimationPlayer = $LoseJumpscare/AnimationPlayer
+@onready var jumpScareAnimationPlayer: AnimationPlayer = $Node2D/LoseJumpscare/AnimationPlayer
 
 
 var timer: float
