@@ -22,6 +22,8 @@ signal level_failed
 @onready var racecar = $TrackPath/CarFollow/Racecar
 
 @export var racetrack_stats: RacetrackLevelStats
+# Used instead of racetrack_stats when difficulty is above 0.0 (random pick)
+@export var racetrack_stats_pool: Array[RacetrackLevelStats]
 @export var fade_duration: float = 0.8
 
 var _waiting_for_qte := false
@@ -31,6 +33,7 @@ var global_difficulty: float
 
 func _ready() -> void:
 	_set_difficulty()
+	_select_racetrack_stats()
 	_fade_in()
 	var track_anchors := _compute_checkpoint_anchors(racetrack_stats.checkpoints)
 	
@@ -39,6 +42,7 @@ func _ready() -> void:
 	
 	qte_timer.one_shot = true
 	run_game()
+
 
 func _input(event: InputEvent) -> void:
 	if not _waiting_for_qte:
@@ -63,6 +67,7 @@ func run_game() -> void:
 
 
 func _run_countdown() -> void:
+	await _fade_in()
 	countdown_label.show()
 	for text in ["3", "2", "1", "Go!"]:
 		countdown_label.text = text
@@ -71,11 +76,10 @@ func _run_countdown() -> void:
 
 
 func _run_checkpoint(data: CheckpointData) -> bool:
-	print(local_difficulty_scale)
-	# Randomized delay before the QTE triggers
 	_false_started = false
 	_waiting_for_qte = true
 	
+	# Randomized delay before the QTE triggers
 	qte_timer.wait_time = randf_range(racetrack_stats.min_delay, racetrack_stats.max_delay)
 	qte_timer.start()
 	await qte_timer.timeout
@@ -91,7 +95,6 @@ func _run_checkpoint(data: CheckpointData) -> bool:
 	if success:
 		var tween := create_tween()
 		tween.tween_property(car_follow, "progress_ratio", data.success_ratio, 0.6)\
-			.set_trans(Tween.TRANS_SINE)\
 			.set_ease(Tween.EASE_IN_OUT)
 		await tween.finished
 	
@@ -178,4 +181,9 @@ func _fade_in() -> void:
 	var tween := create_tween()
 	tween.tween_property(fade_rect, "color:a", 0.0, fade_duration)
 	await tween.finished
+
+func _select_racetrack_stats() -> void:
+	if global_difficulty == 0.0 or racetrack_stats_pool.is_empty():
+		return
 	
+	racetrack_stats = racetrack_stats_pool.pick_random()
