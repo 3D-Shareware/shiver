@@ -1,3 +1,25 @@
 [gd_scene format=3 uid="uid://cqvdms8viuatx"]
 
+[ext_resource type="Script" uid="uid://28na5qin3vjx" path="res://BabyDefenestration/rigid_body_2d.gd" id="1_lr6q2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 35.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(829, 20)
+
 [node name="Rigidbaby" type="Node2D" unique_id=1077690374]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1181130616]
+position = Vector2(374, 319)
+script = ExtResource("1_lr6q2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1065472336]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=318942729]
+position = Vector2(-2, 588)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=701853411]
+position = Vector2(404.5, 0)
+shape = SubResource("RectangleShape2D_g4v7s")
