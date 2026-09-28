@@ -43,6 +43,7 @@ func _ready() -> void:
 	qte_timer.one_shot = true
 	run_game()
 
+
 func _input(event: InputEvent) -> void:
 	if not _waiting_for_qte:
 		return

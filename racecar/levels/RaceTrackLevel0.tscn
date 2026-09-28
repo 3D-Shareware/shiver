@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://h8sv7afpf4op" path="res://racecar/assets/pngs/the_flag.png" id="26_3m7it"]
 [ext_resource type="PackedScene" uid="uid://m8mif51xpyfj" path="res://racecar/qte.tscn" id="27_jouc1"]
 [ext_resource type="Script" uid="uid://c7lf17nkhtwrd" path="res://racecar/levels/fail_path_handler.gd" id="27_o7h5s"]
+[ext_resource type="Theme" uid="uid://boxd477ugoae4" path="res://Framework/Assets/default_theme.tres" id="35_rakfb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6afx"]
 size = Vector2(228, 221)
@@ -180,7 +181,7 @@ scale = Vector2(2.5000005, 2.5000005)
 unique_name_in_owner = true
 position = Vector2(-44.08622, -19.909916)
 rotation = -0.09495175
-scale = Vector2(0.85, 0.85)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_myrju")
 
 [node name="FailPathHandler" type="Node2D" parent="." unique_id=1555592214]
@@ -214,8 +215,13 @@ offset_right = 66.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "Start Countdown"
+theme = ExtResource("35_rakfb")
+theme_override_colors/font_color = Color(0.69411767, 0.13725491, 0.29803923, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GameOverPanel" type="Panel" parent="GameUI" unique_id=272340959]
 visible = false
@@ -224,6 +230,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("35_rakfb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameUI/GameOverPanel" unique_id=1497832208]
 layout_mode = 1
