@@ -10,3 +10,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	gravity_scale = 5.0
 	
+
+func _on_signal_one():
+	pass
