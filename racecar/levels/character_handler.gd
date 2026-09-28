@@ -12,6 +12,8 @@ extends Node2D
 @export_group("Spawn Areas")
 # Drag the Area2Ds per checkpoin in the inspector (in chronological order)
 @export var spawn_areas: Array[Area2D]
+# Margin for the spawn area so characters don't spawn right on the edges
+@export var edge_margin: Vector2 = Vector2(20, 20)
 
 var characters: Array[AnimatedSprite2D] = []
 
@@ -53,11 +55,22 @@ func _random_point_in_area(index: int, fallback: Vector2) -> Vector2:
 	if rectangles.is_empty():
 		return fallback
 	
-	var chosen: CollisionShape2D = rectangles[randi() % rectangles.size()]
-	var half: Vector2 = (chosen.shape as RectangleShape2D).size * 0.5
-	var local_point := Vector2(randf_range(-half.x, half.x), randf_range(-half.y, half.y))
+	var spawn_shape_node: CollisionShape2D = rectangles[randi() % rectangles.size()]
+	var half_of_area: Vector2 = (spawn_shape_node.shape as RectangleShape2D).size * 0.5
+	# Converts margin to local space
+	var margin_local: Vector2 = edge_margin / spawn_shape_node.global_scale.abs()
+
+	var inner_half := Vector2(
+		half_of_area.x - margin_local.x,
+		half_of_area.y - margin_local.y
+	)
+	var local_point := Vector2(
+		randf_range(-inner_half.x, inner_half.x),
+		randf_range(-inner_half.y, inner_half.y)
+	
+	)
 	# to_global respects the shape's position, rotation and scale.
-	return chosen.to_global(local_point)
+	return spawn_shape_node.to_global(local_point)
 
 
 func _instantiate_character() -> AnimatedSprite2D:

@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://d2y2autg5m0hc"]
 
 [ext_resource type="Script" uid="uid://o5ub56aveggr" path="res://racecar/levels/race_track_level.gd" id="1_a5s84"]
-[ext_resource type="Resource" uid="uid://c6ng6k8irmd2n" path="res://racecar/resources/levels/level_0/level_0_stats.tres" id="2_545xa"]
+[ext_resource type="Resource" uid="uid://3sm582uslegb" path="res://racecar/resources/levels/level_stats/1_checkpoint/racetrack_1check.tres" id="2_trumy"]
+[ext_resource type="Script" uid="uid://b8vn6h8r3ams2" path="res://racecar/resources/racetrack_level_stats.gd" id="3_8hwet"]
 [ext_resource type="Script" uid="uid://c5npwbo7ponpe" path="res://racecar/levels/character_handler.gd" id="3_p771m"]
+[ext_resource type="Resource" uid="uid://2yf5jlcnrdfd" path="res://racecar/resources/levels/level_stats/2_checkpoints/racetrack_2cheks.tres" id="4_5q450"]
 [ext_resource type="Script" uid="uid://bbwtag0a7oe6y" path="res://racecar/resources/characters/racetrack_character.gd" id="4_a5s84"]
 [ext_resource type="Resource" uid="uid://co0qhmnx4s8o0" path="res://racecar/resources/characters/pigster.tres" id="5_545xa"]
+[ext_resource type="Resource" uid="uid://pm7i4kq7yafa" path="res://racecar/resources/levels/level_stats/3_checkpoints/racetrack_3checks.tres" id="5_rakfb"]
 [ext_resource type="Resource" uid="uid://bf0e2e4wxw4ga" path="res://racecar/resources/characters/mr_melon.tres" id="6_o7h5s"]
 [ext_resource type="Resource" uid="uid://craqru1ocuij6" path="res://racecar/resources/characters/innocent_tree.tres" id="7_1ylch"]
 [ext_resource type="Texture2D" uid="uid://cfpruc2xadf20" path="res://racecar/assets/pngs/race_track.png" id="7_8hwet"]
@@ -37,6 +40,9 @@ size = Vector2(228, 221)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7qlb"]
 size = Vector2(194, 222)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tjqo"]
+size = Vector2(220, 245.5)
 
 [sub_resource type="Curve2D" id="Curve2D_g44wj"]
 bake_interval = 1.5
@@ -122,7 +128,8 @@ animations = [{
 
 [node name="RaceTrackLevel0" type="Node2D" unique_id=385830540]
 script = ExtResource("1_a5s84")
-racetrack_stats = ExtResource("2_545xa")
+racetrack_stats = ExtResource("2_trumy")
+racetrack_stats_pool = Array[ExtResource("3_8hwet")]([ExtResource("2_trumy"), ExtResource("4_5q450"), ExtResource("5_rakfb")])
 
 [node name="RaceTrack" type="Sprite2D" parent="." unique_id=1449761117]
 position = Vector2(579, 339.00003)
@@ -143,12 +150,18 @@ shape = SubResource("RectangleShape2D_g6afx")
 position = Vector2(1004, 406)
 shape = SubResource("RectangleShape2D_a7qlb")
 
+[node name="Spawn2" type="Area2D" parent="CharacterSpawnHandler" unique_id=548504700]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterSpawnHandler/Spawn2" unique_id=65903213]
+position = Vector2(135, 464.25)
+shape = SubResource("RectangleShape2D_4tjqo")
+
 [node name="CharacterHandler" type="Node2D" parent="." unique_id=184725384 node_paths=PackedStringArray("spawn_areas")]
 script = ExtResource("3_p771m")
 character_pool = Array[ExtResource("4_a5s84")]([ExtResource("6_o7h5s"), ExtResource("5_545xa"), ExtResource("7_1ylch")])
 character_scene = ExtResource("9_1ylch")
 character_scale = 1.75
-spawn_areas = [NodePath("../CharacterSpawnHandler/Spawn0"), NodePath("../CharacterSpawnHandler/Spawn1")]
+spawn_areas = [NodePath("../CharacterSpawnHandler/Spawn0"), NodePath("../CharacterSpawnHandler/Spawn1"), NodePath("../CharacterSpawnHandler/Spawn2")]
 
 [node name="TrackPath" type="Path2D" parent="." unique_id=434648878]
 curve = SubResource("Curve2D_g44wj")
@@ -189,6 +202,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 
 [node name="CountdownLabel" type="Label" parent="GameUI" unique_id=1678129848]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
