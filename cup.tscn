@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://c7mtc57p3u362"]
+
+[ext_resource type="Script" uid="uid://dnix0y2yjducx" path="res://cup.gd" id="1_ponjl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jv608"]
+radius = 4.0
+height = 24.0
+
+[node name="Cup" type="RigidBody2D" unique_id=1496661184]
+collision_mask = 6
+gravity_scale = 0.0
+freeze = true
+script = ExtResource("1_ponjl")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1063224297]
+position = Vector2(128, 109)
+node_a = NodePath("..")
+node_b = NodePath("../Segs1")
+
+[node name="Segs1" type="RigidBody2D" parent="." unique_id=2096082284]
+position = Vector2(141, 109)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segs1" unique_id=356161041]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jv608")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Segs1" unique_id=47121526]
+position = Vector2(14, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Segs2")
+
+[node name="Segs2" type="RigidBody2D" parent="." unique_id=890346943]
+position = Vector2(168, 109)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segs2" unique_id=640974991]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jv608")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Segs2" unique_id=1230358999]
+position = Vector2(15, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Segs3")
+
+[node name="Segs3" type="RigidBody2D" parent="." unique_id=1902328774]
+position = Vector2(197, 109)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segs3" unique_id=385212098]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jv608")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Segs3" unique_id=780155007]
+position = Vector2(14, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Segs4")
+
+[node name="Segs4" type="RigidBody2D" parent="." unique_id=450648102]
+position = Vector2(224, 109)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segs4" unique_id=726731476]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jv608")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Segs4" unique_id=2128891800]
+position = Vector2(17, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Segs5")
+
+[node name="Segs5" type="RigidBody2D" parent="." unique_id=413345611]
+position = Vector2(255, 109)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segs5" unique_id=1318809408]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jv608")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Segs5" unique_id=1166994712]
+position = Vector2(14, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Segs6")
+
+[node name="Segs6" type="RigidBody2D" parent="." unique_id=589201354]
+position = Vector2(282, 109)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segs6" unique_id=39215912]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jv608")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Segs6" unique_id=573233768]
+position = Vector2(15, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Segs7")
+
+[node name="Segs7" type="RigidBody2D" parent="." unique_id=936357401]
+position = Vector2(311, 109)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segs7" unique_id=619310584]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jv608")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Segs7" unique_id=409268083]
+position = Vector2(14, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Segs8")
+
+[node name="Segs8" type="RigidBody2D" parent="." unique_id=1047805555]
+position = Vector2(338, 109)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segs8" unique_id=1758624415]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jv608")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Segs8" unique_id=1936830582]
+position = Vector2(16, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Segs9")
+
+[node name="Segs9" type="RigidBody2D" parent="." unique_id=1068419759]
+position = Vector2(370, 109)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segs9" unique_id=655479951]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jv608")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Segs9" unique_id=981660094]
+position = Vector2(14, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Segs10")
+
+[node name="Segs10" type="RigidBody2D" parent="." unique_id=474005650]
+position = Vector2(397, 109)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segs10" unique_id=1548307194]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jv608")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Segs10" unique_id=1529819731]
+position = Vector2(15, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Segs11")
+
+[node name="Segs11" type="RigidBody2D" parent="." unique_id=397377104]
+position = Vector2(426, 109)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segs11" unique_id=1398041873]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jv608")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Segs11" unique_id=565439749]
+position = Vector2(14, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Segs12")
+
+[node name="Segs12" type="RigidBody2D" parent="." unique_id=2002133643]
+position = Vector2(453, 109)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segs12" unique_id=1836211645]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jv608")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Segs12" unique_id=2139494766]
+position = Vector2(17, 0)
+node_a = NodePath("..")
+node_b = NodePath("..")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=787157581]
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(0, 0, 50, 150, 125, 150, 125, 550, 250, 550, 250, 150, 325, 150, 375, 0, 300, 0, 250, 100, 125, 100, 75, 0, 0, 0)
