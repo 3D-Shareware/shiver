@@ -8,3 +8,4 @@ func _physics_process(delta: float) -> void:
 	var travel_vector = target_pos - global_position
 	
 	linear_velocity = travel_vector * speed_modifier
+	

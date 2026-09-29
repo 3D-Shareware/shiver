@@ -9,16 +9,17 @@ height = 24.0
 [node name="Cup" type="RigidBody2D" unique_id=1496661184]
 collision_mask = 6
 gravity_scale = 0.0
-freeze = true
+freeze_mode = 1
 script = ExtResource("1_ponjl")
+speed_modifier = 50.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1063224297]
-position = Vector2(128, 109)
+position = Vector2(33.25, -109.5)
 node_a = NodePath("..")
 node_b = NodePath("../Segs1")
 
 [node name="Segs1" type="RigidBody2D" parent="." unique_id=2096082284]
-position = Vector2(141, 109)
+position = Vector2(46.25, -109.5)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Segs1" unique_id=356161041]
@@ -31,7 +32,7 @@ node_a = NodePath("..")
 node_b = NodePath("../../Segs2")
 
 [node name="Segs2" type="RigidBody2D" parent="." unique_id=890346943]
-position = Vector2(168, 109)
+position = Vector2(73.25, -109.5)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Segs2" unique_id=640974991]
@@ -44,7 +45,7 @@ node_a = NodePath("..")
 node_b = NodePath("../../Segs3")
 
 [node name="Segs3" type="RigidBody2D" parent="." unique_id=1902328774]
-position = Vector2(197, 109)
+position = Vector2(102.25, -109.5)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Segs3" unique_id=385212098]
@@ -57,7 +58,7 @@ node_a = NodePath("..")
 node_b = NodePath("../../Segs4")
 
 [node name="Segs4" type="RigidBody2D" parent="." unique_id=450648102]
-position = Vector2(224, 109)
+position = Vector2(129.25, -109.5)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Segs4" unique_id=726731476]
@@ -70,7 +71,7 @@ node_a = NodePath("..")
 node_b = NodePath("../../Segs5")
 
 [node name="Segs5" type="RigidBody2D" parent="." unique_id=413345611]
-position = Vector2(255, 109)
+position = Vector2(160.25, -109.5)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Segs5" unique_id=1318809408]
@@ -83,7 +84,7 @@ node_a = NodePath("..")
 node_b = NodePath("../../Segs6")
 
 [node name="Segs6" type="RigidBody2D" parent="." unique_id=589201354]
-position = Vector2(282, 109)
+position = Vector2(187.25, -109.5)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Segs6" unique_id=39215912]
@@ -96,7 +97,7 @@ node_a = NodePath("..")
 node_b = NodePath("../../Segs7")
 
 [node name="Segs7" type="RigidBody2D" parent="." unique_id=936357401]
-position = Vector2(311, 109)
+position = Vector2(216.25, -109.5)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Segs7" unique_id=619310584]
@@ -109,7 +110,7 @@ node_a = NodePath("..")
 node_b = NodePath("../../Segs8")
 
 [node name="Segs8" type="RigidBody2D" parent="." unique_id=1047805555]
-position = Vector2(338, 109)
+position = Vector2(243.25, -109.5)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Segs8" unique_id=1758624415]
@@ -122,7 +123,7 @@ node_a = NodePath("..")
 node_b = NodePath("../../Segs9")
 
 [node name="Segs9" type="RigidBody2D" parent="." unique_id=1068419759]
-position = Vector2(370, 109)
+position = Vector2(275.25, -109.5)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Segs9" unique_id=655479951]
@@ -135,7 +136,7 @@ node_a = NodePath("..")
 node_b = NodePath("../../Segs10")
 
 [node name="Segs10" type="RigidBody2D" parent="." unique_id=474005650]
-position = Vector2(397, 109)
+position = Vector2(302.25, -109.5)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Segs10" unique_id=1548307194]
@@ -148,7 +149,7 @@ node_a = NodePath("..")
 node_b = NodePath("../../Segs11")
 
 [node name="Segs11" type="RigidBody2D" parent="." unique_id=397377104]
-position = Vector2(426, 109)
+position = Vector2(331.25, -109.5)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Segs11" unique_id=1398041873]
@@ -161,7 +162,7 @@ node_a = NodePath("..")
 node_b = NodePath("../../Segs12")
 
 [node name="Segs12" type="RigidBody2D" parent="." unique_id=2002133643]
-position = Vector2(453, 109)
+position = Vector2(358.25, -109.5)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Segs12" unique_id=1836211645]
@@ -173,6 +174,7 @@ position = Vector2(17, 0)
 node_a = NodePath("..")
 node_b = NodePath("..")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=787157581]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1542064857]
+position = Vector2(-94.75, -218.5)
 scale = Vector2(0.5, 0.5)
 polygon = PackedVector2Array(0, 0, 50, 150, 125, 150, 125, 550, 250, 550, 250, 150, 325, 150, 375, 0, 300, 0, 250, 100, 125, 100, 75, 0, 0, 0)
