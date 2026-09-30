@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://chcbx7cftx5bq"]
+
+[ext_resource type="Script" uid="uid://cg5cu61hrwijy" path="res://Shiver/shiver_game.gd" id="1_53x1e"]
+
+[node name="ShiverGame" type="Node3D" unique_id=2146958291]
+script = ExtResource("1_53x1e")
