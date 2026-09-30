@@ -1,15 +1,15 @@
 extends RigidBody2D
 
+var vel = linear_velocity
+var damp: float = 0.1
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+	self.freeze = true
 	gravity_scale = 5.0
 	
-
-func _on_signal_one():
-	pass
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("ui_accept"):
+		print("You threw the baby!")
+		self.freeze = false
+		apply_force(Vector2(50000,0))
+	vel *= damp*delta
