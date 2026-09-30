@@ -8,7 +8,7 @@ func _ready() -> void:
 	gravity_scale = 5.0
 	
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept"):
 		print("You threw the baby!")
 		self.freeze = false
 		apply_force(Vector2(50000,0))
