@@ -3,54 +3,21 @@
 [ext_resource type="Script" uid="uid://28na5qin3vjx" path="res://BabyDefenestration/rigid_body_2d.gd" id="1_lr6q2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lr6q2"]
-bounce = 0.5
+bounce = 0.2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c18sk"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(829, 20)
+radius = 16.0
+height = 56.0
 
 [node name="Rigidbaby" type="Node2D" unique_id=1077690374]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1181130616]
-position = Vector2(374, 319)
 physics_material_override = SubResource("PhysicsMaterial_lr6q2")
 contact_monitor = true
-max_contacts_reported = 10
 script = ExtResource("1_lr6q2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1065472336]
 shape = SubResource("CapsuleShape2D_c18sk")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=318942729]
-position = Vector2(-2, 588)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=701853411]
-position = Vector2(404.5, 0)
-shape = SubResource("RectangleShape2D_g4v7s")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1624363094]
-position = Vector2(245, 314)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=655256975]
-position = Vector2(555, -32)
-rotation = 1.5707964
-shape = SubResource("RectangleShape2D_g4v7s")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1091675392]
-position = Vector2(-2, -171)
-rotation = 1.5707964
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=929712817]
-position = Vector2(404.5, 0)
-shape = SubResource("RectangleShape2D_g4v7s")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=2096096201]
-position = Vector2(-2, 26)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=2005601013]
-position = Vector2(404.5, 0)
-shape = SubResource("RectangleShape2D_g4v7s")
 
 [connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]
 [connection signal="input_event" from="RigidBody2D" to="RigidBody2D" method="_on_input_event"]
