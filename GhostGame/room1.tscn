@@ -81,50 +81,48 @@ subpixel_positioning = 0
 [node name="Room1" type="Node" unique_id=126980255]
 script = ExtResource("1_j87sx")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1892329802]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1004233685]
 
-[node name="Camera2D" type="Camera2D" parent="Node2D" unique_id=1004233685]
-
-[node name="Flashlight" parent="Node2D" unique_id=2066271764 instance=ExtResource("6_l8hux")]
+[node name="Flashlight" parent="." unique_id=2066271764 instance=ExtResource("6_l8hux")]
 position = Vector2(-288, 88)
 
-[node name="Darkness" parent="Node2D" unique_id=1076800480 instance=ExtResource("3_u5cq7")]
+[node name="Darkness" parent="." unique_id=1076800480 instance=ExtResource("3_u5cq7")]
 material = SubResource("CanvasItemMaterial_broj7")
 scale = Vector2(2.5200012, 1.9599996)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=635259728]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=635259728]
 material = SubResource("CanvasItemMaterial_ovbv5")
 position = Vector2(2.6226044e-05, 1.1519382e-05)
 scale = Vector2(0.46180806, 0.4132335)
 texture = ExtResource("4_qx78m")
 
-[node name="Ghost" parent="Node2D" unique_id=1422598180 instance=ExtResource("2_trcem")]
+[node name="Ghost" parent="." unique_id=1422598180 instance=ExtResource("2_trcem")]
 position = Vector2(-144, -288)
 
-[node name="Ghost2" parent="Node2D" unique_id=2072065026 instance=ExtResource("2_trcem")]
+[node name="Ghost2" parent="." unique_id=2072065026 instance=ExtResource("2_trcem")]
 position = Vector2(-320, 296)
 script = ExtResource("4_l8hux")
 
-[node name="Ghost3" parent="Node2D" unique_id=1582101557 instance=ExtResource("2_trcem")]
+[node name="Ghost3" parent="." unique_id=1582101557 instance=ExtResource("2_trcem")]
 position = Vector2(120, -64)
 script = ExtResource("5_u5cq7")
 
-[node name="Ghost4" parent="Node2D" unique_id=106952221 instance=ExtResource("2_trcem")]
+[node name="Ghost4" parent="." unique_id=106952221 instance=ExtResource("2_trcem")]
 position = Vector2(464, 96)
 script = ExtResource("6_oppeo")
 
-[node name="Barrel" parent="Node2D" unique_id=589035732 instance=ExtResource("3_j87sx")]
+[node name="Barrel" parent="." unique_id=589035732 instance=ExtResource("3_j87sx")]
 position = Vector2(376, 128)
 scale = Vector2(1.0381458, 0.9324808)
 
-[node name="Box" parent="Node2D" unique_id=233560082 instance=ExtResource("4_h1vdc")]
+[node name="Box" parent="." unique_id=233560082 instance=ExtResource("4_h1vdc")]
 position = Vector2(120, -8)
 
-[node name="Chair" parent="Node2D" unique_id=1259396283 instance=ExtResource("5_0cgkm")]
+[node name="Chair" parent="." unique_id=1259396283 instance=ExtResource("5_0cgkm")]
 position = Vector2(-288, 80)
 scale = Vector2(1.118012, 1.12393)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Node2D" unique_id=1374924067]
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1374924067]
 self_modulate = Color(1, 1, 1, 0.3647059)
 material = SubResource("CanvasItemMaterial_0h4ac")
 position = Vector2(-287.99997, 80)
@@ -132,24 +130,24 @@ scale = Vector2(0.6022581, 0.6094951)
 texture = ExtResource("12_qx78m")
 script = ExtResource("13_y4e0l")
 
-[node name="PointLight2D" type="PointLight2D" parent="Node2D" unique_id=361430465]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=361430465]
 visible = false
 scale = Vector2(2.0194888, 1.275871)
 blend_mode = 2
 texture = ExtResource("12_oppeo")
 
-[node name="LoseJumpscare" type="AnimatedSprite2D" parent="Node2D" unique_id=2108031117]
+[node name="LoseJumpscare" type="AnimatedSprite2D" parent="." unique_id=2108031117]
 position = Vector2(-1008, 616.00006)
 scale = Vector2(0.50113183, 0.4973775)
 sprite_frames = SubResource("SpriteFrames_d0siw")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/LoseJumpscare" unique_id=1079487940]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoseJumpscare" unique_id=1079487940]
 libraries/ = SubResource("AnimationLibrary_e0fdr")
 
-[node name="Roar" type="AudioStreamPlayer" parent="Node2D/LoseJumpscare" unique_id=305540314]
+[node name="Roar" type="AudioStreamPlayer" parent="LoseJumpscare" unique_id=305540314]
 stream = ExtResource("14_skr5q")
 
-[node name="Label" type="Label" parent="Node2D" unique_id=716796990]
+[node name="Label" type="Label" parent="." unique_id=716796990]
 offset_left = 496.0
 offset_top = 232.0
 offset_right = 569.0
@@ -157,6 +155,6 @@ offset_bottom = 332.0
 theme_override_fonts/font = SubResource("SystemFont_d0siw")
 theme_override_font_sizes/font_size = 86
 
-[node name="Ambience" type="AudioStreamPlayer" parent="Node2D" unique_id=1238428313]
+[node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=1238428313]
 stream = ExtResource("14_xwaok")
 autoplay = true
