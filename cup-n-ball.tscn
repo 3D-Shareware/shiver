@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dtd436o5kq3dh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l634g"]
+radius = 18.027756
+
+[node name="Main" type="Node2D" unique_id=960642597]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=626803018]
+position = Vector2(-3, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=7003492]
+position = Vector2(2865, -1415)
+shape = SubResource("CircleShape2D_l634g")
