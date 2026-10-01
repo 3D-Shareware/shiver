@@ -30,6 +30,7 @@ window/stretch/aspect="expand"
 [file_customization]
 
 folder_colors={
+"res://BridgeBuilder/": "purple",
 "res://ExampleGame/": "pink",
 "res://Framework/": "gray",
 "res://Framework/Assets/": "purple",
