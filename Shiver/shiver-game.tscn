@@ -2,29 +2,41 @@
 
 [ext_resource type="Script" uid="uid://cg5cu61hrwijy" path="res://Shiver/shiver_game.gd" id="1_53x1e"]
 [ext_resource type="PackedScene" uid="uid://dbhpr6ol82bke" path="res://Shiver/objects/player.tscn" id="2_62ety"]
+[ext_resource type="Script" uid="uid://bbt8req20h62y" path="res://Shiver/TerrainHandler.gd" id="3_lwllx"]
+[ext_resource type="Shader" uid="uid://x5b7wbe8ayvq" path="res://Shiver/terrain_shader2.gdshader" id="4_khf7r"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bk7jt"]
-size = Vector3(128, 1, 128)
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_incux"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pt1fr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0xm2m"]
+render_priority = 0
+shader = ExtResource("4_khf7r")
+shader_parameter/height_mult = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_bk7jt"]
-material = SubResource("StandardMaterial3D_pt1fr")
-size = Vector3(128, 1, 128)
+[sub_resource type="PlaneMesh" id="PlaneMesh_cu5sd"]
+material = SubResource("ShaderMaterial_0xm2m")
+size = Vector2(512, 512)
+subdivide_width = 512
+subdivide_depth = 512
 
 [node name="ShiverGame" type="Node3D" unique_id=2146958291]
 script = ExtResource("1_53x1e")
 
 [node name="Player" parent="." unique_id=1794247419 instance=ExtResource("2_62ety")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 208.79147, 0)
 
-[node name="Temporary Floor" type="StaticBody3D" parent="." unique_id=195164831]
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1271081737]
+script = ExtResource("3_lwllx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Temporary Floor" unique_id=1024465554]
-shape = SubResource("BoxShape3D_bk7jt")
+[node name="Map" type="CollisionShape3D" parent="Floor" unique_id=162774413]
+shape = SubResource("HeightMapShape3D_incux")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Temporary Floor" unique_id=1692161783]
-mesh = SubResource("BoxMesh_bk7jt")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=2036906601]
+mesh = SubResource("PlaneMesh_cu5sd")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=229134612]
-transform = Transform3D(-0.23191364, 0.97273636, 0, -0.57303023, -0.13661821, 0.8080668, 0.78603595, 0.18740168, 0.589091, 0, 34.54957, 0)
+[node name="Campfire" type="AreaLight3D" parent="." unique_id=1686825552]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3, 0)
+light_color = Color(1, 0.8862745, 0.57254905, 1)
+light_energy = 10.0
+shadow_enabled = true
+area_range = 150.0
+area_attenuation = 0.1
