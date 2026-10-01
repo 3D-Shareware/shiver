@@ -15,8 +15,6 @@ var is_key_in_box: bool = false
 
 func _physics_process(delta: float) -> void:
 	global_position.x -= speed * delta
-	if global_position.x < get_viewport_rect().position.x:
-		queue_free()
 
 
 func _change_state(new_state: State) -> void:
@@ -24,8 +22,7 @@ func _change_state(new_state: State) -> void:
 		return
 	state = new_state
 	key_press_finished.emit(self, new_state == State.SUCCESS)
-	
-	
+
 
 func is_state_pending() -> bool:
 	return state == State.PENDING

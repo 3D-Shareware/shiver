@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6f2e37esy47e"]
 
 [ext_resource type="Script" uid="uid://jdc6qk3kic3x" path="res://PigsterDance/dance_qte.gd" id="1_68x2r"]
-[ext_resource type="PackedScene" uid="uid://dqme34pqjsk14" path="res://PigsterDance/QteSprite.tscn" id="2_txim4"]
+[ext_resource type="PackedScene" uid="uid://cgm8nshwkqev3" path="res://PigsterDance/QteKey.tscn" id="2_qp7ot"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_txim4"]
 device = -1
@@ -23,12 +23,13 @@ size = Vector2(100, 100)
 
 [node name="DanceQte" type="Node2D" unique_id=2064147845]
 script = ExtResource("1_68x2r")
-key_scene = ExtResource("2_txim4")
+key_scene = ExtResource("2_qp7ot")
 key_pool = Array[InputEvent]([SubResource("InputEventKey_txim4"), SubResource("InputEventKey_gsjfl"), SubResource("InputEventKey_yo1pc")])
 key_speed = 300.0
+is_in_debug = false
 
 [node name="HitBox" type="Area2D" parent="." unique_id=718107860]
-position = Vector2(576, 324)
+position = Vector2(576, 400)
 
 [node name="Visual" type="ColorRect" parent="HitBox" unique_id=707496924]
 offset_left = -60.0
@@ -42,10 +43,21 @@ shape = SubResource("RectangleShape2D_g6afx")
 [node name="KeyHandler" type="Node2D" parent="." unique_id=236551657]
 
 [node name="ResultLabel" type="Label" parent="." unique_id=986605407]
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 60.0
-offset_bottom = 43.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 528.0
+offset_top = 463.0
+offset_right = 637.0
+offset_bottom = 551.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Hit!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=694512414]
 one_shot = true

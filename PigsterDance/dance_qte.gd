@@ -1,21 +1,27 @@
-class_name QteLine
+class_name DanceQte
 extends Node2D
 
 # Emitted when key is pressed and checks whether it can be considered a success
 signal key_was_pressed(binding: InputEvent, qte_success: bool)
+signal qte_won
+signal qte_failed
 
 @export var key_scene: PackedScene
 @export var key_pool: Array[InputEvent] = []
 @export var key_speed: float = 350.0
 @export var is_in_debug: bool = true
-
-@export_group("Spawning Data")
 @export var spawn_offset: float = 64.0
+@export var max_tries: int = 3
+@export var restart_delay: float = 1.5
 
 @onready var hit_box: Area2D = $HitBox
 @onready var key_handler: Node2D = $KeyHandler
 @onready var result_label: Label = $ResultLabel
 @onready var spawn_timer = $SpawnTimer
+
+var remaining_keys: Array[InputEvent] = []
+var tries_left: int = 0
+var is_qte_active: bool = false
 
 
 func _ready() -> void:
@@ -24,34 +30,43 @@ func _ready() -> void:
 	
 	_qte_debug("Waiting For Input")
 	if is_in_debug:
-		start_spawn_timer()
+		start_qte()
 
 
-func _input(event: InputEvent) -> void:
-	if not event.is_pressed() or event.is_echo():
+func start_qte() -> void:
+	if key_pool.is_empty():
+		push_error("Key Pool is empty in Inspector")
 		return
 	
-	_handle_input(event)
+	tries_left = max_tries
+	_start_round()
+
+func _start_round() -> void:
+	remaining_keys.assign(key_pool)
+	remaining_keys.shuffle()
+	is_qte_active = true
+	_qte_debug("Waiting For Input")
+	start_spawn_timer()
 
 
 func start_spawn_timer() -> void:
 	spawn_timer.start(1)
 
 
+func _on_spawn_timer_timeout() -> void:
+	_spawn_key()
+	if remaining_keys.is_empty():
+		stop_spawn_timer()
+	else:
+		start_spawn_timer()
+
 func stop_spawn_timer() -> void:
 	spawn_timer.stop()
 
 
-func _on_spawn_timer_timeout() -> void:
-	_spawn_key()
-	start_spawn_timer()
-
-
 func _spawn_key() -> void:
-	if key_pool.is_empty():
-		push_error("Key Pool is empty in Inspector")
+	if remaining_keys.is_empty():
 		return
-	
 	if key_scene == null:
 		push_error("Key Scene is empty in Inspector")
 		return
@@ -59,33 +74,51 @@ func _spawn_key() -> void:
 	var key: QteKey = key_scene.instantiate()
 	key_handler.add_child(key)
 	key.global_position = Vector2(get_viewport_rect().end.x + spawn_offset, hit_box.global_position.y)
-	key.set_key(key_pool.pick_random(), key_speed)
+	key.set_key(remaining_keys.pop_front(), key_speed)
 	key.key_press_finished.connect(_on_key_press_finished)
+
+func _on_key_press_finished(key: QteKey, success: bool) -> void:
+	if not is_qte_active:
+		return
+	if not success:
+		_fail_qte(key.key, "TOO LATE!")
+		return
+	
+	key_was_pressed.emit(key.key, true)
+	_qte_debug("SUCCESS")
+	
+	if remaining_keys.is_empty() and not _has_pending_keys():
+		_end_qte()
+		qte_won.emit()
+
+
+
+func _input(event: InputEvent) -> void:
+	if not is_qte_active or not event.is_pressed() or event.is_echo():
+		return
+	
+	_handle_input(event)
 
 
 func _handle_input(event: InputEvent) -> void:
-	var closest_key = _find_closest_key(event)
+	var closest_key := _find_closest_key()
 	
 	if closest_key == null:
 		return
 	
-	if closest_key.is_key_in_box:
+	if not closest_key.is_key_in_box:
+		_fail_qte(closest_key.key, "TOO EARLY!")
+	elif closest_key.is_key_matching(event):
 		closest_key.success_state()
-	else:
-		_qte_debug("TOO EARLY!")
-		key_was_pressed.emit(closest_key.key)
 
 
-
-func _find_closest_key(event: InputEvent) -> QteKey:
+func _find_closest_key() -> QteKey:
 	var closest_key: QteKey = null
 	
 	for child in key_handler.get_children():
-		var key := child as QteKey
+		var key: QteKey = child
 		
 		if key == null or not key.is_state_pending() or not key.is_on_screen():
-			continue
-		if not key.is_key_matching(event):
 			continue
 		if closest_key == null or key.global_position.x < closest_key.global_position.x:
 			closest_key = key
@@ -93,28 +126,53 @@ func _find_closest_key(event: InputEvent) -> QteKey:
 
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
-	var key := area.get_parent() as QteKey
+	var key: QteKey = area.get_parent()
 	if key != null:
 		key.is_key_in_box = true
 
-
 func _on_hit_box_area_exited(area: Area2D) -> void:
-	var key := area.get_parent() as QteKey
+	if not is_qte_active:
+		return
+	
+	var key: QteKey = area.get_parent()
 	if key == null:
 		return
 	key.is_key_in_box = false
-	# Left the box without being pressed = too late.
 	if key.is_state_pending():
 		key.fail_state()
 
 
-func _on_key_press_finished(key: QteKey, success: bool) -> void:
-	if success:
-		_qte_debug("SUCCESS")
-	else:
-		_qte_debug("FAIL")
-	key_was_pressed.emit(key.key, success)
-
-
 func _qte_debug(text: String) -> void:
 	result_label.text = text
+
+func _has_pending_keys() -> bool:
+	for child in key_handler.get_children():
+		var key: QteKey = child
+		if key != null and key.is_state_pending():
+			return true
+	return false
+
+
+func _end_qte() -> void:
+	is_qte_active = false
+	stop_spawn_timer()
+
+
+func _clear_keys() -> void:
+	for child in key_handler.get_children():
+		child.queue_free()
+
+func _fail_qte(failed_key: InputEvent, reason: String) -> void:
+	_end_qte()
+	_clear_keys()
+	tries_left -= 1
+	key_was_pressed.emit(failed_key, false)
+	
+	if tries_left <= 0:
+		_qte_debug("%s - No tries left" % reason)
+		qte_failed.emit()
+		return
+	
+	_qte_debug("%s - %d tries left" % [reason, tries_left])
+	await get_tree().create_timer(restart_delay).timeout
+	_start_round()
