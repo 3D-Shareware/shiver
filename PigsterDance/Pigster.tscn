@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://j5l7c1huhq0m"]
+
+[ext_resource type="Texture2D" uid="uid://ii8kne4bxjre" path="res://PigsterDance/assets/pngs/pigster_death.png" id="1_kus5t"]
+
+[node name="Pigster" type="Sprite2D" unique_id=1871502015]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_kus5t")
+hframes = 4
+vframes = 4
