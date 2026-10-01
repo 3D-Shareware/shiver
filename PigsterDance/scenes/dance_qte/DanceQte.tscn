@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6f2e37esy47e"]
 
-[ext_resource type="Script" uid="uid://jdc6qk3kic3x" path="res://PigsterDance/dance_qte.gd" id="1_68x2r"]
-[ext_resource type="PackedScene" uid="uid://cgm8nshwkqev3" path="res://PigsterDance/QteKey.tscn" id="2_qp7ot"]
+[ext_resource type="Script" uid="uid://jdc6qk3kic3x" path="res://PigsterDance/scenes/dance_qte/dance_qte.gd" id="1_s7ldp"]
+[ext_resource type="PackedScene" uid="uid://cgm8nshwkqev3" path="res://PigsterDance/scenes/dance_qte/keyboard_key/QteKey.tscn" id="2_s7ldp"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_txim4"]
 device = -1
@@ -22,8 +22,8 @@ unicode = 101
 size = Vector2(100, 100)
 
 [node name="DanceQte" type="Node2D" unique_id=2064147845]
-script = ExtResource("1_68x2r")
-key_scene = ExtResource("2_qp7ot")
+script = ExtResource("1_s7ldp")
+key_scene = ExtResource("2_s7ldp")
 key_pool = Array[InputEvent]([SubResource("InputEventKey_txim4"), SubResource("InputEventKey_gsjfl"), SubResource("InputEventKey_yo1pc")])
 key_speed = 300.0
 is_in_debug = false
