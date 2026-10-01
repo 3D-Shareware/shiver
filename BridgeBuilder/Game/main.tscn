@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://buhmj4x6onqxa"]
+
+[ext_resource type="Script" uid="uid://d1v8vgughiu51" path="res://BridgeBuilder/Game/main.gd" id="1_ylxma"]
+
+[node name="Main" type="Node2D" unique_id=582879533]
+script = ExtResource("1_ylxma")
