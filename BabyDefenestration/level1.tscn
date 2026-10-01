@@ -1,3 +1,11 @@
 [gd_scene format=3 uid="uid://2ymohn73wsu8"]
 
+[ext_resource type="Script" uid="uid://cxqeluwac7mhp" path="res://BabyDefenestration/player_arrow.gd" id="1_xina5"]
+
 [node name="Level1" type="Node2D" unique_id=1174647030]
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=524131676]
+position = Vector2(191.99998, 399.99994)
+polygon = PackedVector2Array(0, 8, 0, 64, 104, 64, 104, 96, 168.00003, 32, 104, -23.999996, 104, 8)
+uv = PackedVector2Array(0, 8, 0, 64, 112, 64, 112, 96, 176.00003, 32, 112, -23.999996, 112, 8)
+script = ExtResource("1_xina5")
