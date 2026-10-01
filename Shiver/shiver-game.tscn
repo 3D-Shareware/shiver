@@ -1,6 +1,30 @@
 [gd_scene format=3 uid="uid://chcbx7cftx5bq"]
 
 [ext_resource type="Script" uid="uid://cg5cu61hrwijy" path="res://Shiver/shiver_game.gd" id="1_53x1e"]
+[ext_resource type="PackedScene" uid="uid://dbhpr6ol82bke" path="res://Shiver/objects/player.tscn" id="2_62ety"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bk7jt"]
+size = Vector3(128, 1, 128)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pt1fr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bk7jt"]
+material = SubResource("StandardMaterial3D_pt1fr")
+size = Vector3(128, 1, 128)
 
 [node name="ShiverGame" type="Node3D" unique_id=2146958291]
 script = ExtResource("1_53x1e")
+
+[node name="Player" parent="." unique_id=1794247419 instance=ExtResource("2_62ety")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Temporary Floor" type="StaticBody3D" parent="." unique_id=195164831]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Temporary Floor" unique_id=1024465554]
+shape = SubResource("BoxShape3D_bk7jt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Temporary Floor" unique_id=1692161783]
+mesh = SubResource("BoxMesh_bk7jt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=229134612]
+transform = Transform3D(-0.23191364, 0.97273636, 0, -0.57303023, -0.13661821, 0.8080668, 0.78603595, 0.18740168, 0.589091, 0, 34.54957, 0)
