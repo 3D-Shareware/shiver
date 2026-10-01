@@ -21,6 +21,7 @@ material = SubResource("ShaderMaterial_h2yge")
 size = Vector2(0.1, 0.1)
 
 [node name="Player" type="CharacterBody3D" unique_id=1794247419]
+floor_max_angle = 1.3089969
 script = ExtResource("1_as27w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=103254738]
