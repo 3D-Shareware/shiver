@@ -1,8 +1,24 @@
 [gd_scene format=3 uid="uid://dbhpr6ol82bke"]
 
 [ext_resource type="Script" uid="uid://cqmk74r73s8un" path="res://Shiver/objects/player.gd" id="1_as27w"]
+[ext_resource type="Shader" uid="uid://bxc302ypplc3w" path="res://Shiver/snow_shader.gdshader" id="2_jtwno"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bk7jt"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1eeb5"]
+emission_shape_scale = Vector3(10, 5, 10)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+turbulence_enabled = true
+turbulence_noise_strength = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2yge"]
+render_priority = 0
+shader = ExtResource("2_jtwno")
+
+[sub_resource type="QuadMesh" id="QuadMesh_lrcg5"]
+material = SubResource("ShaderMaterial_h2yge")
+size = Vector2(0.1, 0.1)
 
 [node name="Player" type="CharacterBody3D" unique_id=1794247419]
 script = ExtResource("1_as27w")
@@ -14,3 +30,15 @@ shape = SubResource("CapsuleShape3D_bk7jt")
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.8, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Camera Pivot" unique_id=533425840]
+
+[node name="SnowParticles" type="GPUParticles3D" parent="." unique_id=2145786775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+cast_shadow = 0
+amount = 200
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_1eeb5")
+draw_pass_1 = SubResource("QuadMesh_lrcg5")
+
+[node name="PlayerLight" type="OmniLight3D" parent="." unique_id=192397915]
+light_color = Color(1, 0.32941177, 0.14901961, 1)
+light_energy = 10.0
