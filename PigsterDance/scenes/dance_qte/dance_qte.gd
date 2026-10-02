@@ -20,9 +20,6 @@ var current_level_stats: DanceLevelStats
 
 
 func _ready() -> void:
-	hit_box.area_entered.connect(_on_hit_box_area_entered)
-	hit_box.area_exited.connect(_on_hit_box_area_exited)
-	
 	_qte_debug("Waiting For Input")
 
 
@@ -116,23 +113,6 @@ func _find_closest_key() -> QteKey:
 		if closest_key == null or key.global_position.x < closest_key.global_position.x:
 			closest_key = key
 	return closest_key
-
-
-func _on_hit_box_area_entered(area: Area2D) -> void:
-	var key: QteKey = area.get_parent()
-	if key != null:
-		key.is_key_in_box = true
-
-func _on_hit_box_area_exited(area: Area2D) -> void:
-	if not is_qte_active:
-		return
-	
-	var key: QteKey = area.get_parent()
-	if key == null:
-		return
-	key.is_key_in_box = false
-	if key.is_state_pending():
-		key.fail_state()
 
 
 func _qte_debug(text: String) -> void:

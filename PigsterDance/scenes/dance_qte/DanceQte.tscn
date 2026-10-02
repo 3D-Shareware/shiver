@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://6f2e37esy47e"]
 
 [ext_resource type="Script" uid="uid://jdc6qk3kic3x" path="res://PigsterDance/scenes/dance_qte/dance_qte.gd" id="1_s7ldp"]
+[ext_resource type="Script" uid="uid://dk7ffpdqqfr1n" path="res://PigsterDance/scenes/dance_qte/dance_key_hitbox.gd" id="2_s7ldp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6afx"]
 size = Vector2(100, 100)
@@ -10,6 +11,7 @@ script = ExtResource("1_s7ldp")
 
 [node name="HitBox" type="Area2D" parent="." unique_id=718107860]
 position = Vector2(576, 400)
+script = ExtResource("2_s7ldp")
 
 [node name="Visual" type="ColorRect" parent="HitBox" unique_id=707496924]
 offset_left = -60.0

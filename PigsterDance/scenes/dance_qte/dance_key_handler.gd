@@ -1,0 +1,2 @@
+class_name DanceKeyHandler
+extends Node2D
