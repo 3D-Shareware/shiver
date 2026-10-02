@@ -10,7 +10,7 @@ size = Vector2(36, 965.2773)
 size = Vector2(45, 8072.5)
 
 [node name="Window" type="Node2D" unique_id=1154402471]
-scale = Vector2(1, 0.2)
+scale = Vector2(1, 0.6)
 script = ExtResource("1_va1le")
 
 [node name="Window_Area" type="Area2D" parent="." unique_id=1890547076]
