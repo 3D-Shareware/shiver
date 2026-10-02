@@ -7,7 +7,7 @@
 size = Vector2(36, 965.2773)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
-size = Vector2(45, 8072.5)
+size = Vector2(45, 8058.448)
 
 [node name="Window" type="Node2D" unique_id=1154402471]
 scale = Vector2(1, 0.6)
@@ -26,11 +26,27 @@ debug_color = Color(0.86947185, 0.27784982, 0.55579, 0.41960785)
 [node name="Window_Wall" type="StaticBody2D" parent="." unique_id=915581387]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Window_Wall" unique_id=65200855]
-position = Vector2(16, -4243.75)
+position = Vector2(48, -4240)
+scale = Vector2(1.7538358, 1.0011108)
 shape = SubResource("RectangleShape2D_d0u6y")
+one_way_collision = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Window_Wall" unique_id=1392912446]
-position = Vector2(16, 4243.75)
+position = Vector2(48, 4247.5)
+scale = Vector2(1.7538358, 1.0011108)
 shape = SubResource("RectangleShape2D_d0u6y")
+one_way_collision = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Window_Wall" unique_id=2036443071]
+position = Vector2(104, -4240)
+scale = Vector2(1.7538358, 1.0011108)
+shape = SubResource("RectangleShape2D_d0u6y")
+one_way_collision = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Window_Wall" unique_id=1487042210]
+position = Vector2(104, 4247.0337)
+scale = Vector2(1.7538358, 1.0011108)
+shape = SubResource("RectangleShape2D_d0u6y")
+one_way_collision = true
 
 [connection signal="body_entered" from="Window_Area" to="Window_Area" method="_on_body_entered"]

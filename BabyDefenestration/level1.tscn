@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b0fkpi58fjlnh" path="res://BabyDefenestration/level_1.gd" id="1_xina5"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_xina5"]
+font_size = 100
+
 [node name="Level1" type="Node2D" unique_id=1174647030]
 script = ExtResource("1_xina5")
 
@@ -12,3 +15,13 @@ position = Vector2(50, 40)
 scale = Vector2(0.92260355, 0.88247705)
 build_mode = 1
 polygon = PackedVector2Array(-2, -4, 1155, -4, 1155, 648, -3, 648)
+
+[node name="Label" type="Label" parent="." unique_id=1277184842]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_xina5")
+
+[node name="Timer" type="Timer" parent="." unique_id=1314644347]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
