@@ -26,7 +26,6 @@ func _ready() -> void:
 	var shader_material : ShaderMaterial = plane_mesh.material
 	shader_material.set_shader_parameter("noise",ImageTexture.create_from_image(image))
 	shader_material.set_shader_parameter("height_mult",valley_value * -1 + peak_value)
-	shader_material.set_shader_parameter("albedo_texture",preload("res://Shiver/RileySprites/SnowTerrain.png"))
 	map.shape.update_map_data_from_image(image, valley_value, peak_value)
 	mesh.position.y = valley_value #adjust position based on lower value
 	
