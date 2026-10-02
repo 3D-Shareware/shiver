@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bawrttkrixicp"
-path.s3tc="res://.godot/imported/ghost.png-32cefb376c35e1adea19b34bd32d1de5.s3tc.ctex"
+uid="uid://ct3jijibm0oxp"
+path.s3tc="res://.godot/imported/Snowflake.png-e1c328e9f62aa0ec824af8bf2418f380.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://GhostGame/Assets/ghost.png"
-dest_files=["res://.godot/imported/ghost.png-32cefb376c35e1adea19b34bd32d1de5.s3tc.ctex"]
+source_file="res://Shiver/RileySprites/Snowflake.png"
+dest_files=["res://.godot/imported/Snowflake.png-e1c328e9f62aa0ec824af8bf2418f380.s3tc.ctex"]
 
 [params]
 
