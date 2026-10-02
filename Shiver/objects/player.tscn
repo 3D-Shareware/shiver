@@ -11,6 +11,7 @@ point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_jtwno"]
 curve = SubResource("Curve_1eeb5")
+[ext_resource type="Script" uid="uid://b4pygu5tgbuwc" path="res://Shiver/objects/log_pickup_area.gd" id="2_1eeb5"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1eeb5"]
 lifetime_randomness = 1.0
@@ -36,6 +37,8 @@ material = SubResource("StandardMaterial3D_lrcg5")
 size = Vector2(0.1, 0.1)
 
 [node name="Player" type="CharacterBody3D" unique_id=1794247419]
+collision_layer = 4
+collision_mask = 3
 floor_max_angle = 1.3089969
 script = ExtResource("1_as27w")
 
@@ -44,6 +47,15 @@ shape = SubResource("CapsuleShape3D_bk7jt")
 
 [node name="Camera Pivot" type="Node3D" parent="." unique_id=1713487263]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.8, 0)
+
+[node name="Log Pickup Area" type="Area3D" parent="Camera Pivot" unique_id=1626229488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.742278e-08, 0, -1)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_1eeb5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera Pivot/Log Pickup Area" unique_id=1174752203]
+shape = SubResource("SphereShape3D_bk7jt")
 
 [node name="Camera3D" type="Camera3D" parent="Camera Pivot" unique_id=533425840]
 
@@ -58,3 +70,6 @@ draw_pass_1 = SubResource("QuadMesh_lrcg5")
 [node name="PlayerLight" type="OmniLight3D" parent="." unique_id=192397915]
 light_color = Color(1, 0.32941177, 0.14901961, 1)
 light_energy = 10.0
+
+[connection signal="body_entered" from="Camera Pivot/Log Pickup Area" to="Camera Pivot/Log Pickup Area" method="_on_body_entered"]
+[connection signal="body_exited" from="Camera Pivot/Log Pickup Area" to="Camera Pivot/Log Pickup Area" method="_on_body_exited"]
