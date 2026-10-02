@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cm2tx63caambk" path="res://Shiver/objects/campfire_pushable.tscn" id="3_khf7r"]
 [ext_resource type="Script" uid="uid://bbt8req20h62y" path="res://Shiver/TerrainHandler.gd" id="3_lwllx"]
 [ext_resource type="Shader" uid="uid://x5b7wbe8ayvq" path="res://Shiver/terrain_shader2.gdshader" id="4_khf7r"]
+[ext_resource type="Script" uid="uid://ccdn4awe8tnpj" path="res://Shiver/objects/thermometer.gd" id="7_cu5sd"]
 [ext_resource type="Script" uid="uid://cd3tja77a30pu" path="res://Shiver/log_placer.gd" id="7_cu5sd"]
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_incux"]
@@ -48,6 +49,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1271081737]
 collision_priority = 10.0
 script = ExtResource("3_lwllx")
+valley_value = -10.0
+peak_value = 10.0
 
 [node name="Map" type="CollisionShape3D" parent="Floor" unique_id=162774413]
 shape = SubResource("HeightMapShape3D_incux")
@@ -55,6 +58,29 @@ shape = SubResource("HeightMapShape3D_incux")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=2036906601]
 mesh = SubResource("PlaneMesh_cu5sd")
 
+[node name="Campfire" type="AreaLight3D" parent="." unique_id=1686825552]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3, 0)
+light_color = Color(1, 0.8862745, 0.57254905, 1)
+light_energy = 10.0
+shadow_enabled = true
+area_range = 150.0
+area_attenuation = 0.1
+
+[node name="Thermometer" type="TextureProgressBar" parent="." unique_id=988785707]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -256.0
+grow_horizontal = 0
+grow_vertical = 0
+max_value = 1.0
+step = 0.01
+value = 1.0
+fill_mode = 3
+script = ExtResource("7_cu5sd")
 [node name="Log Placer" type="Node3D" parent="." unique_id=483932335]
 script = ExtResource("7_cu5sd")
 
