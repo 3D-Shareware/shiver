@@ -1,39 +1,27 @@
 [gd_scene format=3 uid="uid://dbhpr6ol82bke"]
 
 [ext_resource type="Script" uid="uid://cqmk74r73s8un" path="res://Shiver/objects/player.gd" id="1_as27w"]
-[ext_resource type="Texture2D" uid="uid://ct3jijibm0oxp" path="res://Shiver/RileySprites/Snowflake.png" id="2_jtwno"]
+[ext_resource type="Script" uid="uid://b4pygu5tgbuwc" path="res://Shiver/objects/log_pickup_area.gd" id="2_1eeb5"]
+[ext_resource type="Shader" uid="uid://bxc302ypplc3w" path="res://Shiver/snow_shader.gdshader" id="2_jtwno"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bk7jt"]
 
-[sub_resource type="Curve" id="Curve_1eeb5"]
-_data = [Vector2(0, 0.13392866), 0.0, 0.0, 0, 0, Vector2(0.5107527, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.07142866), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_jtwno"]
-curve = SubResource("Curve_1eeb5")
-[ext_resource type="Script" uid="uid://b4pygu5tgbuwc" path="res://Shiver/objects/log_pickup_area.gd" id="2_1eeb5"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_bk7jt"]
+radius = 1.5
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1eeb5"]
-lifetime_randomness = 1.0
-emission_shape_scale = Vector3(3.5, 1, 3.5)
-emission_shape = 1
-emission_sphere_radius = 1.0
-direction = Vector3(0, -1, 0)
-scale_min = 0.099999994
-scale_max = 1.1999999
-alpha_curve = SubResource("CurveTexture_jtwno")
+emission_shape_scale = Vector3(10, 5, 10)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
 turbulence_enabled = true
 turbulence_noise_strength = 5.0
-turbulence_noise_scale = 5.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrcg5"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("2_jtwno")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2yge"]
+render_priority = 0
+shader = ExtResource("2_jtwno")
 
 [sub_resource type="QuadMesh" id="QuadMesh_lrcg5"]
-material = SubResource("StandardMaterial3D_lrcg5")
+material = SubResource("ShaderMaterial_h2yge")
 size = Vector2(0.1, 0.1)
 
 [node name="Player" type="CharacterBody3D" unique_id=1794247419]
@@ -59,11 +47,11 @@ shape = SubResource("SphereShape3D_bk7jt")
 
 [node name="Camera3D" type="Camera3D" parent="Camera Pivot" unique_id=533425840]
 
-[node name="SnowParticles" type="GPUParticles3D" parent="Camera Pivot" unique_id=2145786775]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+[node name="SnowParticles" type="GPUParticles3D" parent="." unique_id=2145786775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 cast_shadow = 0
 amount = 200
-lifetime = 6.0
+lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_1eeb5")
 draw_pass_1 = SubResource("QuadMesh_lrcg5")
 
