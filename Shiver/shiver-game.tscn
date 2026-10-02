@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dbhpr6ol82bke" path="res://Shiver/objects/player.tscn" id="2_62ety"]
 [ext_resource type="Script" uid="uid://bbt8req20h62y" path="res://Shiver/TerrainHandler.gd" id="3_lwllx"]
 [ext_resource type="Shader" uid="uid://x5b7wbe8ayvq" path="res://Shiver/terrain_shader2.gdshader" id="4_khf7r"]
+[ext_resource type="Script" uid="uid://ccdn4awe8tnpj" path="res://Shiver/objects/thermometer.gd" id="7_cu5sd"]
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_incux"]
 
@@ -26,6 +27,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 208.79147, 0)
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1271081737]
 script = ExtResource("3_lwllx")
+valley_value = -10.0
+peak_value = 10.0
 
 [node name="Map" type="CollisionShape3D" parent="Floor" unique_id=162774413]
 shape = SubResource("HeightMapShape3D_incux")
@@ -40,3 +43,20 @@ light_energy = 10.0
 shadow_enabled = true
 area_range = 150.0
 area_attenuation = 0.1
+
+[node name="Thermometer" type="TextureProgressBar" parent="." unique_id=988785707]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -256.0
+grow_horizontal = 0
+grow_vertical = 0
+max_value = 1.0
+step = 0.01
+value = 1.0
+fill_mode = 3
+tint_progress = Color(0, 0, 1, 1)
+script = ExtResource("7_cu5sd")

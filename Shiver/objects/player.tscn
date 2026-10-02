@@ -21,6 +21,7 @@ material = SubResource("ShaderMaterial_h2yge")
 size = Vector2(0.1, 0.1)
 
 [node name="Player" type="CharacterBody3D" unique_id=1794247419]
+floor_max_angle = 1.3089969
 script = ExtResource("1_as27w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=103254738]
@@ -31,8 +32,8 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0
 
 [node name="Camera3D" type="Camera3D" parent="Camera Pivot" unique_id=533425840]
 
-[node name="SnowParticles" type="GPUParticles3D" parent="." unique_id=2145786775]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+[node name="SnowParticles" type="GPUParticles3D" parent="Camera Pivot" unique_id=2145786775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
 cast_shadow = 0
 amount = 200
 lifetime = 3.0
