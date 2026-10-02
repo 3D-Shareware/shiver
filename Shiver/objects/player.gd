@@ -84,4 +84,4 @@ func _physics_process(delta: float) -> void:
 	if !all_held_logs.is_empty():
 		for firewood in all_held_logs:
 			firewood.position = log_pickup_area.global_position
-			firewood.rotation = Vector3(camera_pivot.rotation.x, camera_pivot.rotation.y, camera_pivot.rotation.z)
+			firewood.rotation = Vector3(camera_pivot.rotation.x, camera_pivot.rotation.y, camera_pivot.rotation.z - PI/2)

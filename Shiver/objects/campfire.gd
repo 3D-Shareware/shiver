@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var light = $"OmniLight3D"
+@onready var burst_particles = $"BurstParticles"
 
 const GRAVITY = -10.0
 
@@ -10,6 +11,8 @@ var temp_loss_multiplier: float = 0.01
 
 const MAX_RANGE = 200.0
 const MAX_ENERGY = 15.0
+
+const ENERGY_FROM_FIREWOOD = 0.5
 
 func _process(delta: float) -> void:
 	temp = move_toward(temp, 0, delta * temp_loss_multiplier)
@@ -22,3 +25,10 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity.y = 0
 	move_and_slide()
+
+## Eat the log.
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body is RigidBody3D:
+		burst_particles.emitting = true
+		body.queue_free()
+		temp = clamp(temp + ENERGY_FROM_FIREWOOD, 0, 1)
