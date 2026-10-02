@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://sq624yswdchi"]
+
+[ext_resource type="Script" uid="uid://bj0fok52mto0w" path="res://BabyDefenestration/area_2d.gd" id="1_2q65q"]
+[ext_resource type="Script" uid="uid://c3csovukwsvyf" path="res://BabyDefenestration/window.gd" id="1_va1le"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(36, 965.2773)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
+size = Vector2(45, 8072.5)
+
+[node name="Window" type="Node2D" unique_id=1154402471]
+scale = Vector2(1, 0.2)
+script = ExtResource("1_va1le")
+
+[node name="Window_Area" type="Area2D" parent="." unique_id=1890547076]
+script = ExtResource("1_2q65q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Window_Area" unique_id=745862290]
+position = Vector2(15, 0)
+scale = Vector2(0.8800011, 0.47675925)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0.86947185, 0.27784982, 0.55579, 0.41960785)
+
+[node name="Window_Wall" type="StaticBody2D" parent="." unique_id=915581387]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Window_Wall" unique_id=65200855]
+position = Vector2(16, -4243.75)
+shape = SubResource("RectangleShape2D_d0u6y")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Window_Wall" unique_id=1392912446]
+position = Vector2(16, 4243.75)
+shape = SubResource("RectangleShape2D_d0u6y")
+
+[connection signal="body_entered" from="Window_Area" to="Window_Area" method="_on_body_entered"]
