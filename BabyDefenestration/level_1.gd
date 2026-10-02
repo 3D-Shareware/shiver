@@ -10,7 +10,7 @@ func _ready() -> void:
 	level1.add_child(baby1)
 	level1.add_child(window1)
 	#Position of baby will line up with player controller eventaully
-	baby1.position.x = 300; baby1.position.y = 350
+	baby1.position.x = 500; baby1.position.y = 350
 	window1.position.x = 1100; window1.position.y = randi_range(145, 503)
 	window1.scale.y = randf_range(0.2,0.6)
 	print("scale: ", window1.scale.y, " position: ", window1.position)
