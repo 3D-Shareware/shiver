@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cm2tx63caambk" path="res://Shiver/objects/campfire_pushable.tscn" id="3_khf7r"]
 [ext_resource type="Script" uid="uid://bbt8req20h62y" path="res://Shiver/TerrainHandler.gd" id="3_lwllx"]
 [ext_resource type="Shader" uid="uid://x5b7wbe8ayvq" path="res://Shiver/terrain_shader2.gdshader" id="4_khf7r"]
+[ext_resource type="Texture2D" uid="uid://bh2df6knkbje1" path="res://Shiver/RileySprites/SnowTerrain.png" id="6_cu5sd"]
 [ext_resource type="Script" uid="uid://cd3tja77a30pu" path="res://Shiver/log_placer.gd" id="7_cu5sd"]
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_incux"]
@@ -13,6 +14,7 @@
 render_priority = 0
 shader = ExtResource("4_khf7r")
 shader_parameter/height_mult = 0.0
+shader_parameter/albedo_texture = ExtResource("6_cu5sd")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cu5sd"]
 material = SubResource("ShaderMaterial_0xm2m")
