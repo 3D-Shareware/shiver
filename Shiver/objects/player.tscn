@@ -4,9 +4,6 @@
 [ext_resource type="Script" uid="uid://b4pygu5tgbuwc" path="res://Shiver/objects/log_pickup_area.gd" id="2_1eeb5"]
 [ext_resource type="Shader" uid="uid://bxc302ypplc3w" path="res://Shiver/snow_shader.gdshader" id="2_jtwno"]
 [ext_resource type="Texture2D" uid="uid://ct3jijibm0oxp" path="res://Shiver/RileySprites/Snowflake.png" id="4_lrcg5"]
-[ext_resource type="Texture2D" uid="uid://brp5hwitquv0" path="res://Shiver/RileySprites/Thermometer.png" id="5_pc3vb"]
-[ext_resource type="Texture2D" uid="uid://b7tmomj563ed0" path="res://Shiver/RileySprites/ThermometerMercury.png" id="6_cubue"]
-[ext_resource type="Script" uid="uid://bqy3iqx4qurc3" path="res://Shiver/objects/thermometer.gd" id="7_jveps"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bk7jt"]
 
@@ -73,24 +70,6 @@ draw_pass_1 = SubResource("QuadMesh_lrcg5")
 [node name="PlayerLight" type="OmniLight3D" parent="." unique_id=192397915]
 light_color = Color(1, 0.32941177, 0.14901961, 1)
 light_energy = 10.0
-
-[node name="Thermometer" type="TextureProgressBar" parent="." unique_id=1548462439]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-max_value = 1.0
-step = 0.01
-value = 1.0
-fill_mode = 3
-texture_over = ExtResource("5_pc3vb")
-texture_progress = ExtResource("6_cubue")
-script = ExtResource("7_jveps")
 
 [connection signal="body_entered" from="Camera Pivot/Log Pickup Area" to="Camera Pivot/Log Pickup Area" method="_on_body_entered"]
 [connection signal="body_exited" from="Camera Pivot/Log Pickup Area" to="Camera Pivot/Log Pickup Area" method="_on_body_exited"]
