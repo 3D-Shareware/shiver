@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://rr8ymsgg70fi"]
 
 [ext_resource type="Script" uid="uid://0qet1tr3kvh0" path="res://PigsterDance/scenes/main/pigster_dance_main.gd" id="1_afivb"]
+[ext_resource type="Resource" uid="uid://blcwuxrgu7vwp" path="res://PigsterDance/custom_resources/difficulty_pools/DifficultyPools.tres" id="2_dhws7"]
 [ext_resource type="Texture2D" uid="uid://cc6vbja5mwhha" path="res://PigsterDance/assets/pngs/stage_placeholder.png" id="2_migwy"]
 [ext_resource type="Texture2D" uid="uid://dhfrlu678krfh" path="res://PigsterDance/assets/pngs/stage_place.png" id="3_dhws7"]
 [ext_resource type="Texture2D" uid="uid://dy5qfwfn1si1n" path="res://PigsterDance/assets/pngs/crowd_placeholder.png" id="4_oloeb"]
@@ -12,7 +13,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Background/StageSprites/StageCurtains:position")
+tracks/0/path = NodePath("Visuals/StageSprites/StageCurtains:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Background/StageSprites/StageSprite:position")
+tracks/1/path = NodePath("Visuals/StageSprites/StageSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -36,7 +37,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Background/Crowd:position")
+tracks/2/path = NodePath("Visuals/Crowd:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -60,7 +61,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Background/StageSprites/StageCurtains:skew")
+tracks/4/path = NodePath("Visuals/StageSprites/StageCurtains:skew")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -76,7 +77,7 @@ length = 3.0000000000000004
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Background/StageSprites/StageCurtains:position")
+tracks/0/path = NodePath("Visuals/StageSprites/StageCurtains:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -88,7 +89,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Background/StageSprites/StageSprite:position")
+tracks/1/path = NodePath("Visuals/StageSprites/StageSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -100,7 +101,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Background/Crowd:position")
+tracks/2/path = NodePath("Visuals/Crowd:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -124,7 +125,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Background/StageSprites/StageCurtains:skew")
+tracks/4/path = NodePath("Visuals/StageSprites/StageCurtains:skew")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -142,23 +143,24 @@ _data = {
 
 [node name="PigsterDanceMain" type="Node2D" unique_id=974850155]
 script = ExtResource("1_afivb")
+difficulty_pools = ExtResource("2_dhws7")
 
-[node name="Background" type="Node2D" parent="." unique_id=326383955]
+[node name="Visuals" type="Node2D" parent="." unique_id=326383955]
 
-[node name="StageSprites" type="Node2D" parent="Background" unique_id=561563668]
+[node name="StageSprites" type="Node2D" parent="Visuals" unique_id=561563668]
 
-[node name="StageCurtains" type="Sprite2D" parent="Background/StageSprites" unique_id=1229699357]
+[node name="StageCurtains" type="Sprite2D" parent="Visuals/StageSprites" unique_id=1229699357]
 z_index = 1
 position = Vector2(0, -400)
 texture = ExtResource("2_migwy")
 centered = false
 
-[node name="StageSprite" type="Sprite2D" parent="Background/StageSprites" unique_id=1746856600]
+[node name="StageSprite" type="Sprite2D" parent="Visuals/StageSprites" unique_id=1746856600]
 position = Vector2(0, -400)
 texture = ExtResource("3_dhws7")
 centered = false
 
-[node name="Crowd" type="Sprite2D" parent="Background" unique_id=1831928737]
+[node name="Crowd" type="Sprite2D" parent="Visuals" unique_id=1831928737]
 position = Vector2(-1152, 400)
 texture = ExtResource("4_oloeb")
 centered = false

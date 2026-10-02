@@ -6,13 +6,7 @@ signal key_was_pressed(binding: InputEvent, qte_success: bool)
 signal qte_won
 signal qte_failed
 
-@export var key_scene: PackedScene
-@export var key_pool: Array[InputEvent] = []
-@export var key_speed: float = 350.0
-@export var is_in_debug: bool = true
 @export var spawn_offset: float = 64.0
-@export var max_tries: int = 3
-@export var restart_delay: float = 1.5
 
 @onready var hit_box: Area2D = $HitBox
 @onready var key_handler: Node2D = $KeyHandler
@@ -22,6 +16,7 @@ signal qte_failed
 var remaining_keys: Array[InputEvent] = []
 var tries_left: int = 0
 var is_qte_active: bool = false
+var current_level_stats: DanceLevelStats
 
 
 func _ready() -> void:
@@ -29,20 +24,18 @@ func _ready() -> void:
 	hit_box.area_exited.connect(_on_hit_box_area_exited)
 	
 	_qte_debug("Waiting For Input")
-	if is_in_debug:
-		start_qte()
 
 
 func start_qte() -> void:
-	if key_pool.is_empty():
-		push_error("Key Pool is empty in Inspector")
+	if current_level_stats.key_pool.is_empty():
+		push_error("Key Pool is Empty")
 		return
 	
-	tries_left = max_tries
+	tries_left = current_level_stats.max_tries
 	_start_round()
 
 func _start_round() -> void:
-	remaining_keys.assign(key_pool)
+	remaining_keys.assign(current_level_stats.key_pool)
 	remaining_keys.shuffle()
 	is_qte_active = true
 	_qte_debug("Waiting For Input")
@@ -67,14 +60,14 @@ func stop_spawn_timer() -> void:
 func _spawn_key() -> void:
 	if remaining_keys.is_empty():
 		return
-	if key_scene == null:
-		push_error("Key Scene is empty in Inspector")
+	if current_level_stats.key_visuals == null:
+		push_error("Key Scene is empty")
 		return
 	
-	var key: QteKey = key_scene.instantiate()
+	var key: QteKey = current_level_stats.key_visuals.instantiate()
 	key_handler.add_child(key)
 	key.global_position = Vector2(get_viewport_rect().end.x + spawn_offset, hit_box.global_position.y)
-	key.set_key(remaining_keys.pop_front(), key_speed)
+	key.set_key(remaining_keys.pop_front(), current_level_stats.key_speed)
 	key.key_press_finished.connect(_on_key_press_finished)
 
 func _on_key_press_finished(key: QteKey, success: bool) -> void:
@@ -174,5 +167,5 @@ func _fail_qte(failed_key: InputEvent, reason: String) -> void:
 		return
 	
 	_qte_debug("%s - %d tries left" % [reason, tries_left])
-	await get_tree().create_timer(restart_delay).timeout
+	await get_tree().create_timer(current_level_stats.retry_delay).timeout
 	_start_round()
