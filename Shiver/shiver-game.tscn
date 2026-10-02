@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cg5cu61hrwijy" path="res://Shiver/shiver_game.gd" id="1_53x1e"]
 [ext_resource type="PackedScene" uid="uid://dbhpr6ol82bke" path="res://Shiver/objects/player.tscn" id="2_62ety"]
+[ext_resource type="PackedScene" uid="uid://cm2tx63caambk" path="res://Shiver/objects/campfire_pushable.tscn" id="3_khf7r"]
 [ext_resource type="Script" uid="uid://bbt8req20h62y" path="res://Shiver/TerrainHandler.gd" id="3_lwllx"]
 [ext_resource type="Shader" uid="uid://x5b7wbe8ayvq" path="res://Shiver/terrain_shader2.gdshader" id="4_khf7r"]
+[ext_resource type="Script" uid="uid://cd3tja77a30pu" path="res://Shiver/log_placer.gd" id="7_cu5sd"]
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_incux"]
 
@@ -18,13 +20,33 @@ size = Vector2(512, 512)
 subdivide_width = 512
 subdivide_depth = 512
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_bk7jt"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pt1fr"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.16589999, 0.18280499, 0.21, 1)
+ground_bottom_color = Color(0.16470589, 0.18431373, 0.21176471, 1)
+ground_horizon_color = Color(0.16470589, 0.18431373, 0.21176471, 1)
+
+[sub_resource type="Sky" id="Sky_ocnln"]
+sky_material = SubResource("ProceduralSkyMaterial_pt1fr")
+
+[sub_resource type="Environment" id="Environment_bk7jt"]
+background_mode = 2
+sky = SubResource("Sky_ocnln")
+
 [node name="ShiverGame" type="Node3D" unique_id=2146958291]
 script = ExtResource("1_53x1e")
 
 [node name="Player" parent="." unique_id=1794247419 instance=ExtResource("2_62ety")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 208.79147, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+collision_layer = 2
+
+[node name="Campfire" parent="." unique_id=207377221 instance=ExtResource("3_khf7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1271081737]
+collision_priority = 10.0
 script = ExtResource("3_lwllx")
 
 [node name="Map" type="CollisionShape3D" parent="Floor" unique_id=162774413]
@@ -33,10 +55,18 @@ shape = SubResource("HeightMapShape3D_incux")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=2036906601]
 mesh = SubResource("PlaneMesh_cu5sd")
 
-[node name="Campfire" type="AreaLight3D" parent="." unique_id=1686825552]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3, 0)
-light_color = Color(1, 0.8862745, 0.57254905, 1)
-light_energy = 10.0
-shadow_enabled = true
-area_range = 150.0
-area_attenuation = 0.1
+[node name="Log Placer" type="Node3D" parent="." unique_id=483932335]
+script = ExtResource("7_cu5sd")
+
+[node name="Respawner" type="Area3D" parent="." unique_id=1081114227]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32, 0)
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Respawner" unique_id=2095940602]
+shape = SubResource("WorldBoundaryShape3D_bk7jt")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1932645402]
+environment = SubResource("Environment_bk7jt")
+
+[connection signal="body_entered" from="Respawner" to="." method="_on_respawner_body_entered"]
