@@ -31,6 +31,8 @@ window/stretch/aspect="expand"
 
 folder_colors={
 "res://BridgeBuilder/": "purple",
+"res://BridgeBuilder/Game/": "blue",
+"res://BridgeBuilder/assets/": "red",
 "res://ExampleGame/": "pink",
 "res://Framework/": "gray",
 "res://Framework/Assets/": "purple",

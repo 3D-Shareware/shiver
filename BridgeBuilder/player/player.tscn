@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bvr5ke1y16j4j"]
+
+[ext_resource type="Script" uid="uid://dw01njptnu3hu" path="res://BridgeBuilder/player/player.gd" id="1_w6ya5"]
+[ext_resource type="Texture2D" uid="uid://bshb0b5gn8xoj" path="res://BridgeBuilder/assets/player/sprites/player_temp.png" id="2_nhgkh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aica5"]
+size = Vector2(141, 147)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=521260164]
+script = ExtResource("1_w6ya5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=274713234]
+position = Vector2(-2.9999995, -14.000002)
+scale = Vector2(0.5742049, 0.39161554)
+texture = ExtResource("2_nhgkh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=184494674]
+position = Vector2(2, -1)
+shape = SubResource("RectangleShape2D_aica5")
+
+[node name="Timer" type="Timer" parent="." unique_id=567494909]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

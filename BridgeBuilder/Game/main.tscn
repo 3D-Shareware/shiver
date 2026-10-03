@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://buhmj4x6onqxa"]
 
 [ext_resource type="Script" uid="uid://d1v8vgughiu51" path="res://BridgeBuilder/Game/main.gd" id="1_ylxma"]
+[ext_resource type="PackedScene" uid="uid://bvr5ke1y16j4j" path="res://BridgeBuilder/player/player.tscn" id="2_gcm7p"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2838g"]
 
 [node name="Main" type="Node2D" unique_id=582879533]
 script = ExtResource("1_ylxma")
+
+[node name="CharacterBody2D" parent="." unique_id=521260164 instance=ExtResource("2_gcm7p")]
+position = Vector2(146, 438)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=150576037]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=764435764]
+position = Vector2(540, 590)
+shape = SubResource("WorldBoundaryShape2D_2838g")
