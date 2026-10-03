@@ -6,3 +6,5 @@
 script = ExtResource("1_06aqm")
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=635275381]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

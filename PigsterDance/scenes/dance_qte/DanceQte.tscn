@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://jdc6qk3kic3x" path="res://PigsterDance/scenes/dance_qte/dance_qte.gd" id="1_s7ldp"]
 [ext_resource type="Script" uid="uid://dk7ffpdqqfr1n" path="res://PigsterDance/scenes/dance_qte/dance_key_hitbox.gd" id="2_s7ldp"]
+[ext_resource type="PackedScene" uid="uid://bg5ocjqxl5k2u" path="res://PigsterDance/scenes/dance_qte/DanceKeyHandler.tscn" id="3_ds8rp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6afx"]
 size = Vector2(100, 100)
@@ -22,7 +23,7 @@ offset_bottom = 50.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1161161851]
 shape = SubResource("RectangleShape2D_g6afx")
 
-[node name="KeyHandler" type="Node2D" parent="." unique_id=236551657]
+[node name="KeyHandler" parent="." unique_id=1623086216 instance=ExtResource("3_ds8rp")]
 
 [node name="ResultLabel" type="Label" parent="." unique_id=986605407]
 anchors_preset = 8
@@ -40,8 +41,3 @@ theme_override_font_sizes/font_size = 64
 text = "Hit!"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="SpawnTimer" type="Timer" parent="." unique_id=694512414]
-one_shot = true
-
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
