@@ -7,14 +7,15 @@
 size = Vector2(36, 965.2773)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
-size = Vector2(45, 8072.5)
+size = Vector2(45, 8058.448)
 
 [node name="Window" type="Node2D" unique_id=1154402471]
 scale = Vector2(1, 0.6)
 script = ExtResource("1_va1le")
 
 [node name="Window_Area" type="Area2D" parent="." unique_id=1890547076]
-position = Vector2(32, 0)
+position = Vector2(48, 0)
+scale = Vector2(1, 0.8666669)
 script = ExtResource("1_2q65q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Window_Area" unique_id=745862290]
@@ -26,11 +27,13 @@ debug_color = Color(0.86947185, 0.27784982, 0.55579, 0.41960785)
 [node name="Window_Wall" type="StaticBody2D" parent="." unique_id=915581387]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Window_Wall" unique_id=65200855]
-position = Vector2(16, -4243.75)
+position = Vector2(48, -4240)
+scale = Vector2(1.7538358, 1.0011108)
 shape = SubResource("RectangleShape2D_d0u6y")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Window_Wall" unique_id=1392912446]
-position = Vector2(16, 4243.75)
+position = Vector2(48, 4240)
+scale = Vector2(1.7538358, 1.0011108)
 shape = SubResource("RectangleShape2D_d0u6y")
 
 [connection signal="body_entered" from="Window_Area" to="Window_Area" method="_on_body_entered"]
