@@ -12,7 +12,7 @@ script = ExtResource("1_xina5")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls" unique_id=1434235337]
 position = Vector2(50, 40)
-scale = Vector2(0.92260355, 0.88247705)
+scale = Vector2(1.0826038, 0.88247705)
 build_mode = 1
 polygon = PackedVector2Array(-2, -4, 1155, -4, 1155, 648, -3, 648)
 

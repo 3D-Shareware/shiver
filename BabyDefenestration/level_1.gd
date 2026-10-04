@@ -23,18 +23,19 @@ func _ready() -> void:
 	#Position of baby will line up with player controller eventaully
 	baby1.position.x = 800; baby1.position.y = 350
 	window1.position.x = 1100; window1.position.y = randi_range(145, 503)
-	window1.scale.y = randf_range(0.2,0.6)
+	window1.scale.y = randf_range(0.3,0.6)
 
 func _process(_delta):
 	if $Timer.start:
 		$Label.text = str($Timer.get_time_left()).pad_decimals(2)
 
 func _on_timer_timeout() -> void:
+	print("timed out!")
 	if win:
 		pass
 	else:
-		print("timed out!")
-		GameManager.lose()
+		print("You lost!")
+		#GameManager.lose()
 
 func _on_win_2():
 	print("You won!")

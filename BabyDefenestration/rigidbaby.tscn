@@ -21,10 +21,6 @@ script = ExtResource("1_lr6q2")
 rotation = 0.5235988
 shape = SubResource("CapsuleShape2D_c18sk")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D" unique_id=621371585]
-rotation = 0.5235988
-shape = SubResource("CapsuleShape2D_c18sk")
-
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=267400417]
 position = Vector2(0.99999976, -10)
 scale = Vector2(4.34375, 4.34375)

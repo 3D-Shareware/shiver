@@ -2,7 +2,7 @@ extends RigidBody2D
 
 var vel = linear_velocity
 var damp: float = 0.1
-var speed: int = 150000
+var speed: int = 50000
 
 func _ready() -> void:
 	self.freeze = true
