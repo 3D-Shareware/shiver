@@ -33,6 +33,7 @@ folder_colors={
 "res://BridgeBuilder/": "purple",
 "res://BridgeBuilder/Game/": "blue",
 "res://BridgeBuilder/assets/": "red",
+"res://BridgeBuilder/assets/player/": "purple",
 "res://ExampleGame/": "pink",
 "res://Framework/": "gray",
 "res://Framework/Assets/": "purple",

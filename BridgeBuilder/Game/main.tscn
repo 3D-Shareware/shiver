@@ -8,3 +8,4 @@ script = ExtResource("1_ylxma")
 
 [node name="CharacterBody2D" parent="." unique_id=521260164 instance=ExtResource("2_gcm7p")]
 position = Vector2(146, 438)
+scale = Vector2(2, 2)

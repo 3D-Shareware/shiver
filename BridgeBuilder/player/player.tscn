@@ -1,22 +1,58 @@
 [gd_scene format=3 uid="uid://bvr5ke1y16j4j"]
 
 [ext_resource type="Script" uid="uid://dw01njptnu3hu" path="res://BridgeBuilder/player/player.gd" id="1_w6ya5"]
-[ext_resource type="Texture2D" uid="uid://bshb0b5gn8xoj" path="res://BridgeBuilder/assets/player/sprites/player_temp.png" id="2_nhgkh"]
+[ext_resource type="Texture2D" uid="uid://c2lo57ccfawii" path="res://BridgeBuilder/assets/player/sprites/biker.png" id="2_w6ya5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aica5"]
-size = Vector2(141, 147)
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhgkh"]
+atlas = ExtResource("2_w6ya5")
+region = Rect2(34, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ndt2"]
+atlas = ExtResource("2_w6ya5")
+region = Rect2(105, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmc6u"]
+atlas = ExtResource("2_w6ya5")
+region = Rect2(176, 0, 71, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4152m"]
+atlas = ExtResource("2_w6ya5")
+region = Rect2(247, 0, 71, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2838g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhgkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ndt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmc6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4152m")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 13.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_suh6f"]
+size = Vector2(16.875, 13)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=521260164]
 script = ExtResource("1_w6ya5")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=274713234]
-position = Vector2(-2.9999995, -14.000002)
-scale = Vector2(0.5742049, 0.39161554)
-texture = ExtResource("2_nhgkh")
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="." unique_id=1694359041]
+sprite_frames = SubResource("SpriteFrames_2838g")
+frame_progress = 0.18132704
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=184494674]
-position = Vector2(2, -1)
-shape = SubResource("RectangleShape2D_aica5")
+position = Vector2(-2, 9.5)
+scale = Vector2(3.2, 1)
+shape = SubResource("RectangleShape2D_suh6f")
 
 [node name="Timer" type="Timer" parent="." unique_id=567494909]
 wait_time = 10.0
@@ -24,3 +60,4 @@ one_shot = true
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="PlayerSprite" method="_on_timer_timeout"]
