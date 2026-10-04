@@ -10,13 +10,9 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	pass
-
-
-func _on_body_entered(body: PhysicsBody2D) -> void:
-	if body == RigidBody2D:
-		print("body entered")
+		
+func _on_body_entered(body: Node2D) -> void:
+	if body is RigidBody2D:
+		print("You won!")
 		win.emit()
 		GameManager.win()
-	else:
-		print("not rigid body")
-	
