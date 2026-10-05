@@ -23,6 +23,8 @@ Globals="*uid://by5cofprr0ipt"
 
 [display]
 
+window/size/viewport_width=320
+window/size/viewport_height=180
 window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
@@ -33,7 +35,9 @@ folder_colors={
 "res://BridgeBuilder/": "purple",
 "res://BridgeBuilder/Game/": "blue",
 "res://BridgeBuilder/assets/": "red",
+"res://BridgeBuilder/assets/environment/sprites/": "orange",
 "res://BridgeBuilder/assets/player/": "purple",
+"res://BridgeBuilder/assets/player/sprites/": "orange",
 "res://ExampleGame/": "pink",
 "res://Framework/": "gray",
 "res://Framework/Assets/": "purple",
