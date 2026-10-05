@@ -36,6 +36,9 @@ shape = SubResource("CapsuleShape3D_bk7jt")
 [node name="Camera Pivot" type="Node3D" parent="." unique_id=1713487263]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.8, 0)
 
+[node name="Log Hold Position" type="Node3D" parent="Camera Pivot" unique_id=1343474183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -1)
+
 [node name="Log Pickup Area" type="Area3D" parent="Camera Pivot" unique_id=1626229488]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.742278e-08, 0, -1)
 collision_layer = 0
