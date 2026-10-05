@@ -30,7 +30,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qhakw")
-win_anims_pool = Array[PackedScene]([ExtResource("2_m50n3"), ExtResource("3_462mn")])
+win_anims_pool = Array[PackedScene]([ExtResource("3_462mn"), ExtResource("2_m50n3")])
 lose_anims_pool = Array[PackedScene]([ExtResource("4_guto8"), ExtResource("3_guto8")])
 metadata/_edit_use_anchors_ = true
 

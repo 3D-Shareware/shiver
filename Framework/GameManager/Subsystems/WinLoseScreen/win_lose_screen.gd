@@ -13,13 +13,18 @@ class_name WinLoseScreen extends Control
 
 var old_save_data : SaveData = SaveData.new()
 var new_save_data : SaveData = SaveData.new()
+var tween_array : Array = []
+var speed : float
 
 const PAUSE_AMOUNT : float = 1.5
 
 
 func _ready() -> void:
 	self.visible = false
-
+	for tween in find_children("*", "", true, false):
+		if tween is ControlTween:
+			tween_array.append(tween)
+	print(tween_array)
 
 func play_anim() -> void:
 	# setting the stat displays up
@@ -34,11 +39,11 @@ func play_anim() -> void:
 	# if player lost lives, they must've lost
 	if new_save_data.lives < old_save_data.lives:
 		lose_anims_pool.shuffle()
-		await play_silly_anim(lose_anims_pool.get(0))
+		await play_silly_anim(lose_anims_pool.front())
 	# if player didnt lose lives, they must've won!
 	else:
 		win_anims_pool.shuffle()
-		await play_silly_anim(win_anims_pool.get(0))
+		await play_silly_anim(win_anims_pool.front())
 	
 	# do stat change anims
 	await lives_stat_display.do_anim(new_save_data.lives)
@@ -46,7 +51,7 @@ func play_anim() -> void:
 	await difficulty_stat_display.do_anim(new_save_data.current_difficulty)
 	
 	
-	get_tree().create_timer(0.5)
+	#get_tree().create_timer(0.5)
 	
 	lives_stat_display.fade_out()
 	wins_stat_display.fade_out()
@@ -93,4 +98,14 @@ func _on_wins_changed(old : int, new : int) -> void:
 func _on_difficulty_changed(old : float, new : float) -> void:
 	old_save_data.current_difficulty = old
 	new_save_data.current_difficulty = new
+	
+	speed = clampf(0.5 - new * 0.30, 0.1, 2.5)
+	
+	lives_stat_display.set_speed(speed)
+	wins_stat_display.set_speed(speed)
+	difficulty_stat_display.set_speed(speed)
+	
+	for tween in tween_array:
+		tween.tween_duration = speed
+
 #endregion

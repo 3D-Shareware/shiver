@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv3yhgukuerj7"
-path="res://.godot/imported/Siwwy_Widdle_Guy_Paw.png-6f63ad0b60844c3ac7606fef87bed7de.ctex"
+uid="uid://dy8yiilqufo7f"
+path="res://.godot/imported/Siwwy_Widdle_Guy_Paw_2.png-458cb3eb95f605f5d19aaaf1b2469541.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Framework/Mouse/Siwwy_Widdle_Guy_Paw.png"
-dest_files=["res://.godot/imported/Siwwy_Widdle_Guy_Paw.png-6f63ad0b60844c3ac7606fef87bed7de.ctex"]
+source_file="res://Framework/Mouse/Siwwy_Widdle_Guy_Paw_2.png"
+dest_files=["res://.godot/imported/Siwwy_Widdle_Guy_Paw_2.png-458cb3eb95f605f5d19aaaf1b2469541.ctex"]
 
 [params]
 

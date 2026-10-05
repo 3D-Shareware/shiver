@@ -61,7 +61,7 @@ func start_microgame() -> void:
 	if is_starting:
 		return
 	is_starting = true
-	mouse_paw.make_invisible()
+	#mouse_paw.make_invisible()
 	_switch_to_next_microgame()
 	save_data_manager.save_data.clear()
 
@@ -126,6 +126,8 @@ func _switch_from_current_microgame() -> void:
 func _switch_to_next_microgame() -> void:
 	
 	# Reset the mouse cursor to default (so each game can have their own)
+	mouse_paw.mouse_animator.stop()
+	mouse_paw.previous_mouse_texture = null
 	Input.set_custom_mouse_cursor(null)
 	
 	await fade_to_black.do_tween()

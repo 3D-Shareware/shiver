@@ -1,4 +1,4 @@
-extends Node2D
+extends MicroGame
 
 var ghostChoice: int = randi_range(0, 3)
 signal ghostLoseByeBye
