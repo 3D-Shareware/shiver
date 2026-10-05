@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://x5b7wbe8ayvq" path="res://Shiver/terrain_shader2.gdshader" id="4_khf7r"]
 [ext_resource type="Texture2D" uid="uid://bh2df6knkbje1" path="res://Shiver/RileySprites/SnowTerrain.png" id="6_cu5sd"]
 [ext_resource type="Script" uid="uid://cd3tja77a30pu" path="res://Shiver/log_placer.gd" id="7_cu5sd"]
+[ext_resource type="Script" uid="uid://uch3xrkex261" path="res://Shiver/tree_placer.gd" id="7_ripbv"]
 [ext_resource type="Texture2D" uid="uid://brp5hwitquv0" path="res://Shiver/RileySprites/Thermometer.png" id="8_mxnk5"]
 [ext_resource type="Texture2D" uid="uid://b7tmomj563ed0" path="res://Shiver/RileySprites/ThermometerMercury.png" id="9_qe8s3"]
 [ext_resource type="Script" uid="uid://bqy3iqx4qurc3" path="res://Shiver/objects/thermometer.gd" id="10_isfns"]
@@ -125,6 +126,9 @@ mesh = SubResource("PlaneMesh_cu5sd")
 
 [node name="Log Placer" type="Node3D" parent="." unique_id=483932335]
 script = ExtResource("7_cu5sd")
+
+[node name="Tree Placer" type="Node3D" parent="." unique_id=978491044]
+script = ExtResource("7_ripbv")
 
 [node name="Respawner" type="Area3D" parent="." unique_id=1081114227]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32, 0)

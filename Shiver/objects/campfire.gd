@@ -4,6 +4,8 @@ extends CharacterBody3D
 
 @onready var light = $"OmniLight3D"
 @onready var burst_particles = $"BurstParticles"
+@onready var sprite_pivot = $"Visual Campfire/Sprite Scale Pivot"
+@onready var anim = $"AnimationPlayer"
 
 const GRAVITY = -10.0
 
@@ -16,6 +18,8 @@ const MAX_ENERGY = 15.0
 
 const ENERGY_FROM_FIREWOOD = 0.5
 
+func _ready() -> void:
+	anim.play("burn_loop")
 signal fire_gone_out
 var game_started : bool = false
 
@@ -26,6 +30,8 @@ func _process(delta: float) -> void:
 	temp = move_toward(temp, 0, delta * temp_loss_multiplier)
 	light.omni_range = MAX_RANGE * temp
 	light.light_energy = MAX_ENERGY * temp
+	var new_scale = max(0.01, temp * 2)
+	sprite_pivot.scale = Vector3(new_scale, new_scale, new_scale)
 	
 	if temp <= 0:
 		fire_gone_out.emit()
