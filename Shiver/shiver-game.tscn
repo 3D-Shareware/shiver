@@ -68,6 +68,34 @@ tracks/1/keys = {
 "update": 1,
 "values": [75]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../WinTimer/TimerLabel:theme_override_font_sizes/font_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [126]
+}
+
+[sub_resource type="Animation" id="Animation_pau8c"]
+resource_name = "TimerJuice"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../WinTimer/TimerLabel:theme_override_font_sizes/font_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.23333335, 0.33333334, 0.4666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [126, 168, 100, 138, 126]
+}
 
 [sub_resource type="Animation" id="Animation_isfns"]
 resource_name = "player_won"
@@ -100,6 +128,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pau8c"]
 _data = {
 &"RESET": SubResource("Animation_qe8s3"),
+&"TimerJuice": SubResource("Animation_pau8c"),
 &"player_won": SubResource("Animation_isfns")
 }
 
@@ -141,7 +170,7 @@ shape = SubResource("WorldBoundaryShape3D_bk7jt")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1932645402]
 environment = SubResource("Environment_bk7jt")
 
-[node name="Thermometer" type="TextureProgressBar" parent="." unique_id=1277208665]
+[node name="Thermometer" type="TextureProgressBar" parent="." unique_id=1277208665 node_paths=PackedStringArray("campfire")]
 visible = false
 anchors_preset = 3
 anchor_left = 1.0
@@ -159,6 +188,7 @@ fill_mode = 3
 texture_over = ExtResource("8_mxnk5")
 texture_progress = ExtResource("9_qe8s3")
 script = ExtResource("10_isfns")
+campfire = NodePath("../Campfire")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Thermometer" unique_id=1627028541]
 root_node = NodePath("../WinLabel")
@@ -181,6 +211,20 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 75
 text = "YOU SURVIVED!"
 horizontal_alignment = 1
+
+[node name="WinTimer" type="Timer" parent="Thermometer" unique_id=24852790]
+
+[node name="TimerLabel" type="Label" parent="Thermometer/WinTimer" unique_id=1965213045]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -182.0
+offset_right = 203.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 126
+text = "30"
 
 [node name="SfxWind" type="AudioStreamPlayer" parent="." unique_id=1824482800]
 stream = ExtResource("11_qe8s3")
@@ -237,5 +281,6 @@ autostart = true
 [connection signal="visibility_changed" from="Campfire" to="Campfire" method="_on_visibility_changed"]
 [connection signal="body_entered" from="Respawner" to="." method="_on_respawner_body_entered"]
 [connection signal="visibility_changed" from="Thermometer" to="Thermometer" method="_on_visibility_changed"]
+[connection signal="timeout" from="Thermometer/WinTimer" to="Thermometer" method="_on_win_timer_timeout"]
 [connection signal="finished" from="SfxWind" to="." method="_on_sfx_wind_finished"]
 [connection signal="timeout" from="Instructions/InstructionTimer" to="." method="_on_instruction_timer_timeout"]

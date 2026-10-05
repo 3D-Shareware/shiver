@@ -1,8 +1,14 @@
 extends TextureProgressBar
 
+@onready var timer_label: Label = $WinTimer/TimerLabel
+var win_counter : int = 30
+
 var value_ticker : float = 1
 var game_started : bool = false
 var win_sequence : bool = false
+
+@onready var win_timer: Timer = $WinTimer
+@export var campfire: Node3D
 
 ## value of 50 corresponds roughly to needing to survive 50 secs
 @export var timer_slowdown_strength : int = 30
@@ -27,13 +33,29 @@ func _process(delta: float) -> void:
 			survived.emit()
 		return
 	
-	value_ticker -= delta / timer_slowdown_strength
+	if win_timer.is_stopped():
+		win_timer.start()
+		timer_label.visible = true
+	
+	value_ticker = campfire.temp
 	value = value_ticker
 	tint_progress = Color(1-value_ticker,1-value_ticker,1,1)
 	
-	if value_ticker <= min_value:
-		win_sequence = true
 
 
 func _on_visibility_changed() -> void:
 	game_started = true
+
+
+
+func _on_win_timer_timeout() -> void:
+	animation_player.play("TimerJuice")
+	if win_counter == 0:
+		win_sequence = true
+		win_timer.stop()
+		value_ticker = 0
+	else:
+		win_counter -= 1
+		timer_label.text = str(win_counter)
+	
+	

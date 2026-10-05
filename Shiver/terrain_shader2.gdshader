@@ -2,7 +2,7 @@ shader_type spatial;
 
 uniform sampler2D noise;
 uniform float height_mult;
-uniform sampler2D albedo_texture: source_color;
+uniform sampler2D albedo_texture: repeat_enable,filter_nearest,source_color;
 
 void vertex() {
 	float height = texture(noise, UV).x * height_mult;
@@ -10,7 +10,8 @@ void vertex() {
 }
 
 void fragment() {
-	vec4 tex = texture(albedo_texture, UV);
+	vec2 size = vec2(64,64);
+	vec4 tex = texture(albedo_texture, UV * size);
     ALBEDO = tex.rgb;
     //ALPHA = tex.a;
 }
