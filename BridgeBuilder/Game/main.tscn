@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d1v8vgughiu51" path="res://BridgeBuilder/Game/main.gd" id="1_ylxma"]
 [ext_resource type="PackedScene" uid="uid://bvr5ke1y16j4j" path="res://BridgeBuilder/player/player.tscn" id="2_gcm7p"]
 [ext_resource type="PackedScene" uid="uid://buntwooqwlcp3" path="res://BridgeBuilder/map/base_map.tscn" id="3_b5vju"]
-[ext_resource type="PackedScene" uid="uid://02kpy55w8emd" path="res://BridgeBuilder/map/tutorial.tscn" id="4_10t20"]
+[ext_resource type="PackedScene" uid="uid://dev35lsc6nphf" path="res://BridgeBuilder/LayoutSelection/layout_selection.tscn" id="3_xvxqi"]
 [ext_resource type="PackedScene" uid="uid://by4gfh75cwxrt" path="res://BridgeBuilder/rigid-bodies/log_easy_1.tscn" id="5_46bv3"]
 [ext_resource type="PackedScene" uid="uid://cgehk0qwf74fk" path="res://BridgeBuilder/rigid-bodies/log_med.tscn" id="6_m6uti"]
 [ext_resource type="PackedScene" uid="uid://dj7jyxai45b81" path="res://BridgeBuilder/rigid-bodies/log_hard.tscn" id="7_xvxqi"]
@@ -15,11 +15,11 @@ script = ExtResource("1_ylxma")
 position = Vector2(44, 214)
 scale = Vector2(0.75, 0.75)
 
+[node name="LayoutSelection" parent="." unique_id=387250219 instance=ExtResource("3_xvxqi")]
+
 [node name="Maps" type="Node" parent="." unique_id=1432266559]
 
 [node name="BaseMap" parent="Maps" unique_id=518282382 instance=ExtResource("3_b5vju")]
-
-[node name="Tutorial" parent="Maps" unique_id=241741025 instance=ExtResource("4_10t20")]
 
 [node name="Logs" type="Node" parent="." unique_id=1623633657]
 
