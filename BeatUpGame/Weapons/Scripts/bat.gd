@@ -1,0 +1,10 @@
+extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	if GameManager.difficulty_manager.current_difficulty <= 0.35 or GameManager.difficulty_manager.current_difficulty > 0.75:
+		queue_free()
+	else:
+		return
+		
