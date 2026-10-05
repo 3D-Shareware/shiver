@@ -122,6 +122,7 @@ animations = [{
 }]
 
 [node name="IntroTetris" type="Node2D" unique_id=1643071292]
+position = Vector2(0, 648)
 script = ExtResource("1_52q67")
 
 [node name="Timer" type="Timer" parent="." unique_id=52520607]

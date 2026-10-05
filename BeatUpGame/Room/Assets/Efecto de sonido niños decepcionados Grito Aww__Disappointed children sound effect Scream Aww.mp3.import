@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bxhm0fkm8x273"
+path="res://.godot/imported/Efecto de sonido niños decepcionados Grito Aww__Disappointed children sound effect Scream Aww.mp3-4d9c5795b4514c16ee78f4aae14aab24.mp3str"
+
+[deps]
+
+source_file="res://BeatUpGame/Room/Assets/Efecto de sonido niños decepcionados Grito Aww__Disappointed children sound effect Scream Aww.mp3"
+dest_files=["res://.godot/imported/Efecto de sonido niños decepcionados Grito Aww__Disappointed children sound effect Scream Aww.mp3-4d9c5795b4514c16ee78f4aae14aab24.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
