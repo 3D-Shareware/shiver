@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d2u3lb20vf4h"]
+
+[ext_resource type="Script" uid="uid://caowdv3wiuaus" path="res://BeatUpGame/Global Scripts/beat_up_game_loader.gd" id="1_hcs77"]
+[ext_resource type="PackedScene" uid="uid://ck7g8xxxqodfr" path="res://BeatUpGame/Global Scenes/introscreen.tscn" id="2_8dd7r"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fe0um"]
+
+[node name="BeatUp Game Loader" type="Node2D" unique_id=122416733]
+script = ExtResource("1_hcs77")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=619205605]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(597, 329)
+scale = Vector2(1288, 760)
+texture = SubResource("PlaceholderTexture2D_fe0um")
+
+[node name="Introscreen" parent="." unique_id=2023007501 instance=ExtResource("2_8dd7r")]

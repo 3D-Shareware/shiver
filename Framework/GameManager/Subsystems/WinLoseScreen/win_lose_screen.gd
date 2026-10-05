@@ -24,7 +24,6 @@ func _ready() -> void:
 	for tween in find_children("*", "", true, false):
 		if tween is ControlTween:
 			tween_array.append(tween)
-	print(tween_array)
 
 func play_anim() -> void:
 	# setting the stat displays up
