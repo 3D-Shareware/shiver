@@ -14,7 +14,6 @@ config/name="Shiver"
 run/main_scene="uid://da4hhvghhnoi8"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="uid://dowbc4oitb623"
-<<<<<<<Updatedupstreamrun/main_scene="uid://tc87a4f6227j"
 
 [autoload]
 
@@ -38,6 +37,7 @@ folder_colors={
 "res://Framework/Microgame/": "blue",
 "res://Shiver/RileySFX/": "purple",
 "res://Shiver/RileySprites/": "red",
+"res://Shiver/": "teal",
 "res://SimpleExampleGame/": "orange",
 "res://SwordSticker/": "blue",
 "res://SwordSticker/SFX/": "purple",

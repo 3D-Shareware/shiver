@@ -3,6 +3,8 @@ extends CharacterBody3D
 @onready var camera_pivot = $"Camera Pivot"
 @onready var camera = $"Camera Pivot/Camera3D"
 @onready var log_pickup_area = $"Camera Pivot/Log Pickup Area"
+## Where you hold the log when you pick it up.
+@onready var log_hold_position = $"Camera Pivot/Log Hold Position"
 
 # SFX
 @onready var sfx_snow_trudge: AudioStreamPlayer = $SfxSnowTrudge
@@ -108,5 +110,5 @@ func _physics_process(delta: float) -> void:
 	
 	if !all_held_logs.is_empty():
 		for firewood in all_held_logs:
-			firewood.position = log_pickup_area.global_position
+			firewood.position = log_hold_position.global_position
 			firewood.rotation = Vector3(camera_pivot.rotation.x, camera_pivot.rotation.y, camera_pivot.rotation.z - PI/2)
