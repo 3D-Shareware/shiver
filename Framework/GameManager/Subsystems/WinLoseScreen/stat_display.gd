@@ -36,7 +36,6 @@ func do_anim(target_val : float) -> void:
 	elif target_val < current_val:
 		await do_decrement_counter_anim(target_val)
 	else:
-		print(speed)
 		await get_tree().create_timer(speed).timeout
 
 
