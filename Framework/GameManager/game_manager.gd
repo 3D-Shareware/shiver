@@ -6,6 +6,7 @@ extends Node
 @onready var difficulty_manager: DifficultyManager = %DifficultyManager as DifficultyManager
 @onready var save_data_manager: SaveDataManager = %SaveDataManager as SaveDataManager
 @onready var win_lose_screen: WinLoseScreen = %WinLoseScreen
+@onready var mouse_paw: PawMouseIcon = $MousePaw as PawMouseIcon
 
 const MAIN_MENU = preload("uid://da4hhvghhnoi8")
 const PAUSE_MENU = preload("uid://b83ydhdbt5js")
@@ -17,6 +18,8 @@ signal game_lost
 
 var current_pause_menu : PauseMenu
 var is_ending_microgame : bool = false
+var is_starting : bool = false
+
 
 func _ready() -> void:
 	# connecting the microgame_queue to the difficult_manager
@@ -28,7 +31,6 @@ func _ready() -> void:
 	save_data_manager.save_data.difficulty_changed.connect(win_lose_screen._on_difficulty_changed)
 	save_data_manager.save_data.wins_changed.connect(win_lose_screen._on_wins_changed)
 	save_data_manager.save_data.lives_changed.connect(win_lose_screen._on_lives_changed)
-
 
 func _physics_process(_delta: float) -> void:
 	if !Input.is_action_just_pressed("pause"):
@@ -56,12 +58,17 @@ func pause_game() -> void:
 
 
 func start_microgame() -> void:
+	if is_starting:
+		return
+	is_starting = true
+	#mouse_paw.make_invisible()
 	_switch_to_next_microgame()
 	save_data_manager.save_data.clear()
 
 
 func switch_scene_to_packed(scene : PackedScene) -> void:
 	microgame_queue.clear()
+	difficulty_manager.reset()
 	
 	if get_tree().paused == false:
 		pause_game()
@@ -119,12 +126,15 @@ func _switch_from_current_microgame() -> void:
 func _switch_to_next_microgame() -> void:
 	
 	# Reset the mouse cursor to default (so each game can have their own)
+	mouse_paw.mouse_animator.stop()
+	mouse_paw.previous_mouse_texture = null
 	Input.set_custom_mouse_cursor(null)
 	
 	await fade_to_black.do_tween()
 	
 	if save_data_manager.save_data.lives <= 0:
 		switch_scene_to_packed(MAIN_MENU)
+		mouse_paw.make_visible()
 		GameSaver.save_data_to_file(save_data_manager.save_data)
 		return
 	
@@ -143,4 +153,5 @@ func _switch_to_next_microgame() -> void:
 	
 	if current_pause_menu == null:
 		unpause_game()
+	is_starting = false
 	

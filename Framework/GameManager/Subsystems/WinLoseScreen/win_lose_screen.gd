@@ -8,15 +8,23 @@ class_name WinLoseScreen extends Control
 @onready var wins_stat_display: FloatStatDisplay = %WinsStatDisplay
 @onready var difficulty_stat_display: FloatStatDisplay = %DifficultyStatDisplay
 
+@export var win_anims_pool : Array[PackedScene]
+@export var lose_anims_pool : Array[PackedScene]
+
 var old_save_data : SaveData = SaveData.new()
 var new_save_data : SaveData = SaveData.new()
+var tween_array : Array = []
+var speed : float
 
 const PAUSE_AMOUNT : float = 1.5
 
 
 func _ready() -> void:
 	self.visible = false
-
+	for tween in find_children("*", "", true, false):
+		if tween is ControlTween:
+			tween_array.append(tween)
+	print(tween_array)
 
 func play_anim() -> void:
 	# setting the stat displays up
@@ -27,13 +35,23 @@ func play_anim() -> void:
 	# do fade in
 	self.visible = true
 	
-	# do anims
+	# DO SILLY CUSTOM ART ANIMS:
+	# if player lost lives, they must've lost
+	if new_save_data.lives < old_save_data.lives:
+		lose_anims_pool.shuffle()
+		await play_silly_anim(lose_anims_pool.front())
+	# if player didnt lose lives, they must've won!
+	else:
+		win_anims_pool.shuffle()
+		await play_silly_anim(win_anims_pool.front())
+	
+	# do stat change anims
 	await lives_stat_display.do_anim(new_save_data.lives)
 	await wins_stat_display.do_anim(new_save_data.wins)
 	await difficulty_stat_display.do_anim(new_save_data.current_difficulty)
 	
 	
-	get_tree().create_timer(0.5)
+	#get_tree().create_timer(0.5)
 	
 	lives_stat_display.fade_out()
 	wins_stat_display.fade_out()
@@ -44,6 +62,26 @@ func play_anim() -> void:
 	old_save_data.lives = new_save_data.lives
 	old_save_data.wins = new_save_data.wins
 	old_save_data.current_difficulty = new_save_data.current_difficulty
+
+
+func play_silly_anim(packed_scene : PackedScene) -> void:
+	if packed_scene == null:
+		push_warning("%s: Could not play silly anim for a null anim! Check the win/lose anim pool" % self)
+		return
+		
+	var instanced_scene = packed_scene.instantiate()
+	
+	if instanced_scene is not CustomAnimationScreen:
+		return
+	
+	await fade_from_black.do_tween()
+	
+	self.add_child(instanced_scene)
+	await (instanced_scene as CustomAnimationScreen).anim_finished
+	
+	await fade_to_black.do_tween()
+	instanced_scene.queue_free()
+	await fade_from_black.do_tween()
 
 
 #region recording whether values have changed
@@ -60,4 +98,14 @@ func _on_wins_changed(old : int, new : int) -> void:
 func _on_difficulty_changed(old : float, new : float) -> void:
 	old_save_data.current_difficulty = old
 	new_save_data.current_difficulty = new
+	
+	speed = clampf(0.5 - new * 0.30, 0.1, 2.5)
+	
+	lives_stat_display.set_speed(speed)
+	wins_stat_display.set_speed(speed)
+	difficulty_stat_display.set_speed(speed)
+	
+	for tween in tween_array:
+		tween.tween_duration = speed
+
 #endregion
