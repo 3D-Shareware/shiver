@@ -18,6 +18,8 @@ signal game_lost
 
 var current_pause_menu : PauseMenu
 var is_ending_microgame : bool = false
+var is_starting : bool = false
+
 
 func _ready() -> void:
 	# connecting the microgame_queue to the difficult_manager
@@ -56,13 +58,17 @@ func pause_game() -> void:
 
 
 func start_microgame() -> void:
-	mouse_paw.make_invisible()
+	if is_starting:
+		return
+	is_starting = true
+	#mouse_paw.make_invisible()
 	_switch_to_next_microgame()
 	save_data_manager.save_data.clear()
 
 
 func switch_scene_to_packed(scene : PackedScene) -> void:
 	microgame_queue.clear()
+	difficulty_manager.reset()
 	
 	if get_tree().paused == false:
 		pause_game()
@@ -120,6 +126,8 @@ func _switch_from_current_microgame() -> void:
 func _switch_to_next_microgame() -> void:
 	
 	# Reset the mouse cursor to default (so each game can have their own)
+	mouse_paw.mouse_animator.stop()
+	mouse_paw.previous_mouse_texture = null
 	Input.set_custom_mouse_cursor(null)
 	
 	await fade_to_black.do_tween()
@@ -145,4 +153,5 @@ func _switch_to_next_microgame() -> void:
 	
 	if current_pause_menu == null:
 		unpause_game()
+	is_starting = false
 	
