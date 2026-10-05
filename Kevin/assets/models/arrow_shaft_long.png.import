@@ -4,9 +4,8 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgfo2hv0egp22"
 path.s3tc="res://.godot/imported/arrow_shaft_long.png-13574abe1534d501ef3ac3e71c078fac.s3tc.ctex"
-path.etc2="res://.godot/imported/arrow_shaft_long.png-13574abe1534d501ef3ac3e71c078fac.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -16,7 +15,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Kevin/assets/models/arrow_shaft_long.png"
-dest_files=["res://.godot/imported/arrow_shaft_long.png-13574abe1534d501ef3ac3e71c078fac.s3tc.ctex", "res://.godot/imported/arrow_shaft_long.png-13574abe1534d501ef3ac3e71c078fac.etc2.ctex"]
+dest_files=["res://.godot/imported/arrow_shaft_long.png-13574abe1534d501ef3ac3e71c078fac.s3tc.ctex"]
 
 [params]
 

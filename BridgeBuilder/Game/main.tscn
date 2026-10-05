@@ -32,4 +32,8 @@ position = Vector2(265, 14)
 [node name="LogHard" parent="Logs" unique_id=2015151661 instance=ExtResource("7_xvxqi")]
 position = Vector2(428, -2)
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1134167570]
+anchor_mode = 0
+zoom = Vector2(1.8, 1.8)
+
 [connection signal="input_event" from="Logs/Log1" to="Logs/Log1" method="_on_input_event"]

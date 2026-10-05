@@ -4,9 +4,8 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cadf1inps1vqp"
 path.s3tc="res://.godot/imported/ember_ember.png-9bb02b8f809751801a4d18bc1fb25417.s3tc.ctex"
-path.etc2="res://.godot/imported/ember_ember.png-9bb02b8f809751801a4d18bc1fb25417.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -16,7 +15,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Kevin/assets/models/ember_ember.png"
-dest_files=["res://.godot/imported/ember_ember.png-9bb02b8f809751801a4d18bc1fb25417.s3tc.ctex", "res://.godot/imported/ember_ember.png-9bb02b8f809751801a4d18bc1fb25417.etc2.ctex"]
+dest_files=["res://.godot/imported/ember_ember.png-9bb02b8f809751801a4d18bc1fb25417.s3tc.ctex"]
 
 [params]
 
