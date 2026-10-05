@@ -1,11 +1,33 @@
 [gd_scene format=3 uid="uid://2ymohn73wsu8"]
 
-[ext_resource type="Script" uid="uid://cxqeluwac7mhp" path="res://BabyDefenestration/player_arrow.gd" id="1_xina5"]
+[ext_resource type="Script" uid="uid://b0fkpi58fjlnh" path="res://BabyDefenestration/level_1.gd" id="1_xina5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xina5"]
+font_size = 100
 
 [node name="Level1" type="Node2D" unique_id=1174647030]
+script = ExtResource("1_xina5")
 
 [node name="Player" type="Polygon2D" parent="." unique_id=524131676]
 position = Vector2(191.99998, 399.99994)
 polygon = PackedVector2Array(0, 8, 0, 64, 104, 64, 104, 96, 168.00003, 32, 104, -23.999996, 104, 8)
 uv = PackedVector2Array(0, 8, 0, 64, 112, 64, 112, 96, 176.00003, 32, 112, -23.999996, 112, 8)
 script = ExtResource("1_xina5")
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=918482056]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls" unique_id=1434235337]
+position = Vector2(50, 40)
+scale = Vector2(1.0826038, 0.88247705)
+build_mode = 1
+polygon = PackedVector2Array(-2, -4, 1155, -4, 1155, 648, -3, 648)
+
+[node name="Label" type="Label" parent="." unique_id=1277184842]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_xina5")
+
+[node name="Timer" type="Timer" parent="." unique_id=1314644347]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
