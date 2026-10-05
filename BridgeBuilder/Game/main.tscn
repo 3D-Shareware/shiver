@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bvr5ke1y16j4j" path="res://BridgeBuilder/player/player.tscn" id="2_gcm7p"]
 [ext_resource type="PackedScene" uid="uid://buntwooqwlcp3" path="res://BridgeBuilder/map/base_map.tscn" id="3_b5vju"]
 [ext_resource type="PackedScene" uid="uid://02kpy55w8emd" path="res://BridgeBuilder/map/tutorial.tscn" id="4_10t20"]
+[ext_resource type="PackedScene" uid="uid://by4gfh75cwxrt" path="res://BridgeBuilder/rigid-bodies/log_easy_1.tscn" id="5_46bv3"]
+[ext_resource type="PackedScene" uid="uid://cgehk0qwf74fk" path="res://BridgeBuilder/rigid-bodies/log_med.tscn" id="6_m6uti"]
+[ext_resource type="PackedScene" uid="uid://dj7jyxai45b81" path="res://BridgeBuilder/rigid-bodies/log_hard.tscn" id="7_xvxqi"]
 
 [node name="Main" type="Node2D" unique_id=582879533]
 script = ExtResource("1_ylxma")
@@ -17,4 +20,16 @@ scale = Vector2(0.75, 0.75)
 [node name="BaseMap" parent="Maps" unique_id=518282382 instance=ExtResource("3_b5vju")]
 
 [node name="Tutorial" parent="Maps" unique_id=241741025 instance=ExtResource("4_10t20")]
-visible = false
+
+[node name="Logs" type="Node" parent="." unique_id=1623633657]
+
+[node name="Log1" parent="Logs" unique_id=149041970 instance=ExtResource("5_46bv3")]
+position = Vector2(80, 27)
+
+[node name="LogMed" parent="Logs" unique_id=3768532 instance=ExtResource("6_m6uti")]
+position = Vector2(265, 14)
+
+[node name="LogHard" parent="Logs" unique_id=2015151661 instance=ExtResource("7_xvxqi")]
+position = Vector2(428, -2)
+
+[connection signal="input_event" from="Logs/Log1" to="Logs/Log1" method="_on_input_event"]

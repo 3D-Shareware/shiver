@@ -38,6 +38,7 @@ folder_colors={
 "res://BridgeBuilder/assets/environment/sprites/": "orange",
 "res://BridgeBuilder/assets/player/": "purple",
 "res://BridgeBuilder/assets/player/sprites/": "orange",
+"res://BridgeBuilder/rigid-bodies/": "yellow",
 "res://ExampleGame/": "pink",
 "res://Framework/": "gray",
 "res://Framework/Assets/": "purple",
