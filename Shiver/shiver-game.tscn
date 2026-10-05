@@ -5,7 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://cm2tx63caambk" path="res://Shiver/objects/campfire_pushable.tscn" id="3_khf7r"]
 [ext_resource type="Script" uid="uid://bbt8req20h62y" path="res://Shiver/TerrainHandler.gd" id="3_lwllx"]
 [ext_resource type="Shader" uid="uid://x5b7wbe8ayvq" path="res://Shiver/terrain_shader2.gdshader" id="4_khf7r"]
+[ext_resource type="Texture2D" uid="uid://bh2df6knkbje1" path="res://Shiver/RileySprites/SnowTerrain.png" id="6_cu5sd"]
 [ext_resource type="Script" uid="uid://cd3tja77a30pu" path="res://Shiver/log_placer.gd" id="7_cu5sd"]
+[ext_resource type="Texture2D" uid="uid://brp5hwitquv0" path="res://Shiver/RileySprites/Thermometer.png" id="8_mxnk5"]
+[ext_resource type="Texture2D" uid="uid://b7tmomj563ed0" path="res://Shiver/RileySprites/ThermometerMercury.png" id="9_qe8s3"]
+[ext_resource type="Script" uid="uid://bqy3iqx4qurc3" path="res://Shiver/objects/thermometer.gd" id="10_isfns"]
+[ext_resource type="AudioStream" uid="uid://djwyeq1x0ethe" path="res://Shiver/RileySFX/SFX_wind.mp3" id="11_qe8s3"]
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_incux"]
 
@@ -13,6 +18,7 @@
 render_priority = 0
 shader = ExtResource("4_khf7r")
 shader_parameter/height_mult = 0.0
+shader_parameter/albedo_texture = ExtResource("6_cu5sd")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cu5sd"]
 material = SubResource("ShaderMaterial_0xm2m")
@@ -35,6 +41,67 @@ sky_material = SubResource("ProceduralSkyMaterial_pt1fr")
 background_mode = 2
 sky = SubResource("Sky_ocnln")
 
+[sub_resource type="Animation" id="Animation_qe8s3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [75]
+}
+
+[sub_resource type="Animation" id="Animation_isfns"]
+resource_name = "player_won"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.6666667, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pau8c"]
+_data = {
+&"RESET": SubResource("Animation_qe8s3"),
+&"player_won": SubResource("Animation_isfns")
+}
+
 [node name="ShiverGame" type="Node3D" unique_id=2146958291]
 script = ExtResource("1_53x1e")
 
@@ -44,6 +111,7 @@ collision_layer = 2
 
 [node name="Campfire" parent="." unique_id=207377221 instance=ExtResource("3_khf7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+visible = false
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1271081737]
 collision_priority = 10.0
@@ -69,4 +137,101 @@ shape = SubResource("WorldBoundaryShape3D_bk7jt")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1932645402]
 environment = SubResource("Environment_bk7jt")
 
+[node name="Thermometer" type="TextureProgressBar" parent="." unique_id=1277208665]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+max_value = 1.0
+step = 0.01
+value = 1.0
+fill_mode = 3
+texture_over = ExtResource("8_mxnk5")
+texture_progress = ExtResource("9_qe8s3")
+script = ExtResource("10_isfns")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Thermometer" unique_id=1627028541]
+root_node = NodePath("../WinLabel")
+libraries/ = SubResource("AnimationLibrary_pau8c")
+
+[node name="WinLabel" type="Label" parent="Thermometer" unique_id=2072546214]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -865.0
+offset_top = -256.0
+offset_right = -160.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 75
+text = "YOU SURVIVED!"
+horizontal_alignment = 1
+
+[node name="SfxWind" type="AudioStreamPlayer" parent="." unique_id=1824482800]
+stream = ExtResource("11_qe8s3")
+volume_db = -20.0
+autoplay = true
+
+[node name="Instructions" type="Control" parent="." unique_id=555543195]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 648.0
+
+[node name="Movement" type="Label" parent="Instructions" unique_id=352463511]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -345.5
+offset_top = 14.0
+offset_right = 359.5
+offset_bottom = 209.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "W A S D : to move
+MOUSE : to look around
+CLICK : to grab and throw"
+horizontal_alignment = 1
+
+[node name="Objective" type="Label" parent="Instructions" unique_id=483397328]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.5
+offset_top = -183.0
+offset_right = 354.5
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "Keep the fire alive to survive!"
+horizontal_alignment = 1
+
+[node name="InstructionTimer" type="Timer" parent="Instructions" unique_id=902339303]
+wait_time = 2.6999999999999997
+one_shot = true
+autostart = true
+
+[connection signal="visibility_changed" from="Campfire" to="Campfire" method="_on_visibility_changed"]
 [connection signal="body_entered" from="Respawner" to="." method="_on_respawner_body_entered"]
+[connection signal="visibility_changed" from="Thermometer" to="Thermometer" method="_on_visibility_changed"]
+[connection signal="finished" from="SfxWind" to="." method="_on_sfx_wind_finished"]
+[connection signal="timeout" from="Instructions/InstructionTimer" to="." method="_on_instruction_timer_timeout"]
