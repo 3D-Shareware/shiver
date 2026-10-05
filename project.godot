@@ -27,6 +27,8 @@ TheWorld="*uid://dwe225sybkguo"
 window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="uid://m8s5co63k7ex"
+mouse_cursor/custom_image_hotspot=Vector2(10, 20)
 
 [file_customization]
 
@@ -34,6 +36,7 @@ folder_colors={
 "res://ExampleGame/": "pink",
 "res://Framework/": "gray",
 "res://Framework/Assets/": "purple",
+"res://Framework/CustomWinLoseAnims/": "pink",
 "res://Framework/GameManager/": "yellow",
 "res://Framework/MainMenu/": "green",
 "res://Framework/Microgame/": "blue",
@@ -160,3 +163,4 @@ kevin_quiver_game_arrow={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+textures/vram_compression/import_etc2_astc=true

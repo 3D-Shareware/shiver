@@ -16,7 +16,7 @@ class_name FloatStatDisplay extends Control
 @onready var fade_out_icon: ControlTween = %FadeOutIcon as ControlTween
 
 var current_val : float = -INF
-
+var speed : float = 0
 
 func _ready() -> void:
 	counter.scale = Vector2.ZERO
@@ -36,7 +36,8 @@ func do_anim(target_val : float) -> void:
 	elif target_val < current_val:
 		await do_decrement_counter_anim(target_val)
 	else:
-		await get_tree().create_timer(0.5).timeout
+		print(speed)
+		await get_tree().create_timer(speed).timeout
 
 
 func format_counter_text(val : float) -> String:
@@ -70,4 +71,8 @@ func do_decrement_counter_anim(target_val : float) -> void:
 	await bump_down.do_tween()
 	counter.text = format_counter_text(target_val)
 	await reset_position_offset.do_tween()
+	
+func set_speed(new_speed : float) -> void:
+	speed = new_speed
+	
 #endregion
