@@ -25,8 +25,9 @@ script = ExtResource("3_q6eah")
 end_modulate = Color(1, 1, 1, 0)
 metadata/_custom_type_script = "uid://dby7depabb4fv"
 
-[node name="PauseMenu" type="Node" unique_id=1861557569]
+[node name="PauseMenu" type="CanvasLayer" unique_id=1420013176]
 process_mode = 3
+layer = 2147483647
 script = ExtResource("1_sttxj")
 metadata/_edit_use_anchors_ = true
 
