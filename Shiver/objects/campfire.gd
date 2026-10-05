@@ -29,6 +29,7 @@ func _process(delta: float) -> void:
 	
 	if temp <= 0:
 		fire_gone_out.emit()
+		game_started = false
 
 func _physics_process(_delta: float) -> void:
 	if !is_on_floor():
@@ -39,6 +40,9 @@ func _physics_process(_delta: float) -> void:
 
 ## Eat the log.
 func _on_area_3d_body_entered(body: Node3D) -> void:
+	if not game_started:
+		return
+	
 	if body is RigidBody3D:
 		burst_particles.emitting = true
 		body.queue_free()
