@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cspy2px3lnngo"]
+
+[ext_resource type="PackedScene" uid="uid://du7aq1cne4u22" path="res://Shiver/models/firewood.glb" id="1_725xv"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bk7jt"]
+height = 18.0
+
+[node name="Tree" type="Node3D" unique_id=224505076]
+
+[node name="firewood" parent="." unique_id=1153176298 instance=ExtResource("1_725xv")]
+
+[node name="firewood2" parent="." unique_id=948122042 instance=ExtResource("1_725xv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="firewood3" parent="." unique_id=1474812788 instance=ExtResource("1_725xv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+
+[node name="firewood4" parent="." unique_id=1720169742 instance=ExtResource("1_725xv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+
+[node name="firewood5" parent="." unique_id=1250083624 instance=ExtResource("1_725xv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+
+[node name="firewood6" parent="." unique_id=1335827947 instance=ExtResource("1_725xv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1244190051]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1437206047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
+shape = SubResource("CylinderShape3D_bk7jt")

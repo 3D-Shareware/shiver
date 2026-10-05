@@ -18,7 +18,7 @@ const GRAV = -40.0
 const GROUND_ACCEL = 60.0
 const MAX_SPEED = 10.0
 ## Speed multiplier when holding firewood.
-const LOG_SPEED_MULT = 0.2
+const LOG_SPEED_MULT = 0.5
 
 # the number of projects I have made where the y velocity is overriden manually every frame is truly ridiculous
 var current_grav = 0.0

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bbt8req20h62y" path="res://Shiver/TerrainHandler.gd" id="3_lwllx"]
 [ext_resource type="Shader" uid="uid://x5b7wbe8ayvq" path="res://Shiver/terrain_shader2.gdshader" id="4_khf7r"]
 [ext_resource type="Script" uid="uid://cd3tja77a30pu" path="res://Shiver/log_placer.gd" id="7_cu5sd"]
+[ext_resource type="Script" uid="uid://uch3xrkex261" path="res://Shiver/tree_placer.gd" id="7_ripbv"]
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_incux"]
 
@@ -57,6 +58,9 @@ mesh = SubResource("PlaneMesh_cu5sd")
 
 [node name="Log Placer" type="Node3D" parent="." unique_id=483932335]
 script = ExtResource("7_cu5sd")
+
+[node name="Tree Placer" type="Node3D" parent="." unique_id=978491044]
+script = ExtResource("7_ripbv")
 
 [node name="Respawner" type="Area3D" parent="." unique_id=1081114227]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32, 0)

@@ -5,7 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://cadf1inps1vqp" path="res://Kevin/assets/models/ember_ember.png" id="2_w4vyv"]
 [ext_resource type="Texture2D" uid="uid://oho2ciigcv08" path="res://Shiver/models/flames_orange.png" id="3_8w24c"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bk7jt"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8w24c"]
+height = 1.0
+radius = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5uw43"]
 resource_name = "Flame"
@@ -96,7 +98,6 @@ _data = {
 }
 
 [node name="Campfire Pushable" type="CharacterBody3D" unique_id=207377221]
-collision_layer = 0
 wall_min_slide_angle = 3.1415927
 floor_max_angle = 3.1415927
 script = ExtResource("1_w4vyv")
@@ -128,7 +129,7 @@ light_energy = 15.0
 omni_range = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=400811129]
-shape = SubResource("BoxShape3D_bk7jt")
+shape = SubResource("CylinderShape3D_8w24c")
 
 [node name="PassiveParticles" type="CPUParticles3D" parent="." unique_id=2048653539]
 amount = 16
