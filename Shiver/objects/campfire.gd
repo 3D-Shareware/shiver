@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var sfx_fire_grow: AudioStreamPlayer = $SfxFireGrow
+
 @onready var light = $"OmniLight3D"
 @onready var burst_particles = $"BurstParticles"
 
@@ -37,3 +39,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		burst_particles.emitting = true
 		body.queue_free()
 		temp = clamp(temp + ENERGY_FROM_FIREWOOD, 0, 1)
+		
+		# sfx play for when log is added to fire successfully
+		sfx_fire_grow.play()

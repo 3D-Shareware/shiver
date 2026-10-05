@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cnod7uwvdleaj" path="res://Shiver/objects/campfire.gd" id="1_w4vyv"]
 [ext_resource type="Texture2D" uid="uid://cadf1inps1vqp" path="res://Kevin/assets/models/ember_ember.png" id="2_w4vyv"]
+[ext_resource type="AudioStream" uid="uid://dgsfyth8anl6q" path="res://Shiver/RileySFX/SFX_fire_grow.mp3" id="3_mq4td"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bk7jt"]
 
@@ -89,7 +90,7 @@ hue_variation_max = 0.36
 [node name="BurstParticles" type="CPUParticles3D" parent="." unique_id=730794681]
 emitting = false
 amount = 16
-lifetime = 0.09999999999999999
+lifetime = 0.1
 one_shot = true
 speed_scale = 0.1
 explosiveness = 1.0
@@ -112,5 +113,9 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=909814025]
 shape = SubResource("SphereShape3D_bk7jt")
+
+[node name="SfxFireGrow" type="AudioStreamPlayer" parent="." unique_id=593362241]
+stream = ExtResource("3_mq4td")
+volume_db = -10.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://b4pygu5tgbuwc" path="res://Shiver/objects/log_pickup_area.gd" id="2_1eeb5"]
 [ext_resource type="Shader" uid="uid://bxc302ypplc3w" path="res://Shiver/snow_shader.gdshader" id="2_jtwno"]
 [ext_resource type="Texture2D" uid="uid://ct3jijibm0oxp" path="res://Shiver/RileySprites/Snowflake.png" id="4_lrcg5"]
+[ext_resource type="AudioStream" uid="uid://d3pynkt3rhtps" path="res://Shiver/RileySFX/SFX_snow_trudge.mp3" id="5_pc3vb"]
+[ext_resource type="AudioStream" uid="uid://dlalxn5wqowxo" path="res://Shiver/RileySFX/SFX_humph_grab.mp3" id="6_cubue"]
+[ext_resource type="AudioStream" uid="uid://bcpjvcmk7vxhr" path="res://Shiver/RileySFX/SFX_huwah_throw.mp3" id="7_jveps"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bk7jt"]
 
@@ -70,6 +73,15 @@ draw_pass_1 = SubResource("QuadMesh_lrcg5")
 [node name="PlayerLight" type="OmniLight3D" parent="." unique_id=192397915]
 light_color = Color(1, 0.32941177, 0.14901961, 1)
 light_energy = 10.0
+
+[node name="SfxSnowTrudge" type="AudioStreamPlayer" parent="." unique_id=866827884]
+stream = ExtResource("5_pc3vb")
+
+[node name="SfxHumphGrab" type="AudioStreamPlayer" parent="." unique_id=417843515]
+stream = ExtResource("6_cubue")
+
+[node name="SfxHuwahThrow" type="AudioStreamPlayer" parent="." unique_id=512564582]
+stream = ExtResource("7_jveps")
 
 [connection signal="body_entered" from="Camera Pivot/Log Pickup Area" to="Camera Pivot/Log Pickup Area" method="_on_body_entered"]
 [connection signal="body_exited" from="Camera Pivot/Log Pickup Area" to="Camera Pivot/Log Pickup Area" method="_on_body_exited"]

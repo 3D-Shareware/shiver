@@ -4,6 +4,12 @@ extends CharacterBody3D
 @onready var camera = $"Camera Pivot/Camera3D"
 @onready var log_pickup_area = $"Camera Pivot/Log Pickup Area"
 
+# SFX
+@onready var sfx_snow_trudge: AudioStreamPlayer = $SfxSnowTrudge
+@onready var sfx_humph_grab: AudioStreamPlayer = $SfxHumphGrab
+@onready var sfx_huwah_throw: AudioStreamPlayer = $SfxHuwahThrow
+
+
 var game: Node3D
 
 var all_held_logs: Array[RigidBody3D] = []
@@ -45,12 +51,19 @@ func _physics_process(delta: float) -> void:
 				for firewood in log_pickup_area.all_bodies_inside_me:
 					firewood.stop_working()
 					all_held_logs.append(firewood)
+				
+				# grab sfx, starts delayed because of dead noise
+				sfx_humph_grab.play(0.33)
+				
 		# otherwise, you need to throw the logs
 		else:
 			for firewood in all_held_logs:
 				firewood.start_working()
 				firewood.launch_with_velocity(THROW_STRENGTH * -camera_pivot.global_transform.basis.z.normalized())
 			all_held_logs.clear()
+			
+			# play throw sfx, starts delayed because of dead noise
+			sfx_huwah_throw.play(0.5)
 	
 	# *** Jumping and gravity ***
 	if is_on_floor():
@@ -78,6 +91,13 @@ func _physics_process(delta: float) -> void:
 		speed_mult = LOG_SPEED_MULT
 	velocity = velocity.move_toward(cooked_input_dir * MAX_SPEED * speed_mult, GROUND_ACCEL * delta * speed_mult)
 	velocity.y = current_grav
+	
+	# plays walking sfx if the player is moving
+	if velocity.x != 0 or velocity.z != 0:
+		if not sfx_snow_trudge.playing:
+			sfx_snow_trudge.play(randi_range(0,9))
+	else:
+		sfx_snow_trudge.stop()
 	
 	move_and_slide()
 	

@@ -4,6 +4,8 @@ extends MicroGame
 @onready var thermometer: TextureProgressBar = $Thermometer
 @onready var campfire: CharacterBody3D = $Campfire
 
+@onready var sfx_wind: AudioStreamPlayer = $SfxWind
+
 func _ready() -> void:
 	GameManager.get_node("Background").hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -22,3 +24,8 @@ func player_lost() -> void:
 
 func _on_respawner_body_entered(body: Node3D) -> void:
 	body.position.y = 20
+
+
+func _on_sfx_wind_finished() -> void:
+	sfx_wind.volume_db = randi_range(-20,0)
+	sfx_wind.play(randi_range(0,8))
