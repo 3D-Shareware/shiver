@@ -50,6 +50,7 @@ collision_layer = 2
 
 [node name="Campfire" parent="." unique_id=207377221 instance=ExtResource("3_khf7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+visible = false
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1271081737]
 collision_priority = 10.0
@@ -76,6 +77,7 @@ shape = SubResource("WorldBoundaryShape3D_bk7jt")
 environment = SubResource("Environment_bk7jt")
 
 [node name="Thermometer" type="TextureProgressBar" parent="." unique_id=1277208665]
+visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -98,5 +100,55 @@ stream = ExtResource("11_qe8s3")
 volume_db = -20.0
 autoplay = true
 
+[node name="Instructions" type="Control" parent="." unique_id=555543195]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 648.0
+
+[node name="Movement" type="Label" parent="Instructions" unique_id=352463511]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -345.5
+offset_top = 14.0
+offset_right = 359.5
+offset_bottom = 209.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "W A S D : to move
+MOUSE : to look around
+CLICK : to grab and throw"
+horizontal_alignment = 1
+
+[node name="Objective" type="Label" parent="Instructions" unique_id=483397328]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.5
+offset_top = -183.0
+offset_right = 354.5
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "Keep the fire alive to survive!"
+horizontal_alignment = 1
+
+[node name="InstructionTimer" type="Timer" parent="Instructions" unique_id=902339303]
+wait_time = 2.6999999999999997
+one_shot = true
+autostart = true
+
+[connection signal="visibility_changed" from="Campfire" to="Campfire" method="_on_visibility_changed"]
 [connection signal="body_entered" from="Respawner" to="." method="_on_respawner_body_entered"]
+[connection signal="visibility_changed" from="Thermometer" to="Thermometer" method="_on_visibility_changed"]
 [connection signal="finished" from="SfxWind" to="." method="_on_sfx_wind_finished"]
+[connection signal="timeout" from="Instructions/InstructionTimer" to="." method="_on_instruction_timer_timeout"]

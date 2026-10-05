@@ -38,6 +38,11 @@ func _ready() -> void:
 	game = get_parent()
 
 func _physics_process(delta: float) -> void:
+	if not game.started:
+		velocity.y = -20
+		move_and_slide()
+		return
+	
 	# *** Camera movement ***
 	var cam_rot = camera_pivot.global_rotation.y
 	

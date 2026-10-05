@@ -5,6 +5,9 @@ extends MicroGame
 @onready var campfire: CharacterBody3D = $Campfire
 
 @onready var sfx_wind: AudioStreamPlayer = $SfxWind
+@onready var instructions: Control = $Instructions
+
+var started : bool = false
 
 func _ready() -> void:
 	GameManager.get_node("Background").hide()
@@ -27,5 +30,11 @@ func _on_respawner_body_entered(body: Node3D) -> void:
 
 
 func _on_sfx_wind_finished() -> void:
-	sfx_wind.volume_db = randi_range(-20,0)
+	sfx_wind.volume_db = randi_range(-20,-10)
 	sfx_wind.play(randi_range(0,8))
+
+func _on_instruction_timer_timeout() -> void:
+	instructions.visible = false
+	thermometer.visible = true
+	campfire.visible = true
+	started = true

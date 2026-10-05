@@ -17,8 +17,12 @@ const MAX_ENERGY = 15.0
 const ENERGY_FROM_FIREWOOD = 0.5
 
 signal fire_gone_out
+var game_started : bool = false
 
 func _process(delta: float) -> void:
+	if not game_started:
+		return
+	
 	temp = move_toward(temp, 0, delta * temp_loss_multiplier)
 	light.omni_range = MAX_RANGE * temp
 	light.light_energy = MAX_ENERGY * temp
@@ -42,3 +46,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		
 		# sfx play for when log is added to fire successfully
 		sfx_fire_grow.play()
+
+func _on_visibility_changed() -> void:
+	game_started = true
