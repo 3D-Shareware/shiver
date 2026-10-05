@@ -5,6 +5,7 @@ var damp: float = 0.1
 var speed: int = 1000
 var pressed = false
 signal lose
+signal press
 
 func _ready() -> void:
 	self.freeze = true
@@ -12,6 +13,7 @@ func _ready() -> void:
 	
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and not pressed:
+		press.emit()
 		print("You threw the baby!")
 		pressed = true
 		self.freeze = false

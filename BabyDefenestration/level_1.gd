@@ -7,11 +7,15 @@ var window = preload("res://BabyDefenestration/window.tscn")
 var timer_start = false
 var time_left = 15 - (10*difficulty)
 var win = false
+var pressed : bool = false
+@onready var label : Label = $/root/Level1/Label
+@onready var timer : Timer = $/root/Level1/Timer
+@onready var playerArrow: Polygon2D = $/root/Level1/Player
 
 func _ready() -> void:
-	$Label.position = Vector2(50, 500)
-	$Timer.wait_time = time_left
-	$Timer.start()
+	label.position = Vector2(50, 500)
+	timer.wait_time = time_left
+	timer.start()
 	
 	var baby1 = baby.instantiate()
 	var window1 = window.instantiate()
@@ -21,6 +25,7 @@ func _ready() -> void:
 	level1.add_child(window1)
 	windowarea.win.connect(_on_win)
 	babybody.lose.connect(_on_lose)
+	babybody.press.connect(_on_press)
 	
 	baby1.position.x = 800; baby1.position.y = 350
 	window1.position.x = 1100; window1.position.y = randi_range(145, 503)
@@ -29,8 +34,16 @@ func _ready() -> void:
 	print("Difficulty: ", difficulty)
 
 func _process(_delta):
-	if $Timer.start:
-		$Label.text = str($Timer.get_time_left()).pad_decimals(2)
+	if timer.start:
+		label.text = str(timer.get_time_left()).pad_decimals(2)
+	if !pressed:
+		playerArrow._launch_angle()
+	if pressed:
+		playerArrow._launch()
+	#babybody.throw(playerArrow.scale,playerArrow.rotation_degrees)
+
+func _on_press() -> void:
+	pressed = true
 
 func _on_timer_timeout() -> void:
 	print("timed out!")
