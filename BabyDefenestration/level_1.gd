@@ -1,14 +1,12 @@
 extends MicroGame
 
-@onready var level1: Node = $"."
 var baby = preload("res://BabyDefenestration/rigidbaby.tscn")
 var window = preload("res://BabyDefenestration/window.tscn")
-var timer_start = false
-var time_left = 15 - (10*difficulty)
-var win = false
+var timer_start: bool = false
+var win: bool = false
 var pressed : bool = false
 var pressed2: bool = false
-var difficulty1 = difficulty
+@onready var level1: Node = $"."
 @onready var label : Label = $/root/Level1/Label
 @onready var timer : Timer = $/root/Level1/Timer
 @onready var playerArrow: Polygon2D = $/root/Level1/Player
@@ -17,6 +15,7 @@ var difficulty1 = difficulty
 @onready var babybody = baby1.get_node("RigidBody2D")
 
 func _ready() -> void:
+	var time_left = 15 - (10*GameManager.difficulty_manager.current_difficulty)
 	playerArrow.position = Vector2(guy.position.x+20, guy.position.y-50)
 	guy.frame = 0
 	label.position = Vector2(50, 500)
@@ -35,8 +34,6 @@ func _ready() -> void:
 	baby1.position = playerArrow.position
 	window1.position.x = 1100; window1.position.y = randi_range(145, 503)
 	window1.scale.y = randf_range(0.3,0.6)
-	
-	print("Difficulty: ", difficulty)
 
 func _process(_delta):
 	if timer.start:
@@ -47,7 +44,6 @@ func _process(_delta):
 		playerArrow._launch()
 	if pressed2:
 		guy.frame = 1
-		print("rotation: ",playerArrow.rotation, "scale: ", playerArrow.scale)
 		babybody.throw(playerArrow.rotation, 5000*playerArrow.scale)
 		pressed2 = false
 	
@@ -58,8 +54,8 @@ func _on_press_2() -> void:
 	pressed2 = true
 
 func _on_timer_timeout() -> void:
-	print("timed out!")
-	if not win:
+	print("Timed out!")
+	if !win:
 		print("You lost!")
 		GameManager.lose()
 
@@ -67,7 +63,5 @@ func _on_win():
 	win = true
 	
 func _on_lose():
-	if win:
-		pass
-	else:
+	if !win:
 		GameManager.lose()

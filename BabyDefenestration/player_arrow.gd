@@ -1,16 +1,10 @@
 extends Polygon2D
 
-@onready var difficulty = get_parent().difficulty1
+@onready var difficulty = GameManager.difficulty_manager.current_difficulty
 @onready var rotationSpeed : float = 2.0 + difficulty
 @onready var launchSpeed : float = 0.02 + difficulty*.1
 
-func _ready() -> void:
-	print("parent difficulty: ", get_parent().difficulty1)
-
 var move_direction : String = "left"
-
-func _process(_delta: float) -> void:
-	pass
 
 func _launch_angle() -> void:
 	if rotation_degrees >= 45.0:

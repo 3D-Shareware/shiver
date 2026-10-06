@@ -26,8 +26,8 @@ func throw(angle, magnitude) -> void:
 	lose.emit()
 	
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept") and not pressed:
+	if Input.is_action_just_pressed("ui_accept") and !pressed:
 		press.emit()
 		pressed = true
-	elif Input.is_action_just_pressed("ui_accept") and pressed and not pressed2:
+	elif Input.is_action_just_pressed("ui_accept") and pressed and !pressed2:
 		press2.emit()
