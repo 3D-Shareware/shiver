@@ -21,4 +21,5 @@ unicode = 44
 [resource]
 script = ExtResource("2_t5pcx")
 key_pool = Array[InputEvent]([SubResource("InputEventKey_0hj07"), SubResource("InputEventKey_t5pcx"), SubResource("InputEventKey_gaxk0")])
+key_speed = 350.0
 metadata/_custom_type_script = "uid://1mravwtv8td"

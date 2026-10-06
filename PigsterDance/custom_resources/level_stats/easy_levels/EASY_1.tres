@@ -21,7 +21,7 @@ unicode = 99
 [resource]
 script = ExtResource("2_4gt5v")
 key_pool = Array[InputEvent]([SubResource("InputEventKey_erk01"), SubResource("InputEventKey_4gt5v"), SubResource("InputEventKey_c0vbv")])
-key_speed = 200.0
+key_speed = 350.0
 max_tries = 2
 retry_delay = 1.0
 metadata/_custom_type_script = "uid://1mravwtv8td"
