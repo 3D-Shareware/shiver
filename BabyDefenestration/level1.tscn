@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b0fkpi58fjlnh" path="res://BabyDefenestration/level_1.gd" id="1_xina5"]
 [ext_resource type="Script" uid="uid://cxqeluwac7mhp" path="res://BabyDefenestration/player_arrow.gd" id="2_vjdf4"]
+[ext_resource type="Texture2D" uid="uid://x2qxbdtnh3rw" path="res://BabyDefenestration/assets BABYYYY/Stick guy throwing.png" id="3_f4d4a"]
+[ext_resource type="Texture2D" uid="uid://bfdjmynhmwqa3" path="res://GhostGame/Assets/ffffff-p.png" id="4_jxnb1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xina5"]
 font_size = 100
@@ -26,10 +28,25 @@ label_settings = SubResource("LabelSettings_xina5")
 one_shot = true
 
 [node name="Player" type="Polygon2D" parent="." unique_id=524131676]
-position = Vector2(191.99998, 399.99994)
+position = Vector2(191.99998, 379.9333)
+scale = Vector2(1, 0.6416671)
 polygon = PackedVector2Array(0, -23.999998, 0, 32, 104, 32, 104, 64, 168.00003, 1.9073486e-06, 104, -55.999992, 104, -23.999998, 0, 1.9073486e-06)
 uv = PackedVector2Array(0, 8, 0, 64, 112, 64, 112, 96, 176.00003, 32, 112, -23.999996, 112, 8, 0, 32)
 internal_vertex_count = 1
 script = ExtResource("2_vjdf4")
+
+[node name="guy" type="Sprite2D" parent="." unique_id=1318079685]
+z_index = 1
+position = Vector2(418.5, 483)
+scale = Vector2(8.062502, 8.062502)
+texture = ExtResource("3_f4d4a")
+hframes = 2
+
+[node name="test_background" type="Sprite2D" parent="." unique_id=654029007]
+modulate = Color(0.35686275, 1, 1, 1)
+z_index = -12
+position = Vector2(552, 241)
+scale = Vector2(2.6911533, 1.6629747)
+texture = ExtResource("4_jxnb1")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
