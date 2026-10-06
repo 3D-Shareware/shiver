@@ -4,7 +4,7 @@ extends Node3D
 
 const TREE = preload("res://Shiver/objects/tree.tscn")
 ## Ideally 64 but currently 4 so it doesn't crash Riley's computer.
-var tree_count = 4#64
+var tree_count = 64#64
 const TREE_MIN_RANGE = 1
 const TREE_MAX_RANGE = 30
 
