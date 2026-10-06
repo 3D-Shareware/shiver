@@ -1,16 +1,14 @@
 extends Polygon2D
 
-#GameManager.difficulty_manager.current_difficulty
-#var difficulty1 = GameManager.difficulty_manager.current_difficulty
-var rotationSpeed : float = 2.0 #+ difficulty1
-var launchSpeed : float = 0.02 #+ difficulty1*.1
+@onready var difficulty = get_parent().difficulty1
+@onready var rotationSpeed : float = 2.0 + difficulty
+@onready var launchSpeed : float = 0.02 + difficulty*.1
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	print("parent difficulty: ", get_parent().difficulty1)
 
 var move_direction : String = "left"
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(_delta: float) -> void:
 	pass
 
