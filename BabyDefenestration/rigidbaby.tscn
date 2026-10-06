@@ -11,6 +11,7 @@ radius = 16.0
 height = 56.0
 
 [node name="Rigidbaby" type="Node2D" unique_id=1077690374]
+z_index = 5
 
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1181130616]
 physics_material_override = SubResource("PhysicsMaterial_lr6q2")
@@ -19,11 +20,12 @@ script = ExtResource("1_lr6q2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1065472336]
 rotation = 0.5235988
+scale = Vector2(1.4664109, 1.4664109)
 shape = SubResource("CapsuleShape2D_c18sk")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=267400417]
 position = Vector2(0.99999976, -10)
-scale = Vector2(4.34375, 4.34375)
+scale = Vector2(5.5837507, 5.5837507)
 texture = ExtResource("2_mkmh0")
 
 [connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bj0fok52mto0w" path="res://BabyDefenestration/area_2d.gd" id="1_2q65q"]
 [ext_resource type="Script" uid="uid://c3csovukwsvyf" path="res://BabyDefenestration/window.gd" id="1_va1le"]
+[ext_resource type="Texture2D" uid="uid://b7gqt3ktnbq40" path="res://BabyDefenestration/assets BABYYYY/window.png" id="3_fmix3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(36, 965.2773)
@@ -35,5 +36,59 @@ shape = SubResource("RectangleShape2D_d0u6y")
 position = Vector2(48, 4240)
 scale = Vector2(1.7538358, 1.0011108)
 shape = SubResource("RectangleShape2D_d0u6y")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=447664978]
+position = Vector2(72, -466.66663)
+scale = Vector2(10.559999, 10.559999)
+texture = ExtResource("3_fmix3")
+vframes = 4
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=960550613]
+position = Vector2(72, -986.66656)
+scale = Vector2(10.53, 10.53)
+texture = ExtResource("3_fmix3")
+vframes = 4
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=334888470]
+position = Vector2(72, -986.66656)
+scale = Vector2(10.53, 10.53)
+texture = ExtResource("3_fmix3")
+offset = Vector2(0, -50)
+vframes = 4
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=1629726435]
+position = Vector2(72, -986.66656)
+scale = Vector2(10.53, 10.53)
+texture = ExtResource("3_fmix3")
+offset = Vector2(0, -100)
+vframes = 4
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1932679991]
+position = Vector2(72, -466.66663)
+scale = Vector2(10.559999, 10.559999)
+texture = ExtResource("3_fmix3")
+offset = Vector2(0, 138)
+vframes = 4
+
+[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=784431149]
+position = Vector2(72, -986.66656)
+scale = Vector2(10.53, 10.53)
+texture = ExtResource("3_fmix3")
+offset = Vector2(0, 138)
+vframes = 4
+
+[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=2051969995]
+position = Vector2(72, -986.66656)
+scale = Vector2(10.53, 10.53)
+texture = ExtResource("3_fmix3")
+offset = Vector2(0, 230)
+vframes = 4
+
+[node name="Sprite2D8" type="Sprite2D" parent="." unique_id=1973788657]
+position = Vector2(72, -986.66656)
+scale = Vector2(10.53, 10.53)
+texture = ExtResource("3_fmix3")
+offset = Vector2(0, 280)
+vframes = 4
 
 [connection signal="body_entered" from="Window_Area" to="Window_Area" method="_on_body_entered"]

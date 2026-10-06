@@ -22,7 +22,7 @@ func throw(angle, magnitude) -> void:
 	elif -45 <= angle and angle <= 0:
 		vector1 = Vector2(cos(angle), sin(angle))
 	apply_impulse(mag*vector1)
-	await get_tree().create_timer(2.5).timeout
+	await get_tree().create_timer(1.75).timeout
 	lose.emit()
 	
 func _physics_process(_delta: float) -> void:
