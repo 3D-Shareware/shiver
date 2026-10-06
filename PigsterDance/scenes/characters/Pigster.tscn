@@ -195,8 +195,7 @@ animations = [{
 [node name="Pigster" type="AnimatedSprite2D" unique_id=1990773661]
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_wtptg")
-animation = &"dance_2"
-frame_progress = 0.3641557
+animation = &"wake_up"
 script = ExtResource("25_docs3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1647142583]

@@ -19,6 +19,7 @@ offset_left = -60.0
 offset_top = -50.0
 offset_right = 60.0
 offset_bottom = 50.0
+color = Color(0, 0, 0, 0.49803922)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1161161851]
 shape = SubResource("RectangleShape2D_g6afx")
@@ -26,6 +27,7 @@ shape = SubResource("RectangleShape2D_g6afx")
 [node name="KeyHandler" parent="." unique_id=1623086216 instance=ExtResource("3_ds8rp")]
 
 [node name="ResultLabel" type="Label" parent="." unique_id=986605407]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
