@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cm2tx63caambk" path="res://Shiver/objects/campfire_pushable.tscn" id="3_khf7r"]
 [ext_resource type="Script" uid="uid://bbt8req20h62y" path="res://Shiver/TerrainHandler.gd" id="3_lwllx"]
 [ext_resource type="Shader" uid="uid://x5b7wbe8ayvq" path="res://Shiver/terrain_shader2.gdshader" id="4_khf7r"]
-[ext_resource type="Texture2D" uid="uid://bh2df6knkbje1" path="res://Shiver/RileySprites/SnowTerrain.png" id="6_cu5sd"]
+[ext_resource type="Texture2D" uid="uid://7xkqxgly7db3" path="res://Shiver/models/snowier_snow.png" id="6_isfns"]
 [ext_resource type="Script" uid="uid://cd3tja77a30pu" path="res://Shiver/log_placer.gd" id="7_cu5sd"]
 [ext_resource type="Script" uid="uid://uch3xrkex261" path="res://Shiver/tree_placer.gd" id="7_ripbv"]
 [ext_resource type="Texture2D" uid="uid://brp5hwitquv0" path="res://Shiver/RileySprites/Thermometer.png" id="8_mxnk5"]
@@ -19,7 +19,7 @@
 render_priority = 0
 shader = ExtResource("4_khf7r")
 shader_parameter/height_mult = 0.0
-shader_parameter/albedo_texture = ExtResource("6_cu5sd")
+shader_parameter/albedo_texture = ExtResource("6_isfns")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cu5sd"]
 material = SubResource("ShaderMaterial_0xm2m")
@@ -135,9 +135,10 @@ _data = {
 [node name="ShiverGame" type="Node3D" unique_id=2146958291]
 script = ExtResource("1_53x1e")
 
-[node name="Player" parent="." unique_id=1794247419 instance=ExtResource("2_62ety")]
+[node name="Player" parent="." unique_id=1794247419 node_paths=PackedStringArray("campfire") instance=ExtResource("2_62ety")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 collision_layer = 2
+campfire = NodePath("../Campfire")
 
 [node name="Campfire" parent="." unique_id=207377221 instance=ExtResource("3_khf7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
@@ -146,6 +147,7 @@ visible = false
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1271081737 node_paths=PackedStringArray("game")]
 collision_priority = 10.0
 script = ExtResource("3_lwllx")
+map_size = 256
 game = NodePath("..")
 
 [node name="Map" type="CollisionShape3D" parent="Floor" unique_id=162774413]
@@ -171,7 +173,7 @@ shape = SubResource("WorldBoundaryShape3D_bk7jt")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1932645402]
 environment = SubResource("Environment_bk7jt")
 
-[node name="Thermometer" type="TextureProgressBar" parent="." unique_id=1277208665 node_paths=PackedStringArray("campfire")]
+[node name="Thermometer" type="TextureProgressBar" parent="." unique_id=1277208665 node_paths=PackedStringArray("game", "campfire")]
 visible = false
 anchors_preset = 3
 anchor_left = 1.0
@@ -189,6 +191,7 @@ fill_mode = 3
 texture_over = ExtResource("8_mxnk5")
 texture_progress = ExtResource("9_qe8s3")
 script = ExtResource("10_isfns")
+game = NodePath("..")
 campfire = NodePath("../Campfire")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Thermometer" unique_id=1627028541]

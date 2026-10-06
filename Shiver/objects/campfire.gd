@@ -11,7 +11,7 @@ const GRAVITY = -10.0
 
 var temp: float = 1.0
 ## When 0.1, takes 10 seconds to fully deplete temperature.
-var temp_loss_multiplier: float = 0.05
+var temp_loss_multiplier: float = 0.1
 
 const MAX_RANGE = 200.0
 const MAX_ENERGY = 15.0
@@ -28,10 +28,7 @@ func _process(delta: float) -> void:
 		return
 	
 	temp = move_toward(temp, 0, delta * temp_loss_multiplier)
-	light.omni_range = MAX_RANGE * temp
-	light.light_energy = MAX_ENERGY * temp
-	var new_scale = max(0.01, temp * 2)
-	sprite_pivot.scale = Vector3(new_scale, new_scale, new_scale)
+	update_visible_temperature()
 	
 	if temp <= 0:
 		fire_gone_out.emit()
@@ -57,5 +54,16 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		# sfx play for when log is added to fire successfully
 		sfx_fire_grow.play()
 
+func update_visible_temperature() -> void:
+	light.omni_range = MAX_RANGE * temp
+	light.light_energy = MAX_ENERGY * temp
+	var new_scale = max(0.01, temp * 2)
+	sprite_pivot.scale = Vector3(new_scale, new_scale, new_scale)
+
 func _on_visibility_changed() -> void:
 	game_started = true
+
+func stop_shrinking() -> void:
+	temp = 1
+	update_visible_temperature()
+	game_started = false

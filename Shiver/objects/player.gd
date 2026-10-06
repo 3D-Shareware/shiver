@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+@export var campfire: Node
+
+@onready var shiver_anim = $"Shiverer"
 @onready var camera_pivot = $"Camera Pivot"
 @onready var camera = $"Camera Pivot/Camera3D"
 @onready var log_pickup_area = $"Camera Pivot/Log Pickup Area"
@@ -38,6 +41,7 @@ func _unhandled_input(event: InputEvent):
 
 func _ready() -> void:
 	game = get_parent()
+	shiver_anim.play("shiver")
 
 func _physics_process(delta: float) -> void:
 	if not game.started:
@@ -47,6 +51,10 @@ func _physics_process(delta: float) -> void:
 	
 	# *** Camera movement ***
 	var cam_rot = camera_pivot.global_rotation.y
+	if campfire.temp > 0.5:
+		shiver_anim.speed_scale = 0
+	else:
+		shiver_anim.speed_scale = 1
 	
 	# input for picking up/throwing log
 	if Input.is_action_just_pressed("left_click") or Input.is_action_just_pressed("space") or Input.is_action_just_pressed("right_click"):

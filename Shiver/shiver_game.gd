@@ -2,6 +2,7 @@ extends MicroGame
 
 @onready var log_placer = $"Log Placer"
 @onready var tree_placer = $"Tree Placer"
+@onready var the_floor = $"Floor"
 @onready var thermometer: TextureProgressBar = $Thermometer
 @onready var campfire: CharacterBody3D = $Campfire
 
@@ -14,6 +15,7 @@ var started : bool = false
 func _ready() -> void:
 	GameManager.get_node("Background").hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	the_floor.start()
 	log_placer.start(self)
 	tree_placer.start(self)
 	

@@ -10,7 +10,7 @@ void vertex() {
 }
 
 void fragment() {
-	vec2 size = vec2(64,64);
+	vec2 size = vec2(32,32);
 	vec4 tex = texture(albedo_texture, UV * size);
     ALBEDO = tex.rgb;
     //ALPHA = tex.a;

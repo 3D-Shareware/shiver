@@ -12,14 +12,14 @@ var height_map: PackedFloat64Array
 
 @export var game: MicroGame
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+# Called by the game so that objects can be spawned afterwards.
+func start() -> void:
 	_init_noise()
 	_generate_height_map()
 	var image:= create_image()
 	
 	# adjust peak value by fetching from difficulty
-	peak_value = game.difficulty * 18
+	peak_value = 10#game.difficulty * 20
 	
 	# adjust mesh size to match the map's
 	var plane_mesh : PlaneMesh = mesh.mesh

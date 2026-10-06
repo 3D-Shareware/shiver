@@ -1,5 +1,7 @@
 extends TextureProgressBar
 
+@export var game: MicroGame
+
 @onready var timer_label: Label = $WinTimer/TimerLabel
 var win_counter : int = 30
 
@@ -54,6 +56,7 @@ func _on_win_timer_timeout() -> void:
 		win_sequence = true
 		win_timer.stop()
 		value_ticker = 0
+		game.campfire.stop_shrinking()
 	else:
 		win_counter -= 1
 		timer_label.text = str(win_counter)
