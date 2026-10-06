@@ -15,6 +15,10 @@ var pressed2: bool = false
 @onready var babybody = baby1.get_node("RigidBody2D")
 
 func _ready() -> void:
+	$AnimationPlayer.play("babytutorial")
+	await get_tree().create_timer(3).timeout
+	var tween = get_tree().create_tween()
+	tween.tween_property($tutorial, "self_modulate:a", 0, 1.0)
 	var time_left = 15 - (10*GameManager.difficulty_manager.current_difficulty)
 	playerArrow.position = Vector2(guy.position.x+20, guy.position.y-50)
 	guy.frame = 0

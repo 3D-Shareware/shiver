@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cxqeluwac7mhp" path="res://BabyDefenestration/player_arrow.gd" id="2_vjdf4"]
 [ext_resource type="Texture2D" uid="uid://x2qxbdtnh3rw" path="res://BabyDefenestration/assets BABYYYY/Stick guy throwing.png" id="3_f4d4a"]
 [ext_resource type="Texture2D" uid="uid://bfdjmynhmwqa3" path="res://GhostGame/Assets/ffffff-p.png" id="4_jxnb1"]
+[ext_resource type="Texture2D" uid="uid://btg6b7mfvfep7" path="res://BabyDefenestration/assets BABYYYY/baby_tutorial.png" id="5_8i2na"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(1193, 44)
@@ -13,6 +14,44 @@ size = Vector2(58, 669)
 
 [sub_resource type="LabelSettings" id="LabelSettings_xina5"]
 font_size = 100
+
+[sub_resource type="Animation" id="Animation_8i2na"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tutorial:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_r8ymq"]
+resource_name = "babytutorial"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tutorial:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4w6mw"]
+_data = {
+&"RESET": SubResource("Animation_8i2na"),
+&"babytutorial": SubResource("Animation_r8ymq")
+}
 
 [node name="Level1" type="Node2D" unique_id=1174647030]
 script = ExtResource("1_xina5")
@@ -61,5 +100,15 @@ z_index = -12
 position = Vector2(556, 258)
 scale = Vector2(2.6911533, 1.6629747)
 texture = ExtResource("4_jxnb1")
+
+[node name="tutorial" type="Sprite2D" parent="." unique_id=1547205589]
+z_index = 10
+position = Vector2(576.50006, 323.5)
+scale = Vector2(0.19416666, 0.17125)
+texture = ExtResource("5_8i2na")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1445387693]
+libraries/ = SubResource("AnimationLibrary_4w6mw")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
