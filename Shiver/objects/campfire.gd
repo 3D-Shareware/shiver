@@ -11,7 +11,7 @@ const GRAVITY = -10.0
 
 var temp: float = 1.0
 ## When 0.1, takes 10 seconds to fully deplete temperature.
-var temp_loss_multiplier: float = 0.1
+var temp_loss_multiplier: float = 0.05
 
 const MAX_RANGE = 200.0
 const MAX_ENERGY = 15.0

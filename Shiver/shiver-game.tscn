@@ -143,9 +143,10 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 visible = false
 
-[node name="Floor" type="StaticBody3D" parent="." unique_id=1271081737]
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1271081737 node_paths=PackedStringArray("game")]
 collision_priority = 10.0
 script = ExtResource("3_lwllx")
+game = NodePath("..")
 
 [node name="Map" type="CollisionShape3D" parent="Floor" unique_id=162774413]
 shape = SubResource("HeightMapShape3D_incux")
@@ -270,7 +271,7 @@ offset_bottom = -54.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 45
-text = "Keep the fire alive to survive!"
+text = "Feed the fire!"
 horizontal_alignment = 1
 
 [node name="InstructionTimer" type="Timer" parent="Instructions" unique_id=902339303]
