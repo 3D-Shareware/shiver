@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://buntwooqwlcp3" path="res://BridgeBuilder/map/base_map.tscn" id="3_b5vju"]
 [ext_resource type="PackedScene" uid="uid://ymk33bbsdkpa" path="res://BridgeBuilder/map/killzone.tscn" id="3_hn2i7"]
 [ext_resource type="PackedScene" uid="uid://vflueasu6rcv" path="res://BridgeBuilder/map/winzone.tscn" id="4_o6ixb"]
+[ext_resource type="PackedScene" uid="uid://dev35lsc6nphf" path="res://BridgeBuilder/LayoutSelection/layout_selection.tscn" id="3_xvxqi"]
 [ext_resource type="PackedScene" uid="uid://by4gfh75cwxrt" path="res://BridgeBuilder/rigid-bodies/log_easy_1.tscn" id="5_46bv3"]
 [ext_resource type="PackedScene" uid="uid://dwe86ashsf4p1" path="res://BridgeBuilder/Game/layout_selection.tscn" id="5_gph0v"]
 [ext_resource type="PackedScene" uid="uid://cgehk0qwf74fk" path="res://BridgeBuilder/rigid-bodies/log_med.tscn" id="6_m6uti"]
@@ -16,6 +17,8 @@ script = ExtResource("1_ylxma")
 [node name="Player" parent="." unique_id=521260164 instance=ExtResource("2_gcm7p")]
 position = Vector2(44, 214)
 scale = Vector2(0.75, 0.75)
+
+[node name="LayoutSelection" parent="." unique_id=387250219 instance=ExtResource("3_xvxqi")]
 
 [node name="Maps" type="Node" parent="." unique_id=1432266559]
 
@@ -41,6 +44,9 @@ position = Vector2(590, 2)
 
 [node name="Killzone" parent="WinLose" unique_id=1355364477 instance=ExtResource("3_hn2i7")]
 position = Vector2(315, 414)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1134167570]
+anchor_mode = 0
+zoom = Vector2(1.8, 1.8)
 
 [connection signal="input_event" from="Logs/Log1" to="Logs/Log1" method="_on_input_event"]
 [connection signal="body_entered" from="WinLose/WinZone" to="WinLose/WinZone" method="_on_body_entered"]

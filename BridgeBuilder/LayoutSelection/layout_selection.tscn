@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dev35lsc6nphf"]
+
+[ext_resource type="Script" uid="uid://bgd1vtd6wf6vf" path="res://BridgeBuilder/LayoutSelection/layout_selection.gd" id="1_huv28"]
+
+[node name="LayoutSelection" type="Node2D" unique_id=387250219]
+script = ExtResource("1_huv28")

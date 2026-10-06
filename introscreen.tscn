@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cpyj2nvdofyrr"]
+
+[ext_resource type="Texture2D" uid="uid://c2m1sdw3yjnfk" path="res://BeatUpGame/Room/Assets/IntroScreen2.png" id="1_s0484"]
+[ext_resource type="Script" uid="uid://dobkmfgf26b5d" path="res://BeatUpGame/Global Scripts/beat_intro.gd" id="1_vdbb8"]
+[ext_resource type="Script" uid="uid://c0eq70gyg7rhf" path="res://Framework/Addons/TweenTool/Scripts/Components/control_tween.gd" id="2_7842a"]
+[ext_resource type="Script" uid="uid://dby7depabb4fv" path="res://Framework/Addons/TweenTool/Scripts/TweenResources/canvas_item_tween.gd" id="3_vdbb8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d0siw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s0484")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_vdbb8"]
+script = ExtResource("3_vdbb8")
+end_modulate = Color(1, 1, 1, 0)
+metadata/_custom_type_script = "uid://dby7depabb4fv"
+
+[sub_resource type="Resource" id="Resource_qlsi4"]
+script = ExtResource("3_vdbb8")
+start_modulate = Color(1, 1, 1, 0)
+metadata/_custom_type_script = "uid://dby7depabb4fv"
+
+[node name="Introscreen" type="Control" unique_id=2023007501]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+script = ExtResource("1_vdbb8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=247168645]
+position = Vector2(582, 318.99997)
+scale = Vector2(0.49622962, 0.43545845)
+sprite_frames = SubResource("SpriteFrames_d0siw")
+
+[node name="Disappear" type="Node" parent="." unique_id=2088072738 node_paths=PackedStringArray("affected_node")]
+script = ExtResource("2_7842a")
+affected_node = NodePath("..")
+canvas_item_tween = SubResource("Resource_vdbb8")
+trans_type = 5
+ease_type = 2
+tween_duration = 0.5
+metadata/_custom_type_script = "uid://c0eq70gyg7rhf"
+
+[node name="Appear" type="Node" parent="." unique_id=1494565708 node_paths=PackedStringArray("affected_node")]
+script = ExtResource("2_7842a")
+affected_node = NodePath("..")
+canvas_item_tween = SubResource("Resource_qlsi4")
+trans_type = 7
+ease_type = 2
+tween_duration = 0.5
+metadata/_custom_type_script = "uid://c0eq70gyg7rhf"
