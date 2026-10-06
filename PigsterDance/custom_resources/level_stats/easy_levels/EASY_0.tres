@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://1mravwtv8td" path="res://PigsterDance/custom_resources/level_stats/dance_level_stats.gd" id="1_brw3r"]
 [ext_resource type="PackedScene" uid="uid://cgm8nshwkqev3" path="res://PigsterDance/scenes/dance_qte/keyboard_key/QteKey.tscn" id="1_ivsl6"]
+[ext_resource type="AudioStream" uid="uid://dceu2autcgweo" path="res://PigsterDance/assets/audio/goofy_beat.mp3" id="2_larvf"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_brw3r"]
 device = -1
@@ -22,4 +23,5 @@ unicode = 101
 script = ExtResource("1_brw3r")
 key_pool = Array[InputEvent]([SubResource("InputEventKey_brw3r"), SubResource("InputEventKey_ivsl6"), SubResource("InputEventKey_larvf")])
 key_speed = 350.0
+music = ExtResource("2_larvf")
 metadata/_custom_type_script = "uid://1mravwtv8td"
