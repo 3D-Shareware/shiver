@@ -10,12 +10,16 @@ var height_map: PackedFloat64Array
 @export var valley_value : float = -5.0
 @export var peak_value : float = 5.0
 
+@export var game: MicroGame
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_init_noise()
 	_generate_height_map()
 	var image:= create_image()
+	
+	# adjust peak value by fetching from difficulty
+	peak_value = game.difficulty * 18
 	
 	# adjust mesh size to match the map's
 	var plane_mesh : PlaneMesh = mesh.mesh

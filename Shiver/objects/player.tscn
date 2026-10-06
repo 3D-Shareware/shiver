@@ -86,5 +86,32 @@ stream = ExtResource("6_cubue")
 [node name="SfxHuwahThrow" type="AudioStreamPlayer" parent="." unique_id=512564582]
 stream = ExtResource("7_jveps")
 
+[node name="TooltipLayer" type="CanvasLayer" parent="." unique_id=603127802]
+
+[node name="Control" type="Control" parent="TooltipLayer" unique_id=367807086]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="TooltipLayer/Control" unique_id=2070229271]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TooltipLayer/Control/CenterContainer" unique_id=169692183]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]Wow."
+
 [connection signal="body_entered" from="Camera Pivot/Log Pickup Area" to="Camera Pivot/Log Pickup Area" method="_on_body_entered"]
 [connection signal="body_exited" from="Camera Pivot/Log Pickup Area" to="Camera Pivot/Log Pickup Area" method="_on_body_exited"]
