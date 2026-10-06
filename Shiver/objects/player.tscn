@@ -126,6 +126,7 @@ stream = ExtResource("6_cubue")
 stream = ExtResource("7_jveps")
 
 [node name="TooltipLayer" type="CanvasLayer" parent="." unique_id=603127802]
+layer = 3
 
 [node name="Control" type="Control" parent="TooltipLayer" unique_id=367807086]
 layout_mode = 3

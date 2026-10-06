@@ -19,7 +19,7 @@ func _ready() -> void:
 	log_placer.start(self)
 	tree_placer.start(self)
 	
-	thermometer.connect("survived", Callable(GameManager, "win"))
+	thermometer.connect("survived", Callable(self, "win_and_quit"))
 	campfire.connect("fire_gone_out", Callable(self, "initate_loss"))
 
 func initate_loss() -> void:
@@ -29,11 +29,20 @@ func initate_loss() -> void:
 	thermometer.game_started = false
 	started = false
 	
-	GameManager.lose()
+	lose_and_quit()
 
 func _on_respawner_body_entered(body: Node3D) -> void:
 	body.position.y = 20
 
+func win_and_quit() -> void:
+	GameManager.get_node("Background").show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	GameManager.win()
+
+func lose_and_quit() -> void:
+	GameManager.get_node("Background").show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	GameManager.lose()
 
 func _on_sfx_wind_finished() -> void:
 	sfx_wind.play(randi_range(0,8))
