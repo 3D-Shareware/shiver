@@ -3,6 +3,7 @@ extends Node2D
 
 signal qte_won
 signal qte_failed
+signal key_succeeded # new
 
 @onready var hit_box: Area2D = $HitBox
 @onready var key_handler: DanceKeyHandler = $KeyHandler
@@ -67,6 +68,7 @@ func _fail_qte(reason: String) -> void:
 
 func _on_key_succeeded(_key: InputEvent) -> void:
 	_qte_debug("SUCCESS")
+	key_succeeded.emit() # new
 
 
 func _on_key_failed(reason: String) -> void:

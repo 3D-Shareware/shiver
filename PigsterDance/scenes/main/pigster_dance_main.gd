@@ -10,7 +10,10 @@ extends MicroGame
 @onready var qte_handler = $QteHandler
 @onready var dance_qte = $QteHandler/DanceQte
 
+@onready var pigster = $Pigster # new
+
 var level_stats: DanceLevelStats
+var current_dance := 1 # new
 
 signal stage_set
 
@@ -21,6 +24,7 @@ func _ready():
 	stage_set.connect(_start_game)
 	dance_qte.qte_won.connect(_on_dance_qte_won)
 	dance_qte.qte_failed.connect(_on_dance_qte_failed)
+	dance_qte.key_succeeded.connect(_on_key_succeeded) # new
 	_set_difficulty()
 	_set_the_stage()
 
@@ -42,7 +46,11 @@ func _set_level_stats(difficulty_pool: Array[DanceLevelStats]) -> DanceLevelStat
 # Plays the animation at the start of the level
 func _set_the_stage() -> void:
 	level_animation_player.play("level_start")
+	
 	_show_start_text()
+	
+	await level_animation_player.animation_finished
+	pigster.play("wake_up")
 
 
 func _show_start_text() -> void:
@@ -59,8 +67,26 @@ func _show_start_text() -> void:
 
 func _start_game() -> void:
 	dance_qte.show()
+	pigster.play("dance_1") # new
 	await get_tree().create_timer(transition_delay).timeout
 	dance_qte.start_qte()
+
+
+func _on_key_succeeded() -> void: # new
+	_change_dance()
+
+
+func _change_dance() -> void: # new
+	print("CHANGING DANCE")
+	var next_dance := randi_range(1, 3)
+	
+	while next_dance == current_dance:
+		next_dance = randi_range(1, 3)
+	
+	current_dance = next_dance
+	print("Playing: dance_%d" % current_dance)
+
+	pigster.play("dance_%d" % current_dance)
 
 
 func _on_dance_qte_won() -> void:
