@@ -5,6 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://x2qxbdtnh3rw" path="res://BabyDefenestration/assets BABYYYY/Stick guy throwing.png" id="3_f4d4a"]
 [ext_resource type="Texture2D" uid="uid://bfdjmynhmwqa3" path="res://GhostGame/Assets/ffffff-p.png" id="4_jxnb1"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(1193, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(58, 669)
+
 [sub_resource type="LabelSettings" id="LabelSettings_xina5"]
 font_size = 100
 
@@ -13,11 +19,18 @@ script = ExtResource("1_xina5")
 
 [node name="Walls" type="StaticBody2D" parent="." unique_id=918482056]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls" unique_id=1434235337]
-position = Vector2(50, 40)
-scale = Vector2(1.0826038, 0.88247705)
-build_mode = 1
-polygon = PackedVector2Array(-2, -4, 1155, -4, 1155, 648, -3, 648)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls" unique_id=468534751]
+position = Vector2(587, -10)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls" unique_id=735385852]
+position = Vector2(586.5, 656)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls" unique_id=1350136744]
+position = Vector2(0, 324.5)
+scale = Vector2(1, 1.0800012)
+shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="Label" type="Label" parent="." unique_id=1277184842]
 offset_right = 40.0
@@ -37,7 +50,7 @@ script = ExtResource("2_vjdf4")
 
 [node name="guy" type="Sprite2D" parent="." unique_id=1318079685]
 z_index = 1
-position = Vector2(418.5, 483)
+position = Vector2(420.00003, 505.00003)
 scale = Vector2(8.062502, 8.062502)
 texture = ExtResource("3_f4d4a")
 hframes = 2
@@ -45,7 +58,7 @@ hframes = 2
 [node name="test_background" type="Sprite2D" parent="." unique_id=654029007]
 modulate = Color(0.35686275, 1, 1, 1)
 z_index = -12
-position = Vector2(552, 241)
+position = Vector2(556, 258)
 scale = Vector2(2.6911533, 1.6629747)
 texture = ExtResource("4_jxnb1")
 

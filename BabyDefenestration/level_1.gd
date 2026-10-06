@@ -1,7 +1,6 @@
 extends MicroGame
 
 @onready var level1: Node = $"."
-@onready var a = 0
 var baby = preload("res://BabyDefenestration/rigidbaby.tscn")
 var window = preload("res://BabyDefenestration/window.tscn")
 var timer_start = false
