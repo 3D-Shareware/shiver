@@ -2,7 +2,7 @@ class_name PigsterDance
 extends MicroGame
 
 @export var difficulty_pools: DanceDifficultyPools
-@export var transition_delay: float = 1.0
+@export var transition_delay: float = 2.0
 @export var ragdoll_scene: PackedScene
 @export var death_scenes: Array[PackedScene]
 
@@ -49,13 +49,26 @@ func _ready():
 	_set_the_stage()
 
 func _set_difficulty() -> void:
-	if difficulty <= 0.3:
-		level_stats = _set_level_stats(difficulty_pools.easy_pool)
-	elif difficulty > 0.3 and difficulty < 0.6:
-		level_stats = _set_level_stats(difficulty_pools.medium_pool)
+	var pool: Array[DanceLevelStats]
+	var tier_start: float
+	var tier_end: float
+
+	if difficulty <= difficulty_pools.easy_max:
+		pool = difficulty_pools.easy_pool
+		tier_start = 0.0
+		tier_end = difficulty_pools.easy_max
+	elif difficulty < difficulty_pools.medium_max:
+		pool = difficulty_pools.medium_pool
+		tier_start = difficulty_pools.easy_max
+		tier_end = difficulty_pools.medium_max
 	else:
-		level_stats = _set_level_stats(difficulty_pools.hard_pool)
-	
+		pool = difficulty_pools.hard_pool
+		tier_start = difficulty_pools.medium_max
+		tier_end = 1.0
+
+	var tier_progress: float = clampf(inverse_lerp(tier_start, tier_end, difficulty), 0.0, 1.0)
+	level_stats = _set_level_stats(pool).get_scaled(tier_progress)
+
 	# Send the current level stats to the DanceQte
 	dance_qte.current_level_stats = level_stats
 
@@ -103,6 +116,7 @@ func _change_dance() -> void:
 func _on_dance_qte_won() -> void:
 	game_over = true
 	cheer_player.play()
+	pigster.pause()
 	await get_tree().create_timer(transition_delay).timeout
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	GameManager.win()

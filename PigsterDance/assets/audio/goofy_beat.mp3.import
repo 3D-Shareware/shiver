@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/goofy_beat.mp3-d56d27ad0ed07c028a009c9e937bfb
 [params]
 
 loop=true
-loop_offset=0.0
+loop_offset=0.4
 bpm=0.0
 beat_count=0
 bar_beats=4

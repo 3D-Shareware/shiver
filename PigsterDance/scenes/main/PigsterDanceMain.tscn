@@ -187,6 +187,7 @@ stream = ExtResource("8_dhws7")
 
 [node name="CheerPlayer" type="AudioStreamPlayer" parent="AudioPlayers" unique_id=824614661]
 stream = ExtResource("11_srssv")
+volume_db = -5.0
 
 [node name="GameOverPlayer" type="AudioStreamPlayer" parent="AudioPlayers" unique_id=2144864246]
 stream = ExtResource("12_o5pja")
