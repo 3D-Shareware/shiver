@@ -48,6 +48,7 @@ unicode = 104
 script = ExtResource("2_g5uja")
 key_pool = Array[InputEvent]([SubResource("InputEventKey_nvmob"), SubResource("InputEventKey_b8yqx"), SubResource("InputEventKey_vvlmk"), SubResource("InputEventKey_a40xb"), SubResource("InputEventKey_v7xva"), SubResource("InputEventKey_xkfyp"), SubResource("InputEventKey_o52xr"), SubResource("InputEventKey_jvi8f")])
 music = ExtResource("2_drmri")
+music_start_offset = 0.1
 key_speed_start = 320.0
 key_speed_end = 400.0
 spawn_interval_start = 1.0

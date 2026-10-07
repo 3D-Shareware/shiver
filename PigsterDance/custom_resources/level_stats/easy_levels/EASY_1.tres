@@ -27,8 +27,8 @@ unicode = 114
 [resource]
 script = ExtResource("2_4gt5v")
 key_pool = Array[InputEvent]([SubResource("InputEventKey_k8fdy"), SubResource("InputEventKey_jk86s"), SubResource("InputEventKey_65ghy"), SubResource("InputEventKey_3kgfi")])
-max_tries = 2
 music = ExtResource("2_c0vbv")
+music_start_offset = 0.1
 key_speed_start = 250.0
 key_speed_end = 300.0
 metadata/_custom_type_script = "uid://1mravwtv8td"

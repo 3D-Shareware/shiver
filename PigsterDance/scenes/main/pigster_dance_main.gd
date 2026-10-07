@@ -2,7 +2,7 @@ class_name PigsterDance
 extends MicroGame
 
 @export var difficulty_pools: DanceDifficultyPools
-@export var transition_delay: float = 2.0
+@export var transition_delay: float = 1.0
 @export var ragdoll_scene: PackedScene
 @export var death_scenes: Array[PackedScene]
 
@@ -91,8 +91,8 @@ func _set_the_stage() -> void:
 
 func _start_game() -> void:
 	dance_qte.show()
-	pigster.play("dance_1") 
 	await get_tree().create_timer(transition_delay).timeout
+	pigster.play("dance_1")
 	dance_qte.start_qte()
 
 
@@ -116,7 +116,6 @@ func _change_dance() -> void:
 func _on_dance_qte_won() -> void:
 	game_over = true
 	cheer_player.play()
-	pigster.pause()
 	await get_tree().create_timer(transition_delay).timeout
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	GameManager.win()

@@ -45,10 +45,11 @@ func _start_round() -> void:
 	_play_music()
 
 
+# DanceQte
 func _play_music() -> void:
 	music_player.stream = current_level_stats.music
 	if music_player.stream != null:
-		music_player.play()
+		music_player.play(current_level_stats.music_start_offset)
 
 
 func _input(event: InputEvent) -> void:

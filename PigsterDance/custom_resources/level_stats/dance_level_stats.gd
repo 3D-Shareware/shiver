@@ -8,6 +8,7 @@ extends Resource
 
 @export_group("Music")
 @export var music: AudioStream
+@export var music_start_offset: float = 0.0
 
 @export_group("Scaling")
 @export var key_speed_start: float = 200.0

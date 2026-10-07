@@ -69,6 +69,7 @@ script = ExtResource("2_c1xab")
 key_pool = Array[InputEvent]([SubResource("InputEventKey_118ue"), SubResource("InputEventKey_c1xab"), SubResource("InputEventKey_1kpnw"), SubResource("InputEventKey_k5rh0"), SubResource("InputEventKey_msx7g"), SubResource("InputEventKey_p0wpq"), SubResource("InputEventKey_uxnpf"), SubResource("InputEventKey_wltyh"), SubResource("InputEventKey_6aiuh"), SubResource("InputEventKey_h4vx0"), SubResource("InputEventKey_nsvf5"), SubResource("InputEventKey_imstc")])
 max_tries = 2
 music = ExtResource("2_1kpnw")
+music_start_offset = 0.1
 key_speed_start = 420.0
 key_speed_end = 500.0
 spawn_interval_start = 0.8
