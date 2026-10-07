@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+## Used to determine how fast temperature drains. In the easiest difficulties, temperature decreases at half speed.
+@export var game: MicroGame
+
 @onready var sfx_fire_grow: AudioStreamPlayer = $SfxFireGrow
 
 @onready var light = $"OmniLight3D"
@@ -20,6 +23,11 @@ const ENERGY_FROM_FIREWOOD = 0.5
 
 func _ready() -> void:
 	anim.play("burn_loop")
+	if game.difficulty > 0.1:
+		temp_loss_multiplier = 0.1
+	else:
+		temp_loss_multiplier = 0.05
+
 signal fire_gone_out
 var game_started : bool = false
 

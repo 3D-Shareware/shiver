@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 		var super_raw_input_dir = Input.get_vector("a", "d", "s", "w")
 		if super_raw_input_dir:
 			emit_signal("player_started_game")
-			instruction_text.set_text("[center]Use logs to feed the fire!")
+			#instruction_text.set_text("[center]Use logs to feed the fire!")
 		return
 	
 	# *** Camera movement ***
