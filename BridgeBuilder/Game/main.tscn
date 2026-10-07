@@ -17,9 +17,14 @@ script = ExtResource("1_ylxma")
 position = Vector2(44, 214)
 scale = Vector2(0.75, 0.75)
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1134167570]
+anchor_mode = 0
+zoom = Vector2(1.8, 1.8)
+
 [node name="Maps" type="Node" parent="." unique_id=1432266559]
 
-[node name="LayoutSelection" parent="Maps" unique_id=387250219 instance=ExtResource("5_gph0v")]
+[node name="LayoutSelection" parent="Maps" unique_id=387250219 node_paths=PackedStringArray("main") instance=ExtResource("5_gph0v")]
+main = NodePath("../..")
 
 [node name="BaseMap" parent="Maps" unique_id=518282382 instance=ExtResource("3_b5vju")]
 
@@ -41,10 +46,6 @@ position = Vector2(590, 2)
 
 [node name="Killzone" parent="WinLose" unique_id=1355364477 instance=ExtResource("3_hn2i7")]
 position = Vector2(315, 414)
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1134167570]
-anchor_mode = 0
-zoom = Vector2(1.8, 1.8)
 
 [connection signal="input_event" from="Logs/Log1" to="Logs/Log1" method="_on_input_event"]
 [connection signal="body_entered" from="WinLose/WinZone" to="WinLose/WinZone" method="_on_body_entered"]

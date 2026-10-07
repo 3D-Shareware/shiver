@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 175.0
-const JUMP_VELOCITY = -200.0
+const JUMP_VELOCITY = -250.0
 var moving : bool = false
 
 func _on_timer_timeout() -> void:
