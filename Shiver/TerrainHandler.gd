@@ -20,6 +20,7 @@ func start() -> void:
 	
 	# adjust peak value by fetching from difficulty
 	peak_value = game.difficulty * 20
+	frequency = 0.03
 	
 	# adjust mesh size to match the map's
 	var plane_mesh : PlaneMesh = mesh.mesh
