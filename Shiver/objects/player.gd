@@ -14,6 +14,7 @@ extends CharacterBody3D
 @onready var sfx_humph_grab: AudioStreamPlayer = $SfxHumphGrab
 @onready var sfx_huwah_throw: AudioStreamPlayer = $SfxHuwahThrow
 
+@onready var instruction_text = $"TooltipLayer/Control/MarginContainer/RichTextLabel"
 
 var game: Node3D
 
@@ -32,6 +33,9 @@ const LOG_SPEED_MULT = 0.5
 # the number of projects I have made where the y velocity is overriden manually every frame is truly ridiculous
 var current_grav = 0.0
 
+## Used to start the game when the player starts moving.
+signal player_started_game
+
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseMotion:
 		var camera_movement: Vector2
@@ -47,6 +51,10 @@ func _physics_process(delta: float) -> void:
 	if not game.started:
 		velocity.y = -20
 		move_and_slide()
+		var super_raw_input_dir = Input.get_vector("a", "d", "s", "w")
+		if super_raw_input_dir:
+			emit_signal("player_started_game")
+			#instruction_text.set_text("[center]Use logs to feed the fire!")
 		return
 	
 	# *** Camera movement ***
@@ -69,7 +77,7 @@ func _physics_process(delta: float) -> void:
 				
 				# grab sfx, starts delayed because of dead noise
 				sfx_humph_grab.play(0.33)
-				
+				instruction_text.set_text("[center](Click) Throw")
 		# otherwise, you need to throw the logs
 		else:
 			for firewood in all_held_logs:
@@ -77,6 +85,7 @@ func _physics_process(delta: float) -> void:
 				firewood.launch_with_velocity(THROW_STRENGTH * -camera_pivot.global_transform.basis.z.normalized())
 			all_held_logs.clear()
 			
+			instruction_text.set_text("")
 			# play throw sfx, starts delayed because of dead noise
 			sfx_huwah_throw.play(0.5)
 	

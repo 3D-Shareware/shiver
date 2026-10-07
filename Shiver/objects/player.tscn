@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://d3pynkt3rhtps" path="res://Shiver/RileySFX/SFX_snow_trudge.mp3" id="5_pc3vb"]
 [ext_resource type="AudioStream" uid="uid://dlalxn5wqowxo" path="res://Shiver/RileySFX/SFX_humph_grab.mp3" id="6_cubue"]
 [ext_resource type="AudioStream" uid="uid://bcpjvcmk7vxhr" path="res://Shiver/RileySFX/SFX_huwah_throw.mp3" id="7_jveps"]
+[ext_resource type="Theme" uid="uid://clkk5pk1s6dhi" path="res://Shiver/shiver_theme.tres" id="8_cubue"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bk7jt"]
 
@@ -93,11 +94,12 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0
 [node name="Log Hold Position" type="Node3D" parent="Camera Pivot" unique_id=1343474183]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -1)
 
-[node name="Log Pickup Area" type="Area3D" parent="Camera Pivot" unique_id=1626229488]
+[node name="Log Pickup Area" type="Area3D" parent="Camera Pivot" unique_id=1626229488 node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.742278e-08, 0, -1)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("2_1eeb5")
+player = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera Pivot/Log Pickup Area" unique_id=1174752203]
 shape = SubResource("SphereShape3D_bk7jt")
@@ -126,6 +128,7 @@ stream = ExtResource("6_cubue")
 stream = ExtResource("7_jveps")
 
 [node name="TooltipLayer" type="CanvasLayer" parent="." unique_id=603127802]
+layer = 3
 
 [node name="Control" type="Control" parent="TooltipLayer" unique_id=367807086]
 layout_mode = 3
@@ -136,21 +139,28 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="TooltipLayer/Control" unique_id=2070229271]
+[node name="MarginContainer" type="MarginContainer" parent="TooltipLayer/Control" unique_id=696300720]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -512.0
+offset_right = 256.0
 grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 32
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TooltipLayer/Control/CenterContainer" unique_id=169692183]
+[node name="RichTextLabel" type="RichTextLabel" parent="TooltipLayer/Control/MarginContainer" unique_id=169692183]
+custom_minimum_size = Vector2(800, 512)
 layout_mode = 2
 mouse_filter = 2
+theme = ExtResource("8_cubue")
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
-text = "[center]Wow."
+vertical_alignment = 2
 
 [node name="Shiverer" type="AnimationPlayer" parent="." unique_id=1161334510]
 libraries/ = SubResource("AnimationLibrary_jveps")
