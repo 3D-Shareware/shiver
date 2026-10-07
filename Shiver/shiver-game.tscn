@@ -260,6 +260,7 @@ horizontal_alignment = 1
 [node name="WinTimer" type="Timer" parent="Thermometer" unique_id=24852790]
 
 [node name="SurviveLabel" type="Label" parent="Thermometer/WinTimer" unique_id=1152321423]
+visible = false
 offset_left = 16.0
 offset_top = 464.0
 offset_right = 182.0
@@ -269,6 +270,7 @@ theme_override_font_sizes/font_size = 24
 text = "Survive for"
 
 [node name="TimerLabel" type="Label" parent="Thermometer/WinTimer" unique_id=1965213045]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0

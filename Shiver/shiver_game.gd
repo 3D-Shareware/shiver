@@ -7,6 +7,8 @@ extends MicroGame
 @onready var campfire: CharacterBody3D = $Campfire
 @onready var player: CharacterBody3D = $"Player"
 
+@onready var survive_label: Label = $"Thermometer/WinTimer/SurviveLabel"
+
 @onready var sfx_wind: AudioStreamPlayer = $SfxWind
 @onready var instructions: Control = $Instructions
 
@@ -55,6 +57,7 @@ func _on_sfx_wind_finished() -> void:
 ## Game starts here, which now also initiates when the player starts moving. Will still initiate after a couple seconds of waiting.
 func _on_instruction_timer_timeout() -> void:
 	instructions.visible = false
+	survive_label.show()
 	thermometer.visible = true
 	campfire.visible = true
 	started = true
