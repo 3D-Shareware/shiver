@@ -19,7 +19,7 @@ func start() -> void:
 	var image:= create_image()
 	
 	# adjust peak value by fetching from difficulty
-	peak_value = 10#game.difficulty * 20
+	peak_value = game.difficulty * 20
 	
 	# adjust mesh size to match the map's
 	var plane_mesh : PlaneMesh = mesh.mesh

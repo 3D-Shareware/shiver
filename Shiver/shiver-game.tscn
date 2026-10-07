@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b7tmomj563ed0" path="res://Shiver/RileySprites/ThermometerMercury.png" id="9_qe8s3"]
 [ext_resource type="Script" uid="uid://bqy3iqx4qurc3" path="res://Shiver/objects/thermometer.gd" id="10_isfns"]
 [ext_resource type="AudioStream" uid="uid://djwyeq1x0ethe" path="res://Shiver/RileySFX/SFX_wind.mp3" id="11_qe8s3"]
+[ext_resource type="Theme" uid="uid://clkk5pk1s6dhi" path="res://Shiver/shiver_theme.tres" id="12_pau8c"]
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_incux"]
 
@@ -212,6 +213,7 @@ offset_right = -160.0
 offset_bottom = -61.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("12_pau8c")
 theme_override_font_sizes/font_size = 75
 text = "YOU SURVIVED!"
 horizontal_alignment = 1
@@ -227,6 +229,7 @@ offset_left = 7.0
 offset_top = -182.0
 offset_right = 203.0
 grow_vertical = 0
+theme = ExtResource("12_pau8c")
 theme_override_font_sizes/font_size = 126
 text = "30"
 
@@ -254,6 +257,7 @@ offset_right = 359.5
 offset_bottom = 209.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("12_pau8c")
 theme_override_font_sizes/font_size = 45
 text = "W A S D : to move
 MOUSE : to look around
@@ -273,6 +277,7 @@ offset_right = 354.5
 offset_bottom = -54.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("12_pau8c")
 theme_override_font_sizes/font_size = 45
 text = "Feed the fire!"
 horizontal_alignment = 1

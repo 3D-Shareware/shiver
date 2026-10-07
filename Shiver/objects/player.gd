@@ -14,6 +14,7 @@ extends CharacterBody3D
 @onready var sfx_humph_grab: AudioStreamPlayer = $SfxHumphGrab
 @onready var sfx_huwah_throw: AudioStreamPlayer = $SfxHuwahThrow
 
+@onready var instruction_text = $"TooltipLayer/Control/MarginContainer/RichTextLabel"
 
 var game: Node3D
 
@@ -69,7 +70,7 @@ func _physics_process(delta: float) -> void:
 				
 				# grab sfx, starts delayed because of dead noise
 				sfx_humph_grab.play(0.33)
-				
+				instruction_text.set_text("[center](Click) Throw")
 		# otherwise, you need to throw the logs
 		else:
 			for firewood in all_held_logs:
@@ -77,6 +78,7 @@ func _physics_process(delta: float) -> void:
 				firewood.launch_with_velocity(THROW_STRENGTH * -camera_pivot.global_transform.basis.z.normalized())
 			all_held_logs.clear()
 			
+			instruction_text.set_text("")
 			# play throw sfx, starts delayed because of dead noise
 			sfx_huwah_throw.play(0.5)
 	

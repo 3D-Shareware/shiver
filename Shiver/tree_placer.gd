@@ -4,7 +4,7 @@ extends Node3D
 
 const TREE = preload("res://Shiver/objects/tree.tscn")
 var tree_count = 64
-const TREE_MIN_RANGE = 1
+const TREE_MIN_RANGE = 2
 const TREE_MAX_RANGE = 30
 
 func start(the_game: Node) -> void:
