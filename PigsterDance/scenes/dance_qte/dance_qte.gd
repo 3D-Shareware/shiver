@@ -54,6 +54,10 @@ func _play_music() -> void:
 func _input(event: InputEvent) -> void:
 	if not is_qte_active or not event.is_pressed() or event.is_echo():
 		return
+	if get_tree().paused:
+		return
+	if event.is_action_pressed("ui_cancel") or (event is InputEventKey and event.keycode == KEY_ESCAPE):
+		return
 	key_handler.handle_input(event)
 
 

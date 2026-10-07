@@ -14,9 +14,23 @@ extends MicroGame
 @onready var pigster = $Pigster 
 
 var level_stats: DanceLevelStats
-var current_dance := 1 
+var current_dance: int = 1 
+var game_over:bool = false
 
 signal stage_set
+
+
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_PAUSED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		NOTIFICATION_UNPAUSED:
+			if not game_over:
+				Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
+func _exit_tree() -> void:
+	# Safety net, e.g. if the player quits to the main menu from the pause menu
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
