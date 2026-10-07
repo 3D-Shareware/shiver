@@ -4,12 +4,15 @@ extends Node2D
 signal qte_won
 signal qte_failed
 signal key_succeeded
+signal try_failed
+signal retry_started
 
 @onready var hit_box: Area2D = $HitBox
 @onready var key_handler: DanceKeyHandler = $KeyHandler
 @onready var result_label: Label = $ResultLabel
 @onready var duration_timer: Timer = $DurationTimer
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
+
 
 var tries_left: int = 0
 var is_qte_active: bool = false
@@ -76,7 +79,9 @@ func _fail_qte(reason: String) -> void:
 		return
 
 	_qte_debug("%s - %d tries left" % [reason, tries_left])
+	try_failed.emit()
 	await get_tree().create_timer(current_level_stats.retry_delay).timeout
+	retry_started.emit()
 	_start_round()
 
 

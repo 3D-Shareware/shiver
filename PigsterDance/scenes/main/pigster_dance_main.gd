@@ -9,11 +9,11 @@ extends MicroGame
 @onready var start_text = $StageUI/StartText
 @onready var qte_handler = $QteHandler
 @onready var dance_qte = $QteHandler/DanceQte
-
-@onready var pigster = $Pigster # new
+@onready var boo_player: AudioStreamPlayer = $BooPlayer
+@onready var pigster = $Pigster 
 
 var level_stats: DanceLevelStats
-var current_dance := 1 # new
+var current_dance := 1 
 
 signal stage_set
 
@@ -24,7 +24,9 @@ func _ready():
 	stage_set.connect(_start_game)
 	dance_qte.qte_won.connect(_on_dance_qte_won)
 	dance_qte.qte_failed.connect(_on_dance_qte_failed)
-	dance_qte.key_succeeded.connect(_on_key_succeeded) # new
+	dance_qte.try_failed.connect(_on_dance_qte_try_failed)
+	dance_qte.retry_started.connect(_on_dance_qte_retry_started)
+	dance_qte.key_succeeded.connect(_on_key_succeeded)
 	_set_difficulty()
 	_set_the_stage()
 
@@ -67,16 +69,16 @@ func _show_start_text() -> void:
 
 func _start_game() -> void:
 	dance_qte.show()
-	pigster.play("dance_1") # new
+	pigster.play("dance_1") 
 	await get_tree().create_timer(transition_delay).timeout
 	dance_qte.start_qte()
 
 
-func _on_key_succeeded() -> void: # new
+func _on_key_succeeded() -> void:
 	_change_dance()
 
 
-func _change_dance() -> void: # new
+func _change_dance() -> void: 
 	print("CHANGING DANCE")
 	var next_dance := randi_range(1, 3)
 	
@@ -98,11 +100,22 @@ func _on_dance_qte_won() -> void:
 
 func _on_dance_qte_failed() -> void:
 	_show_result_text("qte dance failed")
+	_play_death()
 	await get_tree().create_timer(transition_delay).timeout
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	GameManager.lose()
 
+func _play_death() -> void:
+	pass
 
 func _show_result_text(text: String) -> void:
 	start_text.text = text
 	start_text.show()
+
+func _on_dance_qte_try_failed() -> void:
+	pigster.pause()
+	boo_player.play()
+
+
+func _on_dance_qte_retry_started() -> void:
+	pigster.play()

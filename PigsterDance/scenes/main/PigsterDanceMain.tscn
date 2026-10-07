@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://j5l7c1huhq0m" path="res://PigsterDance/scenes/characters/Pigster.tscn" id="5_cnotw"]
 [ext_resource type="Texture2D" uid="uid://dbx34xax8pc5y" path="res://PigsterDance/assets/pngs/piggy_stage(audience).png" id="5_oloeb"]
 [ext_resource type="PackedScene" uid="uid://6f2e37esy47e" path="res://PigsterDance/scenes/dance_qte/DanceQte.tscn" id="6_hvi78"]
+[ext_resource type="AudioStream" uid="uid://j2og6uxriy68" path="res://PigsterDance/assets/audio/boo.mp3" id="8_dhws7"]
 
 [sub_resource type="Animation" id="Animation_d8t4y"]
 length = 2.0
@@ -110,8 +111,6 @@ centered = false
 
 [node name="Pigster" parent="." unique_id=1841482893 instance=ExtResource("5_cnotw")]
 position = Vector2(576, -400)
-animation = &"wake_up"
-frame_progress = 0.0
 
 [node name="LevelAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1377590164]
 unique_name_in_owner = true
@@ -144,3 +143,6 @@ vertical_alignment = 1
 [node name="DanceQte" parent="QteHandler" unique_id=2064147845 instance=ExtResource("6_hvi78")]
 unique_name_in_owner = true
 z_index = 1
+
+[node name="BooPlayer" type="AudioStreamPlayer" parent="." unique_id=37163722]
+stream = ExtResource("8_dhws7")
