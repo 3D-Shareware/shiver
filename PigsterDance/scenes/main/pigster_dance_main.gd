@@ -10,7 +10,10 @@ extends MicroGame
 @onready var label_timer = $LabelTimer
 @onready var qte_handler = $QteHandler
 @onready var dance_qte = $QteHandler/DanceQte
-@onready var boo_player: AudioStreamPlayer = $BooPlayer
+@onready var boo_player = $AudioPlayers/BooPlayer
+@onready var cheer_player = $AudioPlayers/CheerPlayer
+@onready var game_over_player = $AudioPlayers/GameOverPlayer
+@onready var pigster_player = $AudioPlayers/PigsterPlayer
 @onready var pigster = $Pigster 
 
 var level_stats: DanceLevelStats
@@ -98,13 +101,20 @@ func _change_dance() -> void:
 
 
 func _on_dance_qte_won() -> void:
+	game_over = true
+	cheer_player.play()
 	await get_tree().create_timer(transition_delay).timeout
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	GameManager.win()
 
 
+
 func _on_dance_qte_failed() -> void:
+	game_over = true
 	dance_qte.hide()
+	pigster.pause()
+	game_over_player.play()
+	await game_over_player.finished
 	await _play_death()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	GameManager.lose()
@@ -123,6 +133,7 @@ func _play_death() -> void:
 	await death.finished
 
 func _on_death_impact(hit_position: Vector2, direction: Vector2) -> void:
+	pigster_player.play()
 	var ragdoll: PigsterRagdoll = ragdoll_scene.instantiate()
 	add_child(ragdoll)
 	ragdoll.global_position = pigster.global_position

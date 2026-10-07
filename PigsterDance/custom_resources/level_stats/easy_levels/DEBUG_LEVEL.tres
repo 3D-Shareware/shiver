@@ -16,4 +16,5 @@ key_speed = 400.0
 max_tries = 1
 retry_delay = 1.0
 music = ExtResource("2_r71cr")
+qte_duration = 5.0
 metadata/_custom_type_script = "uid://1mravwtv8td"
