@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://0qet1tr3kvh0" path="res://PigsterDance/scenes/main/pigster_dance_main.gd" id="1_afivb"]
 [ext_resource type="Resource" uid="uid://blcwuxrgu7vwp" path="res://PigsterDance/custom_resources/difficulty_pools/DifficultyPools.tres" id="2_dhws7"]
+[ext_resource type="PackedScene" uid="uid://chu83kvlare6l" path="res://PigsterDance/scenes/characters/PigsterRagdoll.tscn" id="3_hvi78"]
 [ext_resource type="Texture2D" uid="uid://l3xegcu4iqxi" path="res://PigsterDance/assets/pngs/piggy_stage(curtain).png" id="3_migwy"]
+[ext_resource type="PackedScene" uid="uid://c0uw7wa0fc4te" path="res://PigsterDance/scenes/deaths/AnvilDeath.tscn" id="4_88043"]
 [ext_resource type="Texture2D" uid="uid://cj0xwwjf27bjw" path="res://PigsterDance/assets/pngs/piggy_stage(stage).png" id="4_dhws7"]
 [ext_resource type="PackedScene" uid="uid://j5l7c1huhq0m" path="res://PigsterDance/scenes/characters/Pigster.tscn" id="5_cnotw"]
 [ext_resource type="Texture2D" uid="uid://dbx34xax8pc5y" path="res://PigsterDance/assets/pngs/piggy_stage(audience).png" id="5_oloeb"]
@@ -82,9 +84,20 @@ _data = {
 &"level_start": SubResource("Animation_rxa45")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6afx"]
+size = Vector2(1144, 105.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7qlb"]
+size = Vector2(93.5, 505)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tjqo"]
+size = Vector2(104, 513)
+
 [node name="PigsterDanceMain" type="Node2D" unique_id=974850155]
 script = ExtResource("1_afivb")
 difficulty_pools = ExtResource("2_dhws7")
+ragdoll_scene = ExtResource("3_hvi78")
+death_scenes = Array[PackedScene]([ExtResource("4_88043")])
 
 [node name="Visuals" type="Node2D" parent="." unique_id=326383955]
 
@@ -146,3 +159,23 @@ z_index = 1
 
 [node name="BooPlayer" type="AudioStreamPlayer" parent="." unique_id=37163722]
 stream = ExtResource("8_dhws7")
+
+[node name="Boundaries" type="Node2D" parent="." unique_id=1541025079]
+
+[node name="Floor" type="StaticBody2D" parent="Boundaries" unique_id=254089627]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Floor" unique_id=1834666354]
+position = Vector2(577, 457.25)
+shape = SubResource("RectangleShape2D_g6afx")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundaries" unique_id=1695394462]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D2" unique_id=1532032902]
+position = Vector2(49.25, 252.5)
+shape = SubResource("RectangleShape2D_a7qlb")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boundaries" unique_id=961919614]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D3" unique_id=259852349]
+position = Vector2(1097, 255)
+shape = SubResource("RectangleShape2D_4tjqo")

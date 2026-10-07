@@ -3,6 +3,8 @@ extends MicroGame
 
 @export var difficulty_pools: DanceDifficultyPools
 @export var transition_delay: float = 1.0
+@export var ragdoll_scene: PackedScene
+@export var death_scenes: Array[PackedScene]
 
 @onready var level_animation_player = %LevelAnimationPlayer
 @onready var label_timer = $LabelTimer
@@ -100,13 +102,29 @@ func _on_dance_qte_won() -> void:
 
 func _on_dance_qte_failed() -> void:
 	_show_result_text("qte dance failed")
-	_play_death()
-	await get_tree().create_timer(transition_delay).timeout
+	await _play_death()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	GameManager.lose()
-
+	
 func _play_death() -> void:
-	pass
+	pigster.pause()
+
+	if death_scenes.is_empty():
+		push_error("Death Scenes is Empty")
+		return
+
+	var death: DanceDeath = death_scenes.pick_random().instantiate()
+	add_child(death)
+	death.impact.connect(_on_death_impact)
+	death.start(pigster.global_position)
+	await death.finished
+
+func _on_death_impact(hit_position: Vector2, direction: Vector2) -> void:
+	var ragdoll: PigsterRagdoll = ragdoll_scene.instantiate()
+	add_child(ragdoll)
+	ragdoll.global_position = pigster.global_position
+	pigster.hide()
+	ragdoll.burst(hit_position, direction)
 
 func _show_result_text(text: String) -> void:
 	start_text.text = text
