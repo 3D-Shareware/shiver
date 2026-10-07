@@ -25,20 +25,6 @@ var HardLayouts : Array[PackedScene] = [
 	preload("res://BridgeBuilder/map/HardMaps/HardWallOne.tscn")
 ]
 
-#var layouts : Array[PackedScene] = [
-	#preload("res://BridgeBuilder/map/EasyMaps/EasyFrowns.tscn"),
-	#preload("res://BridgeBuilder/map/EasyMaps/EasyOval.tscn"),
-	#preload("res://BridgeBuilder/map/EasyMaps/EasyPyramid.tscn"),
-	#preload("res://BridgeBuilder/map/EasyMaps/EasySmiles.tscn"),
-	#preload("res://BridgeBuilder/map/EasyMaps/EasyThreeBlocks.tscn"),
-	#preload("res://BridgeBuilder/map/MediumMaps/MediumArrows.tscn"),
-	#preload("res://BridgeBuilder/map/MediumMaps/MediumRamp.tscn"),
-	#preload("res://BridgeBuilder/map/MediumMaps/MediumSpike.tscn"),
-	#preload("res://BridgeBuilder/map/MediumMaps/MediumSpikesPlural.tscn"),
-	#preload("res://BridgeBuilder/map/HardMaps/HardHolesInWall.tscn"),
-	#preload("res://BridgeBuilder/map/HardMaps/HardThroughTheSphere.tscn"),
-	#preload("res://BridgeBuilder/map/HardMaps/HardWallOne.tscn")
-#]
 
 func _ready() -> void:
 	spawn_scene()
@@ -49,7 +35,7 @@ func spawn_scene() -> void:
 	# Spawns layout depending the current difficulty
 	if main.difficulty == 0:
 		scene_to_spawn = Tutorial
-	elif main.difficulty != 0 and main.difficulty <= .33:
+	elif main.difficulty <= .33:
 		scene_to_spawn = EasyLayouts.pick_random()
 	elif .33 < main.difficulty and main.difficulty < .66:
 		scene_to_spawn = MedLayouts.pick_random()
