@@ -36,6 +36,10 @@ height = 34.0
 [node name="PigsterRagdoll" type="Node2D" unique_id=1846675138]
 script = ExtResource("1_q52a1")
 part_material = ExtResource("2_fkf2c")
+burst_force = 1000.0
+spread_force = 500.0
+lift_force = 300.0
+max_spin = 5.0
 
 [node name="Torso" type="RigidBody2D" parent="." unique_id=173959989]
 collision_layer = 2
@@ -52,6 +56,7 @@ shape = SubResource("CapsuleShape2D_843s7")
 
 [node name="Head" type="RigidBody2D" parent="." unique_id=930298573]
 collision_layer = 2
+gravity_scale = 0.3
 
 [node name="Sprite2D" type="Sprite2D" parent="Head" unique_id=81226943]
 position = Vector2(0, 81)
@@ -64,6 +69,7 @@ shape = SubResource("CapsuleShape2D_j7ojc")
 
 [node name="LeftArm" type="RigidBody2D" parent="." unique_id=802326131]
 collision_layer = 2
+gravity_scale = 0.4
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftArm" unique_id=120339064]
 position = Vector2(-20, 46)
@@ -77,6 +83,7 @@ shape = SubResource("CapsuleShape2D_h7smj")
 
 [node name="RightArm" type="RigidBody2D" parent="." unique_id=677556384]
 collision_layer = 2
+gravity_scale = 0.4
 
 [node name="Sprite2D" type="Sprite2D" parent="RightArm" unique_id=1203837255]
 position = Vector2(10, 49)
@@ -90,6 +97,7 @@ shape = SubResource("CapsuleShape2D_nt3hm")
 
 [node name="LeftLeg" type="RigidBody2D" parent="." unique_id=392813943]
 collision_layer = 2
+gravity_scale = 0.4
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftLeg" unique_id=1713857003]
 position = Vector2(-18, 57)

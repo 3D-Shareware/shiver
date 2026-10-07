@@ -8,7 +8,6 @@ extends MicroGame
 
 @onready var level_animation_player = %LevelAnimationPlayer
 @onready var label_timer = $LabelTimer
-@onready var start_text = $StageUI/StartText
 @onready var qte_handler = $QteHandler
 @onready var dance_qte = $QteHandler/DanceQte
 @onready var boo_player: AudioStreamPlayer = $BooPlayer
@@ -51,22 +50,13 @@ func _set_level_stats(difficulty_pool: Array[DanceLevelStats]) -> DanceLevelStat
 func _set_the_stage() -> void:
 	level_animation_player.play("level_start")
 	
-	_show_start_text()
-	
 	await level_animation_player.animation_finished
 	pigster.play("wake_up")
-
-
-func _show_start_text() -> void:
-	await level_animation_player.animation_finished
-	label_timer.start(0.7)
-	await label_timer.timeout
-	start_text.show()
-	label_timer.start(0.7)
-	await label_timer.timeout
-	start_text.hide()
-	await get_tree().create_timer(transition_delay).timeout
+	await pigster.animation_finished
 	stage_set.emit()
+
+
+
 
 
 func _start_game() -> void:
@@ -94,14 +84,13 @@ func _change_dance() -> void:
 
 
 func _on_dance_qte_won() -> void:
-	_show_result_text("qte won")
 	await get_tree().create_timer(transition_delay).timeout
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	GameManager.win()
 
 
 func _on_dance_qte_failed() -> void:
-	_show_result_text("qte dance failed")
+	dance_qte.hide()
 	await _play_death()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	GameManager.lose()
@@ -126,9 +115,7 @@ func _on_death_impact(hit_position: Vector2, direction: Vector2) -> void:
 	pigster.hide()
 	ragdoll.burst(hit_position, direction)
 
-func _show_result_text(text: String) -> void:
-	start_text.text = text
-	start_text.show()
+
 
 func _on_dance_qte_try_failed() -> void:
 	pigster.pause()
@@ -137,3 +124,6 @@ func _on_dance_qte_try_failed() -> void:
 
 func _on_dance_qte_retry_started() -> void:
 	pigster.play()
+
+func _on_escape_clicked() -> void:
+	pass
