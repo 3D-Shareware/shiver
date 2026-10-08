@@ -4,9 +4,8 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bipv4sw3vufy0"
 path.s3tc="res://.godot/imported/target_target_emission.png-73a71f31739df55859ca1825611c2681.s3tc.ctex"
-path.etc2="res://.godot/imported/target_target_emission.png-73a71f31739df55859ca1825611c2681.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -16,7 +15,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Kevin/assets/models/target_target_emission.png"
-dest_files=["res://.godot/imported/target_target_emission.png-73a71f31739df55859ca1825611c2681.s3tc.ctex", "res://.godot/imported/target_target_emission.png-73a71f31739df55859ca1825611c2681.etc2.ctex"]
+dest_files=["res://.godot/imported/target_target_emission.png-73a71f31739df55859ca1825611c2681.s3tc.ctex"]
 
 [params]
 

@@ -4,9 +4,8 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1im2wlygy5jf"
 path.s3tc="res://.godot/imported/chest_lid_chest_lid.png-f01c66449e8ea33bbf373abc9c630669.s3tc.ctex"
-path.etc2="res://.godot/imported/chest_lid_chest_lid.png-f01c66449e8ea33bbf373abc9c630669.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -16,7 +15,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Kevin/assets/models/chest_lid_chest_lid.png"
-dest_files=["res://.godot/imported/chest_lid_chest_lid.png-f01c66449e8ea33bbf373abc9c630669.s3tc.ctex", "res://.godot/imported/chest_lid_chest_lid.png-f01c66449e8ea33bbf373abc9c630669.etc2.ctex"]
+dest_files=["res://.godot/imported/chest_lid_chest_lid.png-f01c66449e8ea33bbf373abc9c630669.s3tc.ctex"]
 
 [params]
 
