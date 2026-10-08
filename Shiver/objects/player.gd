@@ -77,7 +77,7 @@ func _physics_process(delta: float) -> void:
 				
 				# grab sfx, starts delayed because of dead noise
 				sfx_humph_grab.play(0.33)
-				instruction_text.set_text("[center](Click) Throw")
+				instruction_text.set_text("[center](Click) Roll")
 		# otherwise, you need to throw the logs
 		else:
 			for firewood in all_held_logs:
