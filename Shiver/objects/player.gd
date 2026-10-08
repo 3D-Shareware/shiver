@@ -15,6 +15,7 @@ extends CharacterBody3D
 @onready var sfx_huwah_throw: AudioStreamPlayer = $SfxHuwahThrow
 
 @onready var instruction_text = $"TooltipLayer/Control/MarginContainer/RichTextLabel"
+@onready var lose_anim: AnimationPlayer = $"LoseAnim"
 
 var game: Node3D
 
@@ -29,6 +30,9 @@ const GROUND_ACCEL = 60.0
 const MAX_SPEED = 10.0
 ## Speed multiplier when holding firewood.
 const LOG_SPEED_MULT = 0.5
+
+## Only changes when the game loses for cosmetic purposes. Exported so the AnimationPlayer can edit it directly.
+@export var freeze_speed_multiplier: float = 1.0
 
 # the number of projects I have made where the y velocity is overriden manually every frame is truly ridiculous
 var current_grav = 0.0
@@ -110,9 +114,9 @@ func _physics_process(delta: float) -> void:
 	cooked_input_dir.z -= raw_input_dir.x * sin(cam_rot)
 	cooked_input_dir.x += raw_input_dir.x * cos(cam_rot)
 	
-	var speed_mult: float = 1.0
+	var speed_mult: float = freeze_speed_multiplier
 	if !all_held_logs.is_empty():
-		speed_mult = LOG_SPEED_MULT
+		speed_mult *= LOG_SPEED_MULT
 	velocity = velocity.move_toward(cooked_input_dir * MAX_SPEED * speed_mult, GROUND_ACCEL * delta * speed_mult)
 	velocity.y = current_grav
 	
@@ -129,3 +133,6 @@ func _physics_process(delta: float) -> void:
 		for firewood in all_held_logs:
 			firewood.position = log_hold_position.global_position
 			firewood.rotation = Vector3(camera_pivot.rotation.x, camera_pivot.rotation.y, camera_pivot.rotation.z - PI/2)
+
+func lose_and_freeze_and_be_generally_sad() -> void:
+	lose_anim.play("lose")

@@ -8,13 +8,20 @@ extends MicroGame
 @onready var player: CharacterBody3D = $"Player"
 
 @onready var survive_label: Label = $"Thermometer/WinTimer/SurviveLabel"
+@onready var lose_anim_timer: Timer = $"LoseAnimTimer"
+
+@onready var objective_label: Label = $"Instructions/CenterContainer/Objective"
 
 @onready var sfx_wind: AudioStreamPlayer = $SfxWind
 @onready var instructions: Control = $Instructions
 
 @onready var instruction_anim: AnimationPlayer = $"Instructions/AnimationPlayer"
+@onready var win_or_lose_anim: AnimationPlayer = $"WinOrLoseAnimationPlayer"
 
 var started : bool = false
+
+## When true, you simply can't win.
+var lost: bool = false
 
 func _ready() -> void:
 	GameManager.get_node("Background").hide()
@@ -35,7 +42,12 @@ func initate_loss() -> void:
 	
 	thermometer.game_started = false
 	started = false
-	
+	lost = true
+	player.lose_and_freeze_and_be_generally_sad()
+	lose_anim_timer.start()
+	objective_label.text = "You froze..."
+	win_or_lose_anim.play("lose")
+	await lose_anim_timer.timeout
 	lose_and_quit()
 
 func _on_respawner_body_entered(body: Node3D) -> void:
@@ -61,3 +73,7 @@ func _on_instruction_timer_timeout() -> void:
 	thermometer.visible = true
 	campfire.visible = true
 	started = true
+
+func win_sequence() -> void:
+	objective_label.text = "YOU SURVIVED!"
+	win_or_lose_anim.play("win")

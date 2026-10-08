@@ -29,7 +29,8 @@ func _process(delta: float) -> void:
 		tint_progress = Color(1,1-value_ticker,1-value_ticker,1)
 		
 		if not animation_player.is_playing():
-			animation_player.play("player_won")
+			#animation_player.play("player_won")
+			game.win_sequence()
 		
 		if value_ticker >= 1:
 			survived.emit()
@@ -52,7 +53,9 @@ func _on_visibility_changed() -> void:
 
 func _on_win_timer_timeout() -> void:
 	animation_player.play("TimerJuice")
-	if win_counter == 0:
+	if game.lost:
+		win_timer.stop()
+	elif win_counter == 0:
 		win_sequence = true
 		win_timer.stop()
 		value_ticker = 0
