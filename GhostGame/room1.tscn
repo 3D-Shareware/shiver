@@ -76,8 +76,9 @@ _data = {
 
 [sub_resource type="SystemFont" id="SystemFont_d0siw"]
 font_names = PackedStringArray("Chiller")
+subpixel_positioning = 0
 
-[node name="Room1" type="Node2D" unique_id=246662900]
+[node name="Room1" type="Node" unique_id=126980255]
 script = ExtResource("1_j87sx")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1004233685]
@@ -150,7 +151,7 @@ stream = ExtResource("14_skr5q")
 offset_left = 496.0
 offset_top = 232.0
 offset_right = 569.0
-offset_bottom = 320.0
+offset_bottom = 332.0
 theme_override_fonts/font = SubResource("SystemFont_d0siw")
 theme_override_font_sizes/font_size = 86
 
