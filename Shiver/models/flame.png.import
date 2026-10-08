@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6wtiumpi86xf"
 path.bptc="res://.godot/imported/flame.png-19d96a3b56849ce41f373671ae3db011.bptc.ctex"
+path.astc="res://.godot/imported/flame.png-19d96a3b56849ce41f373671ae3db011.astc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Shiver/models/flame.png"
-dest_files=["res://.godot/imported/flame.png-19d96a3b56849ce41f373671ae3db011.bptc.ctex"]
+dest_files=["res://.godot/imported/flame.png-19d96a3b56849ce41f373671ae3db011.bptc.ctex", "res://.godot/imported/flame.png-19d96a3b56849ce41f373671ae3db011.astc.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dk7hj1g5oi2vu"
 path.bptc="res://.godot/imported/leaves.png-d902c0a8f660bfc8a7a83688fb454318.bptc.ctex"
+path.astc="res://.godot/imported/leaves.png-d902c0a8f660bfc8a7a83688fb454318.astc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Shiver/models/leaves.png"
-dest_files=["res://.godot/imported/leaves.png-d902c0a8f660bfc8a7a83688fb454318.bptc.ctex"]
+dest_files=["res://.godot/imported/leaves.png-d902c0a8f660bfc8a7a83688fb454318.bptc.ctex", "res://.godot/imported/leaves.png-d902c0a8f660bfc8a7a83688fb454318.astc.ctex"]
 
 [params]
 

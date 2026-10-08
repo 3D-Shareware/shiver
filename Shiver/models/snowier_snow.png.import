@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://7xkqxgly7db3"
 path.bptc="res://.godot/imported/snowier_snow.png-4505c4472ec8d301ccb649049595a2c3.bptc.ctex"
+path.astc="res://.godot/imported/snowier_snow.png-4505c4472ec8d301ccb649049595a2c3.astc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Shiver/models/snowier_snow.png"
-dest_files=["res://.godot/imported/snowier_snow.png-4505c4472ec8d301ccb649049595a2c3.bptc.ctex"]
+dest_files=["res://.godot/imported/snowier_snow.png-4505c4472ec8d301ccb649049595a2c3.bptc.ctex", "res://.godot/imported/snowier_snow.png-4505c4472ec8d301ccb649049595a2c3.astc.ctex"]
 
 [params]
 

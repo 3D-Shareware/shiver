@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bl6l87ofssrd4"
 path.s3tc="res://.godot/imported/firewood_firewood.png-b33ddd56fb4d749e0548d8a635d9d463.s3tc.ctex"
+path.etc2="res://.godot/imported/firewood_firewood.png-b33ddd56fb4d749e0548d8a635d9d463.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Shiver/models/firewood_firewood.png"
-dest_files=["res://.godot/imported/firewood_firewood.png-b33ddd56fb4d749e0548d8a635d9d463.s3tc.ctex"]
+dest_files=["res://.godot/imported/firewood_firewood.png-b33ddd56fb4d749e0548d8a635d9d463.s3tc.ctex", "res://.godot/imported/firewood_firewood.png-b33ddd56fb4d749e0548d8a635d9d463.etc2.ctex"]
 
 [params]
 
